@@ -1,0 +1,52 @@
+<div
+  class="bg-white border border-gray-200 rounded p-5 shadow-sm hover:shadow-lg transition duration-200 flex flex-col justify-between h-full"
+>
+  <div class="flex items-start justify-between gap-3">
+    <div class="flex gap-3 items-center">
+      <img
+        [src]="getImageUrl(job.company_logo_url)"
+        [alt]="job.company_name"
+        class="w-12 h-12 object-contain rounded border"
+        (error)="onImageError($event)"
+      />
+
+      <div>
+        <p class="text-sm text-gray-500">
+          {{ job.company_name }}
+        </p>
+
+        <h3 class="text-lg font-semibold text-gray-900 leading-tight">
+          {{ job.title }}
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mt-4 capitalize">
+    <span class="px-2 py-1 bg-gray-100 rounded text-sm shadow">
+      {{ job.job_type }}
+    </span>
+
+    <span class="px-2 py-1 border rounded text-sm">
+      {{ job.candidate_required_location }}
+    </span>
+  </div>
+
+  <div class="border-t my-4"></div>
+
+  <div class="flex items-center justify-between">
+    <div class="w-2/4">
+      <p class="font-semibold text-gray-900">
+        {{ formatSalary(job.salary) }}
+      </p>
+
+      <p class="text-xs text-gray-500">
+        {{ job.candidate_required_location }}
+      </p>
+    </div>
+
+    <div class="bg-black text-white px-4 py-2 rounded text-sm hover:bg-gray-700 transition">
+      View Details
+    </div>
+  </div>
+</div>
