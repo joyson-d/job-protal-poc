@@ -1,1 +1,128 @@
-<p>register works!</p>
+<div class="min-h-screen flex items-center justify-center bg-gray-50">
+
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    class="bg-white w-full max-w-md mx-auto flex flex-col gap-5 px-6 py-10 rounded shadow"
+  >
+
+    <h2 class="text-2xl font-semibold text-center text-gray-800">
+      Create Account
+    </h2>
+
+    <!-- NAME -->
+    <div>
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="Enter your name"
+        class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      @if (name?.touched && name?.invalid) {
+        <p class="text-red-500 text-xs mt-1">
+          Name is required
+        </p>
+      }
+    </div>
+
+    <!-- EMAIL -->
+    <div>
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      @if (email?.touched && email?.invalid) {
+        <p class="text-red-500 text-xs mt-1">
+          Enter a valid email
+        </p>
+      }
+    </div>
+
+    <!-- PASSWORD -->
+    <div>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      @if (password?.touched && password?.invalid) {
+        <p class="text-red-500 text-xs mt-1">
+          Password must be at least 6 characters
+        </p>
+      }
+    </div>
+
+    <!-- CONFIRM PASSWORD -->
+    <div>
+      <input
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="Confirm your password"
+        class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      @if (confirmPassword?.touched && confirmPassword?.invalid) {
+        <p class="text-red-500 text-xs mt-1">
+          Confirm your password
+        </p>
+      }
+    </div>
+
+    <!-- CONTACT NUMBER -->
+    <div>
+      <input
+        type="text"
+        formControlName="contactNumber"
+        placeholder="Enter your contact number"
+        class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      @if (contactNumber?.touched && contactNumber?.invalid) {
+        <p class="text-red-500 text-xs mt-1">
+          Contact number is required
+        </p>
+      }
+    </div>
+
+    <!-- RECRUITER CHECKBOX -->
+    <label class=" items-center gap-3 text-sm cursor-pointer select-none hidden">
+
+      <input
+        type="checkbox"
+        formControlName="isRecruiter"
+        class="w-4 h-4 accent-blue-500"
+      />
+
+      <span>I want to post jobs (Recruiter)</span>
+
+    </label>
+
+    <!-- SUBMIT -->
+    <button
+      type="submit"
+      class="bg-gray-900 text-white py-2.5 rounded font-medium hover:bg-gray-700 transition"
+    >
+      Register
+    </button>
+
+    <!-- LOGIN LINK -->
+    <p class="text-sm text-center text-gray-600">
+      Already have an account?
+
+      <a
+        routerLink="/login"
+        class="text-blue-600 hover:underline font-medium"
+      >
+        Login
+      </a>
+    </p>
+
+  </form>
+
+</div>
