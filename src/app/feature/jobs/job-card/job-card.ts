@@ -2,10 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Job } from '../jobs.model';
 import { getImageUrl } from '../../../shared/utils/getImageUrl';
 import { formatSalary } from '../../../shared/utils/formatSalary';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-job-card',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './job-card.html',
   styleUrl: './job-card.css',
 })
