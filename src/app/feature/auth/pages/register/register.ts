@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../../core/auth/auth-service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './register.css',
 })
 export class Register implements OnInit {
-  constructor(private registerFormBuilder: FormBuilder) {}
+  constructor(
+    private registerFormBuilder: FormBuilder,
+    private authService: AuthService,
+    private router:Router
+  ) {}
 
   registerForm!: FormGroup;
 
@@ -32,15 +37,22 @@ export class Register implements OnInit {
 
     const formData = this.registerForm.getRawValue();
 
-    console.log('REGISTER DATA:', formData);
-
     const role = formData.isRecruiter ? 'recruiter' : 'job_seeker';
 
-    console.log('ROLE:', role);
-
-    this.registerForm.reset({
-      isRecruiter: false,
+    const response = this.authService.register({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+      contactNumber: formData.contactNumber,
+      role,
     });
+
+    if (!response.success) {
+      console.log(response.message);
+      return;
+    }
+
+    this.router.navigate(['/']);
   }
 
   get name() {

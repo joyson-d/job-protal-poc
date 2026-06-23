@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../../core/auth/auth-service';
 
 type LoginFormValues = {
   email: string;
@@ -14,7 +15,11 @@ type LoginFormValues = {
   styleUrl: './login.css',
 })
 export class Login implements OnInit {
-  constructor(private loginFormBuilder: FormBuilder) {}
+  constructor(
+    private loginFormBuilder: FormBuilder,
+    private authService: AuthService,
+     private router: Router
+  ) {}
 
   loginForm!: FormGroup;
 
@@ -31,9 +36,16 @@ export class Login implements OnInit {
       return;
     }
 
-    const formData: LoginFormValues = this.loginForm.getRawValue();
+    const {email,password}: LoginFormValues = this.loginForm.getRawValue();
 
-    console.log(formData);
+    const response = this.authService.login(email,password)
+
+    if(!response.success){
+      console.log(response.message);
+      return
+    }
+    this.router.navigate(['/']);
+    
   }
 
   get email() {
