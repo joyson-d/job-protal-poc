@@ -6,10 +6,11 @@ import { getImageUrl } from '../../../shared/utils/getImageUrl';
 import { AuthService } from '../../../core/auth/auth-service';
 import { SavedJobButton } from '../saved-job-button/saved-job-button';
 import { JobService } from '../../../core/Job/job-service';
+import { ApplyJobButton } from '../apply-job-button/apply-job-button';
 
 @Component({
   selector: 'app-job-details',
-  imports: [RouterLink, SavedJobButton],
+  imports: [RouterLink, SavedJobButton,ApplyJobButton],
   templateUrl: './job-details.html',
   styleUrl: './job-details.css',
 })

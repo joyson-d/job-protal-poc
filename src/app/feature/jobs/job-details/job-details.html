@@ -31,8 +31,10 @@
           </span>
         </div>
         @if (isUserAuthenticated) {
-          <div class="p-2 rounded-md hover:bg-gray-100 transition ml-auto">
+          <div class="p-2 rounded-md transition  flex flex-col items-end ml-auto">
             <app-saved-job-button [jobId]="currentJob.id" />
+
+            <app-apply-job-button [jobId]="currentJob.id" />
           </div>
         }
       </div>

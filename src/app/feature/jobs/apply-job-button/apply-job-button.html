@@ -1,0 +1,11 @@
+<button
+  (click)="apply()"
+  [disabled]="isApplied()"
+  class="px-4 py-2 rounded text-white"
+  [class.text-white]="!isApplied()"
+  [class.bg-black]="!isApplied()"
+  [class.bg-gray-300]="isApplied()"
+  [class.text-gray-600]="isApplied()"
+>
+  {{ isApplied() ? 'Applied ✓' : 'Apply Now' }}
+</button>
