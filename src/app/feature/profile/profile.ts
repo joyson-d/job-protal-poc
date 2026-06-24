@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Overview } from './overview/overview';
+import { Education } from './education/education';
+import { Experience } from './experience/experience';
+import { Skills } from './skills/skills';
 
 const profileOptions = ['overview', 'skills', 'education', 'experience'] as const;
 
@@ -6,7 +10,12 @@ type profileOptionTypes = (typeof profileOptions)[number];
 
 @Component({
   selector: 'app-profile',
-  imports: [],
+  imports: [
+    Overview,
+    Education,
+    Experience,
+    Skills,
+  ],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
