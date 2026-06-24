@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Job } from '../../feature/jobs/jobs.model';
+import { Job } from '../Job/jobs.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 

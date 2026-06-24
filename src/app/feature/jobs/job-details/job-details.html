@@ -1,101 +1,78 @@
-@if(job){
+@if (job(); as currentJob) {
+  <div class="bg-gray-50 min-h-screen py-10 px-4">
+    <div class="max-w-4xl mx-auto bg-white rounded shadow border p-6">
+      <a routerLink="/" class="inline-flex items-center mb-6 text-gray-600 hover:text-black">
+        ← Back
+      </a>
 
-<div class="bg-gray-50 min-h-screen py-10 px-4">
+      <div class="flex gap-4 items-start">
+        <img
+          [src]="getImageUrl(currentJob.company_logo_url)"
+          [alt]="currentJob.company_name"
+          (error)="handleImageError($event)"
+          class="w-20 h-20 object-contain border rounded"
+        />
 
-  <div class="max-w-4xl mx-auto bg-white rounded shadow border p-6">
+        <div>
+          <h1 class="text-2xl font-semibold">
+            {{ currentJob.title }}
+          </h1>
 
-    <a
-      routerLink="/"
-      class="inline-flex items-center mb-6 text-gray-600 hover:text-black"
-    >
-      ← Back
-    </a>
+          <p class="text-gray-500">
+            {{ currentJob.company_name }}
+          </p>
 
-    <!-- Company Info -->
+          <p class="text-sm text-gray-500">
+            {{ currentJob.candidate_required_location }}
+          </p>
 
-    <div class="flex gap-4 items-start">
+          <span class="inline-block mt-2 bg-gray-100 px-3 py-1 rounded text-sm capitalize">
+            {{ currentJob.job_type }}
+          </span>
+        </div>
+        @if (isUserAuthenticated) {
+          <div class="p-2 rounded-md hover:bg-gray-100 transition ml-auto">
+            <app-saved-job-button [jobId]="currentJob.id" />
+          </div>
+        }
+      </div>
 
-      <img
-        [src]="getImageUrl(job.company_logo_url)"
-        [alt]="job.company_name"
-        (error)="handleImageError($event)"
-        class="w-20 h-20 object-contain border rounded"
-      />
+      <!-- Meta -->
 
-      <div>
-
-        <h1 class="text-2xl font-semibold">
-          {{ job.title }}
-        </h1>
-
-        <p class="text-gray-500">
-          {{ job.company_name }}
+      <div class="border-t pt-6 mt-6 space-y-3">
+        <p>
+          <strong>Location:</strong>
+          {{ currentJob.candidate_required_location }}
         </p>
 
-        <p class="text-sm text-gray-500">
-          {{ job.candidate_required_location }}
+        <p>
+          <strong>Salary:</strong>
+          {{ currentJob.salary || 'Not specified' }}
         </p>
 
-        <span
-          class="inline-block mt-2 bg-gray-100 px-3 py-1 rounded text-sm capitalize"
-        >
-          {{ job.job_type }}
-        </span>
+        <p>
+          <strong>Type:</strong>
+          {{ currentJob.job_type }}
+        </p>
+      </div>
 
+      <!-- Tags -->
+
+      <div class="flex flex-wrap gap-2 mt-6">
+        @for (tag of currentJob.tags; track tag) {
+          <span class="bg-gray-200 px-3 py-1 rounded text-xs capitalize">
+            {{ tag }}
+          </span>
+        }
+      </div>
+
+      <!-- Description -->
+
+      <div class="border-t mt-6 pt-6">
+        <h2 class="text-lg font-semibold mb-4">About this role</h2>
+
+        <div [innerHTML]="currentJob.description"></div>
       </div>
     </div>
-
-    <!-- Meta -->
-
-    <div class="border-t pt-6 mt-6 space-y-3">
-
-      <p>
-        <strong>Location:</strong>
-        {{ job.candidate_required_location }}
-      </p>
-
-      <p>
-        <strong>Salary:</strong>
-        {{ job.salary || 'Not specified' }}
-      </p>
-
-      <p>
-        <strong>Type:</strong>
-        {{ job.job_type }}
-      </p>
-
-    </div>
-
-    <!-- Tags -->
-
-    <div class="flex flex-wrap gap-2 mt-6">
-
-      @for(tag of job.tags; track tag){
-
-      <span
-        class="bg-gray-200 px-3 py-1 rounded text-xs capitalize"
-      >
-        {{ tag }}
-      </span>
-
-      }
-
-    </div>
-
-    <!-- Description -->
-
-    <div class="border-t mt-6 pt-6">
-
-      <h2 class="text-lg font-semibold mb-4">
-        About this role
-      </h2>
-
-      <div [innerHTML]="job.description"></div>
-
-    </div>
-
   </div>
-
-</div>
-
 }

@@ -11,3 +11,7 @@ export interface Job {
   description: string;
   recruiterId?: string;
 }
+
+export interface JobResponse {
+  jobs: Job[];
+}

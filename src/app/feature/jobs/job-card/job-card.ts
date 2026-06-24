@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Job } from '../jobs.model';
+import { Job } from '../../../core/Job/jobs.model';
 import { getImageUrl } from '../../../shared/utils/getImageUrl';
 import { formatSalary } from '../../../shared/utils/formatSalary';
 import { RouterLink } from '@angular/router';
