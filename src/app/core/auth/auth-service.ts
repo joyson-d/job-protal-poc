@@ -2,6 +2,7 @@ import { Injectable, OnInit, signal } from '@angular/core';
 import { AuthStorage } from './auth-storage';
 import { AuthStore } from './auth-store';
 import { User } from './auth.model';
+import { JobActivityService } from '../job-activity/job-activity-service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +11,10 @@ export class AuthService {
   constructor(
     private authStorage: AuthStorage,
     private authStore: AuthStore,
+    private jobActivityService: JobActivityService,
   ) {}
 
-  isUserAuthenticated=signal<boolean>(false)
+  isUserAuthenticated = signal<boolean>(false);
 
   initializeCurrentUser() {
     const userSession = this.authStorage.getCurrentUser;
@@ -32,6 +34,8 @@ export class AuthService {
     const newUser = this.createUser(user);
 
     this.saveNewUser(users, newUser);
+
+    this.jobActivityService.createJobActivity(newUser.id);
 
     this.createSession(newUser);
 
@@ -55,8 +59,8 @@ export class AuthService {
     this.authStore.logout();
   }
 
-  get isAuthenticated(){
-    return  this.authStore.isAuthenticated();
+  get isAuthenticated() {
+    return this.authStore.isAuthenticated();
   }
 
   // USER QUERIES
