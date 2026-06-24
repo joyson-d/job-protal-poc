@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { JobActivityStorage } from './job-activity-storage';
 import { JobActivityStore } from './job-activity-store';
 import { JobActivity } from './job-activity.model';
+import { AuthStore } from '../auth/auth-store';
+import { AuthStorage } from '../auth/auth-storage';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +12,15 @@ export class JobActivityService {
   constructor(
     private storage: JobActivityStorage,
     private store: JobActivityStore,
+    private authStorage:AuthStorage
   ) {}
+
+  initializeCurrentJobActivity() {
+    const userID = this.authStorage.getCurrentUser?.userId
+    if(!userID) return
+    const activity = this.getJobActivityById(userID );
+    this.store.setActivity(activity ?? null);
+  }
 
   createJobActivity(userId: string): void {
     const jobActivity = this.getJobActivityById(userId);
@@ -23,7 +33,7 @@ export class JobActivityService {
       savedJobs: [],
     };
 
-    this.storage.saveAll([activity])
+    this.update(activity);
   }
 
   toggleSaveJob(jobId: number) {

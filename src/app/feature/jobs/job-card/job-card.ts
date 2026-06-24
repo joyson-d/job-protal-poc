@@ -3,16 +3,21 @@ import { Job } from '../jobs.model';
 import { getImageUrl } from '../../../shared/utils/getImageUrl';
 import { formatSalary } from '../../../shared/utils/formatSalary';
 import { RouterLink } from '@angular/router';
+import { SavedJobButton } from '../saved-job-button/saved-job-button';
+import { AuthService } from '../../../core/auth/auth-service';
 
 @Component({
   selector: 'app-job-card',
-  imports: [RouterLink],
+  imports: [RouterLink,SavedJobButton],
   templateUrl: './job-card.html',
   styleUrl: './job-card.css',
+    standalone:true
 })
 export class JobCard {
   @Input({ required: true })
   job!: Job;
+
+  constructor(private authService:AuthService){}
 
   getImageUrl = getImageUrl;
   formatSalary = formatSalary;
@@ -21,5 +26,9 @@ export class JobCard {
     const img = event.target as HTMLImageElement;
 
     img.src = 'https://dummyimage.com/100x100/eeeeee/aaaaaa&text=Logo';
+  }
+
+  get isUserAuthenticated(){
+    return this.authService.isAuthenticated
   }
 }

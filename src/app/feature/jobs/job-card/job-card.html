@@ -20,7 +20,11 @@
         </h3>
       </div>
     </div>
+    @if(isUserAuthenticated){
+      <app-saved-job-button [jobId]="job.id"/>
+    }
   </div>
+
 
   <div class="flex flex-wrap gap-2 mt-4 capitalize">
     <span class="px-2 py-1 bg-gray-100 rounded text-sm shadow">
