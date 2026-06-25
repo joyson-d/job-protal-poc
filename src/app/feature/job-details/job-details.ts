@@ -1,12 +1,12 @@
 import { Component, computed, OnInit } from '@angular/core';
-import { Job } from '../../../core/Job/jobs.model';
+import { Job } from '../../core/Job/jobs.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { JobsStoreService } from '../../../core/Job/jobs-store';
-import { getImageUrl } from '../../../shared/utils/getImageUrl';
-import { AuthService } from '../../../core/auth/auth-service';
-import { SavedJobButton } from '../saved-job-button/saved-job-button';
-import { JobService } from '../../../core/Job/job-service';
-import { ApplyJobButton } from '../apply-job-button/apply-job-button';
+import { JobsStoreService } from '../../core/Job/jobs-store';
+import { getImageUrl } from '../../shared/utils/getImageUrl';
+import { AuthService } from '../../core/auth/auth-service';
+import { SavedJobButton } from '../../shared/components/saved-job-button/saved-job-button';
+import { JobService } from '../../core/Job/job-service';
+import { ApplyJobButton } from './apply-job-button/apply-job-button';
 
 @Component({
   selector: 'app-job-details',

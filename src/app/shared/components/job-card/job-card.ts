@@ -3,7 +3,7 @@ import { Job } from '../../../core/Job/jobs.model';
 import { getImageUrl } from '../../../shared/utils/getImageUrl';
 import { formatSalary } from '../../../shared/utils/formatSalary';
 import { RouterLink } from '@angular/router';
-import { SavedJobButton } from '../saved-job-button/saved-job-button';
+import { SavedJobButton } from '../../../shared/components/saved-job-button/saved-job-button';
 import { AuthService } from '../../../core/auth/auth-service';
 
 @Component({
