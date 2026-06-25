@@ -32,6 +32,5 @@ export class AuthStorage {
   saveAllUsers(users: User[]) {
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
   }
-
   
 }

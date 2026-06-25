@@ -3,6 +3,7 @@ import { AuthStorage } from './auth-storage';
 import { AuthStore } from './auth-store';
 import { User } from './auth.model';
 import { JobActivityService } from '../job-activity/job-activity-service';
+import { AuthUserService } from './auth-user-service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class AuthService {
     private authStorage: AuthStorage,
     private authStore: AuthStore,
     private jobActivityService: JobActivityService,
+    private authUserService: AuthUserService,
   ) {}
 
   isUserAuthenticated = signal<boolean>(false);
@@ -19,13 +21,17 @@ export class AuthService {
   initializeCurrentUser() {
     const userSession = this.authStorage.getCurrentUser;
 
-    this.authStore.initialize(userSession);
+    if (!userSession) return;
+
+    const currentUser = this.getCurrentUserById(userSession.userId);
+
+    this.authStore.initialize(userSession, currentUser);
   }
 
   register(user: Omit<User, 'id' | 'status' | 'profile'>) {
-    const users = this.getUsers();
+    const users = this.authUserService.getUsers();
 
-    const checkUserExists = this.userExists(users, user.email);
+    const checkUserExists = this.authUserService.userExists(users, user.email);
 
     if (checkUserExists) {
       return this.error('User already exists');
@@ -43,7 +49,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const user = this.findUserByCredentials(email, password);
+    const user = this.authUserService.findUserByCredentials(email, password);
 
     if (!user) {
       return this.error('Invalid credentials');
@@ -63,17 +69,10 @@ export class AuthService {
     return this.authStore.isAuthenticated();
   }
 
-  // USER QUERIES
-  private getUsers(): User[] {
-    return this.authStorage.getUsers;
-  }
+  getCurrentUserById(userId: string) {
+    const users = this.authUserService.getUsers();
 
-  private userExists(users: User[], email: string): boolean {
-    return users.some((user) => user.email === email);
-  }
-
-  private findUserByCredentials(email: string, password: string): User | undefined {
-    return this.getUsers().find((u) => u.email === email && u.password === password);
+    return users.find((user) => user.id === userId) ?? null;
   }
 
   // USER CREATION

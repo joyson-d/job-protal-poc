@@ -1,9 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
+import { ProfileService } from '../../../core/profile/profile-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-skills',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })
-export class Skills {}
+export class Skills {
+
+   skillInput = '';
+
+  constructor(private profileService: ProfileService) {}
+
+  skills = computed(() => this.profileService.getCurrentUser()?.profile.skills ?? []);
+
+  addSkill() {
+    const value = this.skillInput.trim();
+
+    if (!value) {
+      return;
+    }
+
+    const updatedSkills = [...this.skills(), value];
+
+    this.profileService.updateSkills(updatedSkills);
+
+    this.skillInput = '';
+  }
+
+   removeSkill(skill: string) {
+    const updatedSkills = this.skills().filter((s) => s !== skill);
+
+    this.profileService.updateSkills(updatedSkills);
+  }
+
+}
