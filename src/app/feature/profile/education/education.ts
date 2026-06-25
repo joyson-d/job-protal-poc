@@ -1,9 +1,76 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
+import { ProfileService } from '../../../core/profile/profile-service';
+import { Education as EducationType } from '../../../core/profile/profile.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-education',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './education.html',
   styleUrl: './education.css',
 })
-export class Education {}
+export class Education {
+  constructor(private profileService: ProfileService) {}
+
+  educationList = computed(() => this.profileService.getCurrentUser()?.profile.education ?? []);
+
+  institution = '';
+  degree = '';
+  fieldOfStudy = '';
+  startYear = '';
+  endYear = '';
+
+  // modal + edit state
+  isModalOpen = false;
+  editingEducationId: string | null = null;
+
+  openModal(education?: EducationType) {
+    this.isModalOpen = true;
+
+    if (!education) {
+      this.resetForm();
+      this.editingEducationId = null;
+      return;
+    }
+
+    this.editingEducationId = education.id;
+    this.institution = education.institution;
+    this.degree = education.degree;
+    this.fieldOfStudy = education.fieldOfStudy;
+    this.startYear = education.startYear;
+    this.endYear = education.endYear;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  saveEducation() {
+    const education: EducationType = {
+      id: this.editingEducationId ?? crypto.randomUUID(),
+      institution: this.institution,
+      degree: this.degree,
+      fieldOfStudy: this.fieldOfStudy,
+      startYear: this.startYear,
+      endYear: this.endYear,
+    };
+
+    this.profileService.updateEducation(education);
+
+    this.resetForm();
+    this.closeModal();
+  }
+
+  removeEducation(id: string) {
+    this.profileService.deleteEducation(id);
+  }
+
+  private resetForm() {
+    this.institution = '';
+    this.degree = '';
+    this.fieldOfStudy = '';
+    this.startYear = '';
+    this.endYear = '';
+    this.editingEducationId = null;
+  }
+}

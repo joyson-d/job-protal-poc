@@ -1,5 +1,119 @@
 <div class="bg-white p-6 rounded-xl shadow">
-  <h2 class="text-xl font-semibold">Education</h2>
+
+  <!-- HEADER -->
+  <div class="flex justify-between items-center">
+    <h2 class="text-xl font-semibold">Education</h2>
+
+    <button
+      (click)="openModal()"
+      class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+    >
+      Add Education
+    </button>
+  </div>
+
+  
+
+
+  @if (isModalOpen) {
+    <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+      <div class="bg-white p-6 rounded-xl w-full max-w-lg space-y-3">
+
+        <h2 class="text-lg font-semibold">
+          {{ editingEducationId ? 'Edit Education' : 'Add Education' }}
+        </h2>
+
+        <input
+          [(ngModel)]="institution"
+          placeholder="Institution"
+          class="w-full border rounded px-3 py-2"
+        />
+
+        <input
+          [(ngModel)]="degree"
+          placeholder="Degree"
+          class="w-full border rounded px-3 py-2"
+        />
+
+        <input
+          [(ngModel)]="fieldOfStudy"
+          placeholder="Field Of Study"
+          class="w-full border rounded px-3 py-2"
+        />
+
+        <div class="grid grid-cols-2 gap-3">
+          <input
+            [(ngModel)]="startYear"
+            type="date"
+            class="border rounded px-3 py-2"
+          />
+
+          <input
+            [(ngModel)]="endYear"
+            type="date"
+            class="border rounded px-3 py-2"
+          />
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="flex gap-3 mt-4">
+
+          <button
+            type="button"
+            (click)="closeModal()"
+            class="flex-1 border border-gray-300 py-2 rounded hover:bg-gray-100"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="button"
+            (click)="saveEducation()"
+            class="flex-1 bg-black text-white py-2 rounded hover:bg-gray-800"
+          >
+            {{ editingEducationId ? 'Update' : 'Save' }}
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  }
+  @else {
+    <!-- LIST -->
+  @for (item of educationList(); track item.id) {
+    <div class="border p-4 rounded mt-4">
+
+      <div class="flex justify-between items-start">
+
+        <div>
+          <p class="font-semibold">{{ item.degree }}</p>
+          <p class="text-gray-600">{{ item.institution }}</p>
+          <p class="text-gray-500 text-sm">{{ item.fieldOfStudy }}</p>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            (click)="openModal(item)"
+            class="text-blue-500 hover:text-blue-700"
+          >
+            Edit
+          </button>
+
+          <button
+            (click)="removeEducation(item.id)"
+            class="text-red-500 hover:text-red-700"
+          >
+            Delete
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  }
+  }
+
 </div>
-
-
