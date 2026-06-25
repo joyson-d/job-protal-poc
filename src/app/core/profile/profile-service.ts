@@ -4,7 +4,7 @@ import { AuthStorage } from '../auth/auth-storage';
 import { User } from '../auth/auth.model';
 import { AuthStore } from '../auth/auth-store';
 import { AuthUserService } from '../auth/auth-user-service';
-import { Education } from './profile.model';
+import { Education, Experience } from './profile.model';
 
 @Injectable({
   providedIn: 'root',
@@ -79,6 +79,44 @@ export class ProfileService {
       profile: {
         ...user.profile,
         education: user.profile.education.filter((education) => education.id !== id),
+      },
+    };
+
+    this.updateUser(updatedUser);
+  }
+
+  updateExperience(experience: Experience) {
+    const user = this.getCurrentUser();
+    if (!user) return;
+
+    const existing = user.profile.experience;
+
+    const isEdit = existing.some((e) => e.id === experience.id);
+
+    const updatedExperience = isEdit
+      ? existing.map((e) => (e.id === experience.id ? experience : e))
+      : [...existing, experience];
+
+    const updatedUser: User = {
+      ...user,
+      profile: {
+        ...user.profile,
+        experience: updatedExperience,
+      },
+    };
+
+    this.updateUser(updatedUser);
+  }
+
+  deleteExperience(id: string) {
+    const user = this.getCurrentUser();
+    if (!user) return;
+
+    const updatedUser: User = {
+      ...user,
+      profile: {
+        ...user.profile,
+        experience: user.profile.experience.filter((exp) => exp.id !== id),
       },
     };
 

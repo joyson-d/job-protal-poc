@@ -1,3 +1,110 @@
 <div class="bg-white p-6 rounded-xl shadow">
-  <h2 class="text-xl font-semibold">Experience</h2>
+
+  <!-- HEADER -->
+  <div class="flex justify-between items-center">
+    <h2 class="text-xl font-semibold">Experience </h2>
+
+    <button
+      (click)="openModal()"
+      class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+    >
+      Add Experience
+    </button>
+  </div>
+
+  <!-- MODAL -->
+  @if (isModalOpen) {
+    <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+      <div class="bg-white p-6 rounded-xl w-full max-w-lg space-y-3">
+
+        <h2 class="text-lg font-semibold">
+          {{ editingId ? 'Edit Experience' : 'Add Experience' }}
+        </h2>
+
+        <input [(ngModel)]="company" placeholder="Company"
+          class="w-full border rounded px-3 py-2" />
+
+        <input [(ngModel)]="role" placeholder="Role"
+          class="w-full border rounded px-3 py-2" />
+
+        <input [(ngModel)]="location" placeholder="Location"
+          class="w-full border rounded px-3 py-2" />
+
+        <div class="grid grid-cols-2 gap-3">
+          <input [(ngModel)]="startDate" type="date"
+            class="border rounded px-3 py-2" />
+
+          <input [(ngModel)]="endDate" type="date"
+            class="border rounded px-3 py-2" />
+        </div>
+
+        <textarea
+          [(ngModel)]="description"
+          placeholder="Description"
+          class="w-full border rounded px-3 py-2 min-h-24"
+        ></textarea>
+
+        <!-- ACTIONS -->
+        <div class="flex gap-3 mt-4">
+
+          <button
+            type="button"
+            (click)="closeModal()"
+            class="flex-1 border border-gray-300 py-2 rounded hover:bg-gray-100"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="button"
+            (click)="saveExperience()"
+            class="flex-1 bg-black text-white py-2 rounded hover:bg-gray-800"
+          >
+            {{ editingId ? 'Update' : 'Save' }}
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  }
+
+  <!-- LIST -->
+  @for (item of experienceList(); track item.id) {
+    <div class="border p-4 rounded mt-4">
+
+      <div class="flex justify-between">
+
+        <div>
+          <p class="font-semibold">{{ item.role }}</p>
+          <p class="text-gray-600">{{ item.company }}</p>
+          <p class="text-gray-500 text-sm">{{ item.location }}</p>
+
+          <p class="text-xs text-gray-400">
+            {{ item.startDate }} — {{ item.endDate }}
+          </p>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            (click)="openModal(item)"
+            class="text-blue-500 hover:text-blue-700"
+          >
+            Edit
+          </button>
+
+          <button
+            (click)="removeExperience(item.id)"
+            class="text-red-500 hover:text-red-700"
+          >
+            Delete
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  }
+
 </div>
