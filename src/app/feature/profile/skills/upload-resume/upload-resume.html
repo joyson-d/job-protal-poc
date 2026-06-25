@@ -1,0 +1,29 @@
+<div class="bg-white p-6 rounded-xl shadow">
+  <h2 class="text-xl font-semibold mb-4">Resume</h2>
+
+  <input type="file" accept="application/pdf" (change)="onFileSelected($event)" class="mb-4" />
+
+  @if (selectedFile) {
+    <p class="text-sm text-gray-600 mb-4">
+      {{ selectedFile.name }}
+    </p>
+  }
+
+  <div class="flex gap-3">
+    @if (resume) {
+      <button (click)="viewResume()" class="border px-4 py-2 rounded">View Resume</button>
+
+      <button (click)="removeResume()" class="bg-red-500 text-white px-4 py-2 rounded">
+        Remove
+      </button>
+    } @else {
+      <button
+        [disabled]="!selectedFile"
+        (click)="saveResume()"
+        class="bg-black text-white px-4 py-2 rounded disabled:bg-gray-300"
+      >
+        Save Resume
+      </button>
+    }
+  </div>
+</div>

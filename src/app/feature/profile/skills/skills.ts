@@ -1,10 +1,11 @@
 import { Component, computed } from '@angular/core';
 import { ProfileService } from '../../../core/profile/profile-service';
 import { FormsModule } from '@angular/forms';
+import { UploadResume } from './upload-resume/upload-resume';
 
 @Component({
   selector: 'app-skills',
-  imports: [FormsModule],
+  imports: [FormsModule,UploadResume],
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })

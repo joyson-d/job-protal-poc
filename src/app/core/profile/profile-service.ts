@@ -122,4 +122,50 @@ export class ProfileService {
 
     this.updateUser(updatedUser);
   }
+
+  async uploadResume(file: File) {
+    const user = this.getCurrentUser();
+
+    if (!user) return;
+
+    const base64 = await this.convertToBase64(file);
+
+    const updatedUser: User = {
+      ...user,
+      profile: {
+        ...user.profile,
+        resume: base64,
+      },
+    };
+
+    this.updateUser(updatedUser);
+  }
+
+  removeResume() {
+    const user = this.getCurrentUser();
+
+    if (!user) return;
+
+    const updatedUser: User = {
+      ...user,
+      profile: {
+        ...user.profile,
+        resume: null,
+      },
+    };
+
+    this.updateUser(updatedUser);
+  }
+
+  private convertToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(file);
+
+      reader.onload = () => resolve(reader.result as string);
+
+      reader.onerror = reject;
+    });
+  }
 }
