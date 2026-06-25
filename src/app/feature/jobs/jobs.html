@@ -1,5 +1,182 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    @for(job of jobs();track job.id){
-        <app-job-card [job]="job"/>
-    }
+<div class="min-h-screen bg-gray-50 p-4 lg:p-6">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- ================= TOP BAR ================= -->
+    <div class="mb-6 flex flex-col md:flex-row gap-4">
+
+      <input
+        #searchInput
+        [value]="search()"
+        (input)="onSearch(searchInput.value)"
+        placeholder="Search jobs..."
+        class="flex-1 border rounded px-4 py-2 bg-white"
+      />
+
+      <select
+        #locationSelect
+        [value]="location()"
+        (change)="onLocationChange(locationSelect.value)"
+        class="border rounded px-4 py-2 bg-white"
+      >
+        @for (loc of locations(); track loc) {
+          <option [value]="loc">
+            {{ loc === 'all' ? 'All Locations' : loc }}
+          </option>
+        }
+      </select>
+
+      <button
+        (click)="clearFilters()"
+        class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300 transition"
+      >
+        Clear
+      </button>
+
+    </div>
+
+    <!-- ================= MOBILE FILTERS ================= -->
+    <div class="lg:hidden bg-white border rounded p-4 mb-4 space-y-4">
+
+      <!-- Job Types -->
+      <div>
+        <h3 class="font-medium mb-2 text-sm">Job Type</h3>
+
+        <div class="flex flex-wrap gap-3">
+          @for (type of jobTypeOptions(); track type) {
+            <label class="flex items-center gap-2 text-sm bg-gray-50 px-3 py-1 rounded border">
+              <input
+                type="checkbox"
+                [checked]="jobTypes().includes(type)"
+                (change)="toggleJobType(type)"
+                class="accent-blue-600"
+              />
+              <span class="capitalize">{{ type }}</span>
+            </label>
+          }
+        </div>
+      </div>
+
+      <!-- Salary -->
+      <div>
+        <h3 class="font-medium mb-2 text-sm">Salary</h3>
+
+        <div class="flex gap-2">
+          <input
+            type="number"
+            [value]="salaryRange()[0]"
+            (input)="onMinSalaryChange(minSalary.value)"
+            #minSalary
+            class="w-1/2 border rounded px-2 py-1"
+          />
+
+          <input
+            type="number"
+            [value]="salaryRange()[1]"
+            (input)="onMaxSalaryChange(maxSalary.value)"
+            #maxSalary
+            class="w-1/2 border rounded px-2 py-1"
+          />
+        </div>
+      </div>
+
+      <button
+        (click)="clearFilters()"
+        class="text-sm text-blue-600"
+      >
+        Clear Filters
+      </button>
+
+    </div>
+
+    <!-- ================= MAIN LAYOUT ================= -->
+    <div class="flex flex-col lg:flex-row gap-6">
+
+      <!-- ========== SIDEBAR (DESKTOP ONLY) ========== -->
+      <aside class="hidden lg:block w-72 bg-white p-5 rounded border h-fit sticky top-6">
+
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="font-semibold">Filters</h2>
+
+          <button
+            (click)="clearFilters()"
+            class="text-blue-600 text-sm"
+          >
+            Clear All
+          </button>
+        </div>
+
+        <!-- Job Types -->
+        <div class="mb-6">
+          <h3 class="font-medium mb-3">Job Type</h3>
+
+          <div class="flex flex-col gap-2">
+            @for (type of jobTypeOptions(); track type) {
+              <label class="flex items-center gap-2 text-sm p-2 hover:bg-gray-50 rounded">
+                <input
+                  type="checkbox"
+                  [checked]="jobTypes().includes(type)"
+                  (change)="toggleJobType(type)"
+                  class="accent-blue-600"
+                />
+                <span class="capitalize">{{ type }}</span>
+              </label>
+            }
+          </div>
+        </div>
+
+        <!-- Salary -->
+        <div>
+          <h3 class="font-medium mb-3">Salary Range</h3>
+
+          <div class="flex justify-between text-sm text-gray-600 mb-2">
+            <span>${{ salaryRange()[0] }}</span>
+            <span>${{ salaryRange()[1] }}</span>
+          </div>
+
+          <div class="flex gap-2">
+            <input
+              type="number"
+              [value]="salaryRange()[0]"
+              (input)="onMinSalaryChange(minSalaryDesk.value)"
+              #minSalaryDesk
+              class="w-1/2 border rounded px-2 py-1 text-sm"
+            />
+
+            <input
+              type="number"
+              [value]="salaryRange()[1]"
+              (input)="onMaxSalaryChange(maxSalaryDesk.value)"
+              #maxSalaryDesk
+              class="w-1/2 border rounded px-2 py-1 text-sm"
+            />
+          </div>
+
+          <div class="text-xs text-gray-500 mt-2">
+            Range: {{ salaryBounds().min }} - {{ salaryBounds().max }}
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ========== JOB RESULTS ========== -->
+      <main class="flex-1">
+
+        @if (jobs().length > 0) {
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+            @for (job of jobs(); track job.id) {
+              <app-job-card [job]="job" />
+            }
+
+          </div>
+        } @else {
+          <div class="text-center py-12 text-gray-500 bg-white rounded border">
+            No Jobs found
+          </div>
+        }
+
+      </main>
+
+    </div>
+  </div>
 </div>
