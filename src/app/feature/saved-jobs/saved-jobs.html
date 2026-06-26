@@ -1,4 +1,4 @@
-<div class="flex flex-row">
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-4 px-6">
   @for (savedJob of savedJobs(); track savedJob.id) {
     <app-job-card [job]="savedJob" />
   }
