@@ -4,6 +4,7 @@ import { JobActivityStore } from './job-activity-store';
 import { JobActivity } from './job-activity.model';
 import { AuthStore } from '../auth/auth-store';
 import { AuthStorage } from '../auth/auth-storage';
+import { JobsStoreService } from '../Job/jobs-store';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,8 @@ export class JobActivityService {
   constructor(
     private storage: JobActivityStorage,
     private store: JobActivityStore,
-    private authStorage:AuthStorage
+    private authStorage:AuthStorage,
+    private jobStore:JobsStoreService
   ) {}
 
   initializeCurrentJobActivity() {
@@ -68,6 +70,10 @@ export class JobActivityService {
     this.update(updated);
   }
 
+  get getSavedJobsList(){
+    return this.getSavedJobs()
+  }
+
   // PRIVATE sync helper
   private update(activity: JobActivity) {
     const all = this.storage.getAll();
@@ -82,4 +88,13 @@ export class JobActivityService {
     const allUser = this.storage.getAll();
     return allUser.find((user) => user.userId === userId);
   }
+
+  private getSavedJobs(){
+    const jobs = this.jobStore.jobs()
+
+    const savedSet = new Set(this.store.savedJobs());
+
+    return jobs.filter((job) => savedSet.has(job.id));
+  }
+
 }

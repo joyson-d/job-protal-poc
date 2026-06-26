@@ -4,6 +4,7 @@ import { Login } from './feature/auth/pages/login/login';
 import { Register } from './feature/auth/pages/register/register';
 import { Profile } from './feature/profile/profile';
 import { JobDetails } from './feature/job-details/job-details';
+import { SavedJobs } from './feature/saved-jobs/saved-jobs';
 
 export const routes: Routes = [
     {
@@ -25,5 +26,9 @@ export const routes: Routes = [
     {
         path:"jobs/:id",
         component:JobDetails
+    },
+    {
+        path:'saved-jobs',
+        component:SavedJobs
     }
 ];

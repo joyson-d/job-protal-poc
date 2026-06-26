@@ -18,4 +18,5 @@ export class JobsStoreService {
   clearJobs() {
     this.jobs.set([]);
   }
+
 }

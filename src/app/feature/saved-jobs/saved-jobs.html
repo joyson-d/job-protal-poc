@@ -1,0 +1,5 @@
+<div class="flex flex-row">
+  @for (savedJob of savedJobs(); track savedJob.id) {
+    <app-job-card [job]="savedJob" />
+  }
+</div>

@@ -16,10 +16,13 @@
         Register
       </a>
     } @else {
+      <a routerLink="/saved-jobs" class="border px-4 py-2 rounded hover:bg-gray-100 cursor-pointer">
+        Saved-Jobs
+      </a>
       <a routerLink="/profile" class="border px-4 py-2 rounded hover:bg-gray-100 cursor-pointer">
         Profile
       </a>
-
+      
       <button
         (click)="logout()"
         class="border px-4 py-2 rounded cursor-pointer bg-red-600 hover:bg-red-800 text-white"
