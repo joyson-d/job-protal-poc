@@ -5,30 +5,33 @@ import { Register } from './feature/auth/pages/register/register';
 import { Profile } from './feature/profile/profile';
 import { JobDetails } from './feature/job-details/job-details';
 import { SavedJobs } from './feature/saved-jobs/saved-jobs';
+import { authGuard } from './core/auth/auth-guard';
 
 export const routes: Routes = [
-    {
-        path:"",
-        component:Jobs
-    },
-    {
-        path:"login",
-        component:Login
-    },
-    {
-        path:"register",
-        component:Register
-    },
-    {
-        path:'profile',
-        component:Profile
-    },
-    {
-        path:"jobs/:id",
-        component:JobDetails
-    },
-    {
-        path:'saved-jobs',
-        component:SavedJobs
-    }
+  {
+    path: '',
+    component: Jobs,
+  },
+  {
+    path: 'login',
+    component: Login,
+  },
+  {
+    path: 'register',
+    component: Register,
+  },
+  {
+    path: 'profile',
+    component: Profile,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'jobs/:id',
+    component: JobDetails,
+  },
+  {
+    path: 'saved-jobs',
+    component: SavedJobs,
+    canActivate: [authGuard],
+  },
 ];
