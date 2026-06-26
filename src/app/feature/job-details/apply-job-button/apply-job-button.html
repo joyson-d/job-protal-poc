@@ -1,4 +1,4 @@
-<button
+<!-- <button
   (click)="apply()"
   [disabled]="isApplied()"
   class="px-4 py-2 rounded text-white"
@@ -8,4 +8,107 @@
   [class.text-gray-600]="isApplied()"
 >
   {{ isApplied() ? 'Applied ✓' : 'Apply Now' }}
+</button> -->
+
+<!-- APPLY BUTTON -->
+<button
+  (click)="openModal()"
+  [disabled]="isApplied()"
+  class="px-4 py-2 rounded text-white transition"
+  [class.bg-black]="!isApplied()"
+  [class.bg-gray-300]="isApplied()"
+  [class.text-gray-600]="isApplied()"
+>
+  {{ isApplied() ? 'Applied ✓' : 'Apply Now' }}
 </button>
+
+<!-- MODAL -->
+@if (isModalOpen()) {
+  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+    <div class="bg-white rounded-xl p-6 w-full max-w-md space-y-5">
+
+      <!-- TITLE -->
+      <h2 class="text-xl font-semibold">
+        Apply for Job
+      </h2>
+
+      <!-- TOTAL EXPERIENCE -->
+      <div>
+        <label class="block text-sm mb-1">Total Experience (Years)</label>
+
+        <input
+          type="number"
+          [value]="totalExperience()"
+          (input)="totalExperience.set(($any($event.target).value))"
+          class="w-full border rounded px-3 py-2"
+          placeholder="e.g. 3"
+        />
+      </div>
+
+      <!-- RELEVANT EXPERIENCE -->
+      <div>
+        <label class="block text-sm mb-1">Relevant Experience (Years)</label>
+
+        <input
+          type="number"
+          [value]="relevantExperience()"
+          (input)="relevantExperience.set(($any($event.target).value))"
+          class="w-full border rounded px-3 py-2"
+          placeholder="e.g. 2"
+        />
+      </div>
+
+      <!-- CURRENT LOCATION -->
+      <div>
+        <label class="block text-sm mb-1">Current Location</label>
+
+        <input
+          type="text"
+          [value]="currentLocation()"
+          (input)="currentLocation.set(($any($event.target).value))"
+          class="w-full border rounded px-3 py-2"
+          placeholder="e.g. Bangalore"
+        />
+      </div>
+
+      <!-- NOTICE PERIOD -->
+      <div>
+        <label class="block text-sm mb-1">Notice Period</label>
+
+        <select
+          [value]="noticePeriod()"
+          (change)="noticePeriod.set(($any($event.target).value))"
+          class="w-full border rounded px-3 py-2"
+        >
+          <option value="0">Immediate</option>
+          <option value="15">15 Days</option>
+          <option value="30">30 Days</option>
+          <option value="60">60 Days</option>
+          <option value="90">90 Days</option>
+        </select>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="flex gap-3 pt-3">
+
+        <button
+          (click)="closeModal()"
+          class="flex-1 border rounded py-2 hover:bg-gray-100"
+        >
+          Cancel
+        </button>
+
+        <button
+          (click)="apply()"
+          class="flex-1 bg-black text-white rounded py-2 hover:bg-gray-800"
+        >
+          Apply
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+}
