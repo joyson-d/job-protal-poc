@@ -5,17 +5,28 @@ import { UploadResume } from './upload-resume/upload-resume';
 
 @Component({
   selector: 'app-skills',
-  imports: [FormsModule,UploadResume],
+  imports: [FormsModule, UploadResume],
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })
 export class Skills {
-
-   skillInput = '';
+  skillInput = '';
 
   constructor(private profileService: ProfileService) {}
 
   skills = computed(() => this.profileService.getCurrentUser()?.profile.skills ?? []);
+
+  isModalOpen = false;
+
+  openModal() {
+    this.skillInput = '';
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.skillInput = '';
+    this.isModalOpen = false;
+  }
 
   addSkill() {
     const value = this.skillInput.trim();
@@ -29,12 +40,12 @@ export class Skills {
     this.profileService.updateSkills(updatedSkills);
 
     this.skillInput = '';
+    this.closeModal()
   }
 
-   removeSkill(skill: string) {
+  removeSkill(skill: string) {
     const updatedSkills = this.skills().filter((s) => s !== skill);
 
     this.profileService.updateSkills(updatedSkills);
   }
-
 }
