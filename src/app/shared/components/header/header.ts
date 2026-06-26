@@ -18,4 +18,19 @@ export class Header {
     this.authService.logout();
     this.router.navigate(['/']);
   }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
+
+  onLogout() {
+    this.closeMenu();
+    this.logout();
+  }
 }
