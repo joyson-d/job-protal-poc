@@ -5,38 +5,41 @@ import { AuthSession, User } from './auth.model';
   providedIn: 'root',
 })
 export class AuthStore {
-  private session = signal<AuthSession | null>(null);
+  private readonly sessionSignal = signal<AuthSession | null>(null);
 
-  private currentUser = signal<User | null>(null);
+  private readonly currentUserSignal = signal<User | null>(null);
 
-  userId = computed(() => this.session()?.userId ?? null);
+  readonly session = this.sessionSignal.asReadonly();
+  readonly currentUser = this.currentUserSignal.asReadonly();
 
-  role = computed(() => this.session()?.role ?? null);
+  readonly userId = computed(() => this.sessionSignal()?.userId ?? null);
 
-  isAuthenticated = computed(() => this.session() !== null);
+  readonly role = computed(() => this.sessionSignal()?.role ?? null);
+
+  readonly isAuthenticated = computed(() => this.sessionSignal() !== null);
 
   authenticate(authCredentials: AuthSession) {
-    this.session.set(authCredentials);
+    this.sessionSignal.set(authCredentials);
   }
 
   logout() {
-    this.session.set(null);
+    this.sessionSignal.set(null);
   }
 
   initialize(session: AuthSession | null, user: User | null) {
-    this.session.set(session);
+    this.sessionSignal.set(session);
     this.refreshCurrentUser(user);
   }
 
   getSession() {
-    return this.session();
+    return this.sessionSignal();
   }
 
   get getCurrentUser() {
-    return this.currentUser;
+    return this.currentUserSignal;
   }
 
   refreshCurrentUser(user: User | null) {
-    this.currentUser.set(user);
+    this.currentUserSignal.set(user);
   }
 }

@@ -16,7 +16,6 @@ export class AuthService {
     private authUserService: AuthUserService,
   ) {}
 
-  isUserAuthenticated = signal<boolean>(false);
 
   initializeCurrentUser() {
     const userSession = this.authStorage.getCurrentUser;

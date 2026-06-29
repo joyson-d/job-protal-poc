@@ -1,7 +1,7 @@
 import { Profile } from '../profile/profile.model';
 
 const userRoles = ['job_seeker', 'recruiter', 'admin'] as const;
-export const USER_STATUS = ['active', 'blocked', 'deleted'] as const;
+const USER_STATUS = ['active', 'blocked', 'deleted'] as const;
 
 export type UserRole = (typeof userRoles)[number];
 export type UserStatus = (typeof USER_STATUS)[number];
