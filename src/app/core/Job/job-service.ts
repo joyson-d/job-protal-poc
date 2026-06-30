@@ -1,9 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { JobsApiService } from '../api/jobs-api.service';
 import { JobsStoreService } from './jobs-store';
-import { HttpClient } from '@angular/common/http';
-import { Job, JobResponse } from './jobs.model';
-import { map } from 'rxjs';
+import { Job } from './jobs.model';
+
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +15,7 @@ export class JobService {
     private jobsStore: JobsStoreService,
   ) {}
 
-  onLoadFetchJob() {
+  fetchJobs() {
     this.jobFetchApi.getJobs().subscribe({
       next: (jobs) => {
         this.jobsStore.setJobs(jobs);

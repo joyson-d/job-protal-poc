@@ -8,9 +8,8 @@ interface JobResponse {
 }
 
 @Injectable({
-    providedIn:'root'
+  providedIn: 'root',
 })
-
 export class JobsApiService {
   private http = inject(HttpClient);
 

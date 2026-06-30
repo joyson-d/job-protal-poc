@@ -23,6 +23,6 @@ export class App implements OnInit {
   ngOnInit(): void {
     this.authService.initializeCurrentUser();
     this.jobActivityService.initializeCurrentJobActivity();
-    this.jobService.onLoadFetchJob();
+    this.jobService.fetchJobs();
   }
 }

@@ -7,7 +7,6 @@ import { JobActivityService } from '../../../core/job-activity/job-activity-serv
   imports: [],
   templateUrl: './saved-job-button.html',
   styleUrl: './saved-job-button.css',
-
 })
 export class SavedJobButton {
   jobId = input.required<number>();
@@ -20,8 +19,6 @@ export class SavedJobButton {
   isSaved = computed(() => this.activityStore.savedJobs().includes(this.jobId()));
 
   toggleSave() {
-    console.log('button clicked');
-    
-    this.jobActivityService.toggleSaveJob(this.jobId())
+    this.jobActivityService.toggleSaveJob(this.jobId());
   }
 }
