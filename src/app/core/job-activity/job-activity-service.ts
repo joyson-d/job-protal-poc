@@ -3,7 +3,6 @@ import { JobActivityStorage } from './job-activity-storage';
 import { JobActivityStore } from './job-activity-store';
 import { JobActivity } from './job-activity.model';
 import { AuthStore } from '../auth/auth-store';
-import { AuthStorage } from '../auth/auth-storage';
 import { JobsStoreService } from '../Job/jobs-store';
 
 @Injectable({
@@ -13,14 +12,17 @@ export class JobActivityService {
   constructor(
     private storage: JobActivityStorage,
     private store: JobActivityStore,
-    private authStorage:AuthStorage,
-    private jobStore:JobsStoreService
+    private jobStore: JobsStoreService,
+    private authStore: AuthStore,
   ) {}
 
   initializeCurrentJobActivity() {
-    const userID = this.authStorage.getCurrentUser?.userId
-    if(!userID) return
-    const activity = this.getJobActivityById(userID );
+    const userID = this.authStore.currentUser()?.id;
+
+    if (!userID) return;
+
+    const activity = this.getJobActivityById(userID);
+
     this.store.setActivity(activity ?? null);
   }
 
@@ -70,8 +72,8 @@ export class JobActivityService {
     this.update(updated);
   }
 
-  get getSavedJobsList(){
-    return this.getSavedJobs()
+  get getSavedJobsList() {
+    return this.getSavedJobs();
   }
 
   // PRIVATE sync helper
@@ -89,12 +91,11 @@ export class JobActivityService {
     return allUser.find((user) => user.userId === userId);
   }
 
-  private getSavedJobs(){
-    const jobs = this.jobStore.jobs()
+  private getSavedJobs() {
+    const jobs = this.jobStore.jobs();
 
     const savedSet = new Set(this.store.savedJobs());
 
     return jobs.filter((job) => savedSet.has(job.id));
   }
-
 }

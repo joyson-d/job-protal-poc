@@ -27,7 +27,7 @@ export class Jobs {
     const min = Number(params.get('minSalary'));
     const max = Number(params.get('maxSalary'));
 
-    if (!Number.isNaN(min) && !Number.isNaN(max)) {
+    if (!Number.isNaN(min) && !Number.isNaN(max) && min !== 0 && max !== 0) {
       this.salaryRange.set([min, max]);
     }
   }
@@ -111,12 +111,12 @@ export class Jobs {
 
   onSearch(value: string): void {
     this.search.set(value);
-    this.updateQueryParams()
+    this.updateQueryParams();
   }
 
   onLocationChange(value: string): void {
     this.location.set(value);
-    this.updateQueryParams()
+    this.updateQueryParams();
   }
 
   toggleJobType(type: string): void {
@@ -124,7 +124,7 @@ export class Jobs {
       current.includes(type) ? current.filter((item) => item !== type) : [...current, type],
     );
 
-    this.updateQueryParams()
+    this.updateQueryParams();
   }
 
   onMinSalaryChange(value: string): void {
@@ -132,7 +132,7 @@ export class Jobs {
 
     this.salaryRange.update(([_, max]) => [salary, max]);
 
-    this.updateQueryParams()
+    this.updateQueryParams();
   }
 
   onMaxSalaryChange(value: string): void {
@@ -140,7 +140,7 @@ export class Jobs {
 
     this.salaryRange.update(([min]) => [min, salary]);
 
-    this.updateQueryParams()
+    this.updateQueryParams();
   }
 
   clearFilters(): void {
@@ -152,7 +152,7 @@ export class Jobs {
 
     this.salaryRange.set([this.salaryBounds().min, this.salaryBounds().max]);
 
-    this.updateQueryParams()
+    this.updateQueryParams();
   }
 
   private extractSalary(salaryText?: string): number | null {
@@ -166,18 +166,21 @@ export class Jobs {
   }
 
   private updateQueryParams(): void {
-  const [minSalary, maxSalary] = this.salaryRange();
+    const [minSalary, maxSalary] = this.salaryRange();
 
-  this.router.navigate([], {
-    relativeTo: this.route,
-    queryParams: {
-      search: this.search() || null,
-      location: this.location() === 'all' ? null : this.location(),
-      type: this.jobTypes().length ? this.jobTypes() : null,
-      minSalary,
-      maxSalary,
-    },
-    queryParamsHandling: 'merge',
-  });
-}
+    const minSalaryVal = minSalary === this.salaryBounds().min ? null : minSalary;
+    const maxSalaryVal = maxSalary === this.salaryBounds().max ? null : maxSalary;
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        search: this.search() || null,
+        location: this.location() === 'all' ? null : this.location(),
+        type: this.jobTypes().length ? this.jobTypes() : null,
+        minSalary: minSalaryVal,
+        maxSalary: maxSalaryVal,
+      },
+      queryParamsHandling: 'merge',
+    });
+  }
 }
