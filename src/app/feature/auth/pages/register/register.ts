@@ -1,7 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../../core/auth/auth-service';
+
+interface RegisterForm {
+  name: FormControl<string>;
+  email: FormControl<string>;
+  password: FormControl<string>;
+  confirmPassword: FormControl<string>;
+  contactNumber: FormControl<string>;
+  isRecruiter: FormControl<boolean>;
+}
 
 @Component({
   selector: 'app-register',
@@ -11,15 +26,15 @@ import { AuthService } from '../../../../core/auth/auth-service';
 })
 export class Register implements OnInit {
   constructor(
-    private registerFormBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router:Router
+    private router: Router,
   ) {}
 
-  registerForm!: FormGroup;
+  registerForm!: FormGroup<RegisterForm>;
 
   ngOnInit(): void {
-    this.registerForm = this.registerFormBuilder.nonNullable.group({
+    this.registerForm = this.formBuilder.nonNullable.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -35,15 +50,15 @@ export class Register implements OnInit {
       return;
     }
 
-    const formData = this.registerForm.getRawValue();
+    const { name, email, password, contactNumber, isRecruiter } = this.registerForm.getRawValue();
 
-    const role = formData.isRecruiter ? 'recruiter' : 'job_seeker';
+    const role = isRecruiter ? 'recruiter' : 'job_seeker';
 
     const response = this.authService.register({
-      name: formData.name,
-      email: formData.email,
-      password: formData.password,
-      contactNumber: formData.contactNumber,
+      name,
+      email,
+      password,
+      contactNumber,
       role,
     });
 
@@ -56,22 +71,22 @@ export class Register implements OnInit {
   }
 
   get name() {
-    return this.registerForm.get('name');
+    return this.registerForm.controls.name;
   }
 
   get email() {
-    return this.registerForm.get('email');
+    return this.registerForm.controls.email;
   }
 
   get password() {
-    return this.registerForm.get('password');
+    return this.registerForm.controls.password;
   }
 
   get confirmPassword() {
-    return this.registerForm.get('confirmPassword');
+    return this.registerForm.controls.confirmPassword;
   }
 
   get contactNumber() {
-    return this.registerForm.get('contactNumber');
+    return this.registerForm.controls.contactNumber;
   }
 }
