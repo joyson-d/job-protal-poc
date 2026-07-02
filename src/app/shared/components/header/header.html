@@ -77,7 +77,7 @@
     <!-- Dropdown -->
     @if (isMenuOpen) {
       <div
-        class="absolute right-0 mt-2 w-56 bg-white border rounded-xl shadow-lg overflow-hidden z-50"
+        class="absolute right-0 mt-2 w-56 bg-white border rounded shadow-lg overflow-hidden z-50"
       >
         <a
           routerLink="/profile"
@@ -92,14 +92,14 @@
           (click)="closeMenu()"
           class="block px-4 py-3 hover:bg-gray-100"
         >
-          ❤️ Saved Jobs
+          📑 Saved Jobs
         </a>
 
         <hr>
 
         <button
           (click)="onLogout()"
-          class="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50"
+          class="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50 cursor-pointer"
         >
           🚪 Logout
         </button>
