@@ -1,101 +1,57 @@
-<div class="bg-white p-6 rounded-xl shadow">
-  <h2 class="text-xl font-semibold mb-4">Skills</h2>
+<div class="bg-white p-6 rounded-xl">
 
-  <!-- <div class="flex gap-2 mb-4">
-    <input
-      [(ngModel)]="skillInput"
-      placeholder="Add skill"
-      class="border px-3 py-2 rounded flex-1"
-    />
+  <div class="bg-white p-6 rounded ">
+    <!-- Header -->
 
-    <button (click)="addSkill()" class="bg-black text-white px-4 rounded">Add</button>
-  </div> -->
+    <div class="flex justify-between items-center mb-5">
+      <h2 class="text-xl font-semibold">Skills</h2>
 
-  <div class="bg-white p-6 rounded-xl shadow">
+      <button (click)="openModal()" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
+        Add Skill
+      </button>
+    </div>
 
-  <!-- Header -->
-  <div class="flex justify-between items-center mb-5">
+    <!-- Skill List -->
 
-    <h2 class="text-xl font-semibold">
-      Skills
-    </h2>
+    <div class="flex flex-wrap gap-3 my-10">
+      @for (skill of skills(); track skill) {
+        <span class="bg-blue-100 text-blue-700 px-5 py-1 rounded flex items-center gap-2">
+          {{ skill }}
 
-    <button
-      (click)="openModal()"
-      class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-    >
-      Add Skill
-    </button>
+          <button (click)="removeSkill(skill)" class="font-bold text-red-500">✕</button>
+        </span>
+      }
+    </div>
 
-  </div>
 
-  <!-- Skill List -->
-  <div class="flex flex-wrap gap-3">
-
-    @for (skill of skills(); track skill) {
-      <span
-        class="bg-blue-100 text-blue-700 px-5 py-1 rounded flex items-center gap-2"
-      >
-        {{ skill }}
-
-        <button
-          (click)="removeSkill(skill)"
-          class="font-bold text-red-500"
-        >
-          ✕
-        </button>
-
-      </span>
-    }
-
-  </div>
-
-  <!-- Resume -->
-  <div class="mt-6">
     <app-upload-resume />
   </div>
 
-</div>
+  <!-- Modal -->
+  @if (isModalOpen) {
+    <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div class="bg-white rounded-xl p-6 w-full max-w-md">
+        <h2 class="text-lg font-semibold mb-4">Add Skill</h2>
 
-<!-- Modal -->
-@if (isModalOpen) {
+        <input
+          [(ngModel)]="skillInput"
+          placeholder="Enter skill"
+          class="w-full border rounded px-3 py-2"
+        />
 
-<div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="flex justify-end gap-3 mt-6">
+          <button (click)="closeModal()" class="border px-4 py-2 rounded hover:bg-gray-100">
+            Cancel
+          </button>
 
-  <div class="bg-white rounded-xl p-6 w-full max-w-md">
-
-    <h2 class="text-lg font-semibold mb-4">
-      Add Skill
-    </h2>
-
-    <input
-      [(ngModel)]="skillInput"
-      placeholder="Enter skill"
-      class="w-full border rounded px-3 py-2"
-    />
-
-    <div class="flex justify-end gap-3 mt-6">
-
-      <button
-        (click)="closeModal()"
-        class="border px-4 py-2 rounded hover:bg-gray-100"
-      >
-        Cancel
-      </button>
-
-      <button
-        (click)="addSkill()"
-        class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-      >
-        Save
-      </button>
-
+          <button
+            (click)="addSkill()"
+            class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+          >
+            Save
+          </button>
+        </div>
+      </div>
     </div>
-
-  </div>
-
-</div>
-
-}
-
+  }
 </div>

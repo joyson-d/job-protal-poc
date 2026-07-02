@@ -1,4 +1,4 @@
-<div class="bg-white p-6 rounded-xl shadow">
+<div class="bg-white p-6 rounded-xl">
 
   <!-- HEADER -->
   <div class="flex justify-between items-center">
@@ -72,7 +72,7 @@
 
   <!-- LIST -->
   @for (item of experienceList(); track item.id) {
-    <div class="border p-4 rounded mt-4">
+    <div class=" p-4 rounded mt-4 shadow shadow-gray-300">
 
       <div class="flex justify-between">
 
@@ -89,16 +89,16 @@
         <div class="flex gap-3">
           <button
             (click)="openModal(item)"
-            class="text-blue-500 hover:text-blue-700"
+            class="text-blue-700 hover:text-blue-800 cursor-pointer"
           >
-            Edit
+            Edit ✍️
           </button>
 
           <button
             (click)="removeExperience(item.id)"
-            class="text-red-500 hover:text-red-700"
+            class="text-red-700 hover:text-red-800 cursor-pointer"
           >
-            Delete
+            Delete 🗑️
           </button>
         </div>
 

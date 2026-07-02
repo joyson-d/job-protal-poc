@@ -1,7 +1,9 @@
-<div class="bg-white p-6 rounded-xl shadow">
+<!-- <div class="bg-white p-6 border-t-2">
   <h2 class="text-xl font-semibold mb-4">Resume</h2>
 
-  <input type="file" accept="application/pdf" (change)="onFileSelected($event)" class="mb-4" />
+  <input type="file" 
+  accept="application/pdf" 
+  (change)="onFileSelected($event)" class="mb-4" />
 
   @if (selectedFile) {
     <p class="text-sm text-gray-600 mb-4">
@@ -11,9 +13,9 @@
 
   <div class="flex gap-3">
     @if (resume) {
-      <button (click)="viewResume()" class="border px-4 py-2 rounded">View Resume</button>
+      <button (click)="viewResume()" class="border px-4 py-2 rounded cursor-pointer">View Resume</button>
 
-      <button (click)="removeResume()" class="bg-red-500 text-white px-4 py-2 rounded">
+      <button (click)="removeResume()" class="bg-red-500 text-white px-4 py-2 rounded cursor-pointer">
         Remove
       </button>
     } @else {
@@ -21,6 +23,61 @@
         [disabled]="!selectedFile"
         (click)="saveResume()"
         class="bg-black text-white px-4 py-2 rounded disabled:bg-gray-300"
+      >
+        Save Resume
+      </button>
+    }
+  </div>
+</div> -->
+
+<div class="bg-white border-t-2 p-6">
+  <h2 class="mb-4 text-xl font-semibold">Resume</h2>
+
+  <div class="flex items-center gap-4">
+    <label
+      for="resume-upload"
+      class="cursor-pointer rounded border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100"
+    >
+      Choose PDF
+    </label>
+
+    <input
+      id="resume-upload"
+      type="file"
+      accept="application/pdf"
+      (change)="onFileSelected($event)"
+      class="hidden"
+    />
+
+    @if (selectedFile) {
+      <span class="truncate text-sm text-gray-600">
+        {{ selectedFile.name }}
+      </span>
+    } @else {
+      <span class="text-sm text-gray-400"> No file selected </span>
+    }
+  </div>
+
+  <div class="flex mt-4 w-full gap-6">
+    @if (resume) {
+      <button
+        (click)="viewResume()"
+        class="rounded border border-gray-300 px-4 py-2 font-medium transition hover:bg-gray-100 cursor-pointer"
+      >
+        View 📖
+      </button>
+
+      <button
+        (click)="removeResume()"
+        class="rounded bg-red-500 px-4 py-2 font-medium text-white transition hover:bg-red-600 cursor-pointer"
+      >
+        Remove
+      </button>
+    } @else {
+      <button
+        [disabled]="!selectedFile"
+        (click)="saveResume()"
+        class="rounded bg-black px-4 py-2 font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-300 mt-4"
       >
         Save Resume
       </button>
