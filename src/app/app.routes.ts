@@ -9,7 +9,6 @@ import { authGuard } from './core/auth/auth-guard';
 export const routes: Routes = [
   {
     path: '',
-    // component: Jobs,
     loadComponent:()=> import('./feature/jobs/jobs').then((m) => m.Jobs)
   },
   {
