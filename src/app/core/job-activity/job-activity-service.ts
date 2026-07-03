@@ -78,9 +78,12 @@ export class JobActivityService {
 
   // PRIVATE sync helper
   private update(activity: JobActivity) {
+    
     const all = this.storage.getAll();
 
-    const updated = all.map((a) => (a.userId === activity.userId ? activity : a));
+    const updated = all
+      ? all.map((a) => (a.userId === activity.userId ? activity : a))
+      : [activity];
 
     this.storage.saveAll(updated);
     this.store.setActivity(activity);
@@ -88,7 +91,7 @@ export class JobActivityService {
 
   private getJobActivityById(userId: string) {
     const allUser = this.storage.getAll();
-    return allUser.find((user) => user.userId === userId);
+    return allUser?.find((user) => user.userId === userId);
   }
 
   private getSavedJobs() {

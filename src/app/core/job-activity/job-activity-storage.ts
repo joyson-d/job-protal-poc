@@ -3,14 +3,15 @@ import { JobActivity } from './job-activity.model';
 
 const JOB_ACTIVITY_KEY = 'jobActivities';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class JobActivityStorage {
-  getAll(): JobActivity[] {
+  getAll(): JobActivity[] | null {
     const data = localStorage.getItem(JOB_ACTIVITY_KEY);
 
-    return data ? JSON.parse(data) : [];
+    return data ? JSON.parse(data) : null
   }
 
   saveAll(activities: JobActivity[]) {
