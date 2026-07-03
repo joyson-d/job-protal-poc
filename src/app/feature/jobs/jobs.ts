@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { JobFilter } from '../../core/Job/job-filter';
 import { JobPagination } from '../../core/Job/job-pagination';
 import { JobPaginationUI } from './job-pagination/job-pagination';
+import { formatJobType } from '../../shared/utils/formatJobType';
 
 @Component({
   selector: 'app-jobs',
@@ -32,6 +33,8 @@ export class Jobs {
       this.salaryRange.set([min, max]);
     }
   }
+
+  formatJobType = formatJobType;
 
   get search() {
     return this.filter.search;

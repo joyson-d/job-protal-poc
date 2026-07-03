@@ -46,7 +46,7 @@
                 (change)="toggleJobType(type)"
                 class="accent-blue-600"
               />
-              <span class="capitalize">{{ type }}</span>
+              <span class="capitalize">{{ formatJobType( type)  }}</span>
             </label>
           }
         </div>
@@ -100,7 +100,7 @@
                   (change)="toggleJobType(type)"
                   class="accent-blue-600"
                 />
-                <span class="capitalize ">{{ type }}</span>
+                <span class="capitalize ">{{ formatJobType( type) }}</span>
               </label>
             }
           </div>

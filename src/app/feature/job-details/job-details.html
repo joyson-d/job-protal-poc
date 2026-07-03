@@ -27,11 +27,11 @@
           </p>
 
           <span class="inline-block mt-2 bg-gray-100 px-3 py-1 rounded text-sm capitalize">
-            {{ currentJob.job_type }}
+            {{ formatJobType(currentJob.job_type) }}
           </span>
         </div>
         @if (isUserAuthenticated) {
-          <div class="p-2 rounded-md transition  flex flex-col items-end ml-auto">
+          <div class="p-2 rounded-md transition flex flex-col items-end ml-auto">
             <app-saved-job-button [jobId]="currentJob.id" />
 
             <app-apply-job-button [jobId]="currentJob.id" />

@@ -5,6 +5,7 @@ import { formatSalary } from '../../../shared/utils/formatSalary';
 import { RouterLink } from '@angular/router';
 import { SavedJobButton } from '../../../shared/components/saved-job-button/saved-job-button';
 import { AuthService } from '../../../core/auth/auth-service';
+import { formatJobType } from '../../utils/formatJobType';
 
 @Component({
   selector: 'app-job-card',
@@ -21,6 +22,7 @@ export class JobCard {
 
   getImageUrl = getImageUrl;
   formatSalary = formatSalary;
+  formatJobType=formatJobType
 
   onImageError(event: Event) {
     const img = event.target as HTMLImageElement;

@@ -7,10 +7,11 @@ import { AuthService } from '../../core/auth/auth-service';
 import { SavedJobButton } from '../../shared/components/saved-job-button/saved-job-button';
 import { JobService } from '../../core/Job/job-service';
 import { ApplyJobButton } from './apply-job-button/apply-job-button';
+import { formatJobType } from '../../shared/utils/formatJobType';
 
 @Component({
   selector: 'app-job-details',
-  imports: [RouterLink, SavedJobButton,ApplyJobButton],
+  imports: [RouterLink, SavedJobButton, ApplyJobButton],
   templateUrl: './job-details.html',
   styleUrl: './job-details.css',
 })
@@ -22,6 +23,8 @@ export class JobDetails {
     private authService: AuthService,
     private jobService: JobService,
   ) {}
+
+  formatJobType = formatJobType;
 
   handleImageError(event: Event) {
     const img = event.target as HTMLImageElement;
