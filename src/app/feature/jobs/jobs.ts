@@ -3,10 +3,11 @@ import { JobCard } from '../../shared/components/job-card/job-card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobFilter } from '../../core/Job/job-filter';
 import { JobPagination } from '../../core/Job/job-pagination';
+import { JobPaginationUI } from './job-pagination/job-pagination';
 
 @Component({
   selector: 'app-jobs',
-  imports: [JobCard],
+  imports: [JobCard,JobPaginationUI],
   templateUrl: './jobs.html',
   styleUrl: './jobs.css',
   standalone: true,
@@ -64,9 +65,7 @@ export class Jobs {
     return this.pagination.paginatedJobs;
   }
 
-  get currentPage() {
-    return this.pagination.currentPage;
-  }
+  
 
   onSearch(value: string): void {
     this.filter.search.set(value);
@@ -135,19 +134,5 @@ export class Jobs {
     });
   }
 
-  get totalPages() {
-    return this.pagination.totalPages;
-  }
-
-  nextPage(): void {
-    this.pagination.nextPage();
-  }
-
-  previousPage(): void {
-    this.pagination.previousPage();
-  }
-
-  goToPage(page: number): void {
-    this.pagination.goToPage(page);
-  }
+  
 }
