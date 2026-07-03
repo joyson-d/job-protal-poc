@@ -16,7 +16,7 @@
           class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
-        @if (email?.touched && email?.invalid) {
+        @if (email.touched && email.invalid) {
           <p class="text-red-500 mt-2">Email is invalid</p>
         }
       </div>
@@ -30,7 +30,7 @@
           class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
-        @if (password?.touched && password?.invalid) {
+        @if (password.touched && password.invalid) {
           <p class="text-red-500 mt-2">Password is invalid</p>
         }
       </div>
@@ -47,7 +47,9 @@
       <p class="text-sm text-center text-gray-600">
         Don't have an account?
 
-        <a routerLink="/register" class="text-blue-600 hover:underline font-medium cursor-pointer"> Register </a>
+        <a routerLink="/register" class="text-blue-600 hover:underline font-medium cursor-pointer">
+          Register
+        </a>
       </p>
     </form>
   </div>
