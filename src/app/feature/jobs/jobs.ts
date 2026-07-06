@@ -8,7 +8,7 @@ import { formatJobType } from '../../shared/utils/formatJobType';
 
 @Component({
   selector: 'app-jobs',
-  imports: [JobCard,JobPaginationUI],
+  imports: [JobCard, JobPaginationUI],
   templateUrl: './jobs.html',
   styleUrl: './jobs.css',
   standalone: true,
@@ -22,16 +22,20 @@ export class Jobs {
   ) {
     const params = this.route.snapshot.queryParamMap;
 
-    this.filter.search.set(params.get('search') ?? '');
-    this.filter.location.set(params.get('location') ?? 'all');
-    this.filter.jobTypes.set(params.getAll('type'));
+    const searchParams = params.get('search') ?? '';
+    const locationParams = params.get('location') ?? 'all';
+    const jobTypesParams = params.getAll('type');
 
-    const min = Number(params.get('minSalary'));
-    const max = Number(params.get('maxSalary'));
+    const minSalaryParams = Number(params.get('minSalary'));
+    const maxSalaryParams = Number(params.get('maxSalary'));
 
-    if (!Number.isNaN(min) && !Number.isNaN(max) && min !== 0 && max !== 0) {
-      this.salaryRange.set([min, max]);
-    }
+    this.filter.initializeFilter(
+      searchParams,
+      locationParams,
+      jobTypesParams,
+      minSalaryParams,
+      maxSalaryParams,
+    );
   }
 
   formatJobType = formatJobType;
@@ -67,8 +71,6 @@ export class Jobs {
   get jobs() {
     return this.pagination.paginatedJobs;
   }
-
-  
 
   onSearch(value: string): void {
     this.filter.search.set(value);
@@ -136,6 +138,4 @@ export class Jobs {
       queryParamsHandling: 'merge',
     });
   }
-
-  
 }

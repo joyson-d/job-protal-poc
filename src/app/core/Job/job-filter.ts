@@ -1,5 +1,14 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { JobService } from './job-service';
+import {
+  extractJobTypesFromJobs,
+  extractLocationFromJob,
+  extractSalary,
+  extractSalaryFromJobs,
+  filteredJobs,
+  getValidJobLocation,
+  getValidJobType,
+} from '../../shared/utils/job.utils';
 
 @Injectable({
   providedIn: 'root',
@@ -14,42 +23,49 @@ export class JobFilter {
   readonly jobTypes = signal<string[]>([]);
   readonly salaryRange = signal<[number, number]>([0, 50000]);
 
+  initializeFilter(
+    searchParams: string,
+    locationParams: string,
+    jobTypesParams: string[],
+    minSalaryParams: number,
+    maxSalaryParams: number,
+  ) {
+    const jobList = this.jobs();
+
+    const validatedJobTypeParams = jobTypesParams
+      .map((jobType) => getValidJobType(jobList, jobType))
+      .filter((jobType): jobType is string => jobType !== undefined);
+
+    const validLocation = getValidJobLocation(jobList, locationParams);
+
+    this.search.set(searchParams);
+    this.location.set(validLocation);
+    this.jobTypes.set(validatedJobTypeParams);
+
+    if (
+      !Number.isNaN(minSalaryParams) &&
+      !Number.isNaN(maxSalaryParams) &&
+      minSalaryParams !== 0 &&
+      maxSalaryParams !== 0
+    ) {
+      this.salaryRange.set([minSalaryParams, maxSalaryParams]);
+    }
+  }
+
   readonly locations = computed(() => {
-    const filteredLocations = new Set(
-      this.jobs()
-        .map((job) => job.candidate_required_location)
-        .filter(Boolean),
-    );
+    const filteredLocations = extractLocationFromJob(this.jobs());
 
     return ['all', ...filteredLocations];
   });
 
   readonly jobTypeOptions = computed(() => {
-    const filteredJobTypeOptions = new Set(
-      this.jobs()
-        .map((job) => job.job_type)
-        .filter(Boolean),
-    );
+    const filteredJobTypeOptions = extractJobTypesFromJobs(this.jobs());
 
     return [...filteredJobTypeOptions];
   });
 
   readonly salaryBounds = computed(() => {
-    const salaries = this.jobs()
-      .map((job) => this.extractSalary(job.salary))
-      .filter((value) => value !== null);
-
-    if (!salaries.length) {
-      return {
-        min: 0,
-        max: 50000,
-      };
-    }
-
-    return {
-      min: Math.min(...salaries),
-      max: Math.max(...salaries),
-    };
+    return extractSalaryFromJobs(this.jobs());
   });
 
   readonly jobsList = computed(() => {
@@ -61,31 +77,15 @@ export class JobFilter {
 
     const [minSalary, maxSalary] = this.salaryRange();
 
-    return this.jobs().filter((job) => {
-      const matchesSearch =
-        job.title.toLowerCase().includes(searchTerm) ||
-        job.company_name.toLowerCase().includes(searchTerm);
+    const filteredJobList = filteredJobs(
+      this.jobs(),
+      searchTerm,
+      selectedLocation,
+      selectedTypes,
+      minSalary,
+      maxSalary,
+    );
 
-      const matchesLocation =
-        selectedLocation === 'all' || job.candidate_required_location === selectedLocation;
-
-      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(job.job_type);
-
-      const salary = this.extractSalary(job.salary);
-
-      const matchesSalary = salary === null || (salary >= minSalary && salary <= maxSalary);
-
-      return matchesSearch && matchesLocation && matchesType && matchesSalary;
-    });
+    return filteredJobList;
   });
-
-  private extractSalary(salaryText?: string): number | null {
-    if (!salaryText) return null;
-
-    const match = salaryText.match(/\d+/g);
-
-    if (!match?.length) return null;
-
-    return Number(match[0]);
-  }
 }
