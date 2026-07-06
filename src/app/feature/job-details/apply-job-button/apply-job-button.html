@@ -14,7 +14,7 @@
 <button
   (click)="openModal()"
   [disabled]="isApplied()"
-  class="px-4 py-2 rounded text-white transition"
+  class="px-4 py-2 rounded text-white transition "
   [class.bg-black]="!isApplied()"
   [class.bg-gray-300]="isApplied()"
   [class.text-gray-600]="isApplied()"
@@ -24,9 +24,9 @@
 
 <!-- MODAL -->
 @if (isModalOpen()) {
-  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-2">
 
-    <div class="bg-white rounded-xl p-6 w-full max-w-md space-y-5">
+    <div class="bg-white rounded p-6 w-full max-w-md space-y-5">
 
       <!-- TITLE -->
       <h2 class="text-xl font-semibold">

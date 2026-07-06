@@ -66,7 +66,6 @@ export class ApplyJobButton {
 
     this.resetForm();
 
-    console.log('Job application submitted successfully');
   }
 
   private resetForm(): void {

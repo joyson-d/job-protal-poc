@@ -5,35 +5,40 @@
         ← Back
       </a>
 
-      <div class="flex gap-4 items-start">
-        <img
-          [src]="getImageUrl(currentJob.company_logo_url)"
-          [alt]="currentJob.company_name"
-          (error)="handleImageError($event)"
-          class="w-20 h-20 object-contain border rounded"
-        />
+      @if (isUserAuthenticated) {
+        <app-saved-job-button [jobId]="currentJob.id" />
+      }
 
-        <div>
-          <h1 class="text-2xl font-semibold">
-            {{ currentJob.title }}
-          </h1>
+      <div class="flex gap-4 items-start max-sm:flex-col">
+        <div class="flex gap-4 justify-between">
+          <img
+            [src]="getImageUrl(currentJob.company_logo_url)"
+            [alt]="currentJob.company_name"
+            (error)="handleImageError($event)"
+            class="w-20 h-20 object-contain border rounded"
+          />
 
-          <p class="text-gray-500">
-            {{ currentJob.company_name }}
-          </p>
+          <div class="ml-4">
+            <h1 class="text-2xl font-semibold">
+              {{ currentJob.title }}
+            </h1>
 
-          <p class="text-sm text-gray-500">
-            {{ currentJob.candidate_required_location }}
-          </p>
+            <p class="text-gray-500">
+              {{ currentJob.company_name }}
+            </p>
 
-          <span class="inline-block mt-2 bg-gray-100 px-3 py-1 rounded text-sm capitalize">
-            {{ formatJobType(currentJob.job_type) }}
-          </span>
+            <p class="text-sm text-gray-500">
+              {{ currentJob.candidate_required_location }}
+            </p>
+
+            <span class="inline-block mt-2 bg-gray-100 px-3 py-1 rounded text-sm capitalize">
+              {{ formatJobType(currentJob.job_type) }}
+            </span>
+          </div>
         </div>
+
         @if (isUserAuthenticated) {
           <div class="p-2 rounded-md transition flex flex-col items-end ml-auto">
-            <app-saved-job-button [jobId]="currentJob.id" />
-
             <app-apply-job-button [jobId]="currentJob.id" />
           </div>
         }
@@ -73,7 +78,7 @@
       <div class="border-t mt-6 pt-6">
         <h2 class="text-lg font-semibold mb-4">About this role</h2>
 
-        <div [innerHTML]="currentJob.description"></div>
+        <div class="text-justify" [innerHTML]="currentJob.description"></div>
       </div>
     </div>
   </div>
