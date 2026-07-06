@@ -1,17 +1,17 @@
 @if (totalPages() > 1) {
-  <div class="flex justify-center items-center gap-2 mt-8">
+  <div class="flex justify-center items-center gap-2 mt-8 max-sm:py-1 max-sm:gap-4">
     <button
       (click)="previousPage()"
       [disabled]="currentPage() === 1"
-      class="px-3 py-2 shadow shadow-black rounded disabled:opacity-50 cursor-pointer"
+      class="px-3 py-2 shadow shadow-black rounded disabled:opacity-50 cursor-pointer max-sm:px-1  max-sm:text-[12px]"
     >
-      ⬅️ Previous
+      ⬅️ Previous 
     </button>
 
     @for (page of [].constructor(totalPages()); track $index) {
       <button
         (click)="goToPage($index + 1)"
-        class="px-3 py-2 rounded border"
+        class="px-3 py-2 rounded border  max-sm:text-[12px]"
         [class.bg-black]="currentPage() === $index + 1"
         [class.text-white]="currentPage() === $index + 1"
       >
@@ -22,7 +22,7 @@
     <button
       (click)="nextPage()"
       [disabled]="currentPage() === totalPages()"
-      class="px-3 py-2 rounded shadow shadow-black disabled:opacity-50 cursor-pointer"
+      class="px-3 py-2 rounded shadow shadow-black disabled:opacity-50 cursor-pointer max-sm:px-1  max-sm:text-[12px]"
     >
       Next ➡️
     </button>
