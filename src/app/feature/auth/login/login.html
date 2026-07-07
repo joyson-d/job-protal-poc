@@ -1,7 +1,7 @@
-<div class="min-h-screen flex justify-center sm:items-center ">
-  <div class="rounded-xl shadow p-6 w-full md:w-2/3 lg:w-1/3  ">
+<div class="min-h-screen flex justify-center sm:items-center">
+  <div class="rounded-xl shadow p-6 w-full md:w-2/3 lg:w-1/3">
     <form
-      class="flex flex-col gap-5 bg-white px-6 py-10 rounded "
+      class="flex flex-col gap-5 bg-white px-6 py-10 rounded"
       [formGroup]="loginForm"
       (ngSubmit)="onSubmit()"
     >
@@ -34,6 +34,12 @@
           <p class="text-red-500 mt-2">Password is invalid</p>
         }
       </div>
+
+      @if (loginError()) {
+        <div class="rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+          {{ loginError() }}
+        </div>
+      }
 
       <!-- SUBMIT -->
       <button

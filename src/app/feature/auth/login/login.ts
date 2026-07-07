@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -33,9 +33,17 @@ export class Login implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+
+    this.loginForm.valueChanges.subscribe(() => {
+      this.loginError.set('');
+    });
   }
 
+  readonly loginError = signal('');
+
   onSubmit() {
+    this.loginError.set('');
+
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
@@ -46,16 +54,17 @@ export class Login implements OnInit {
     const response = this.authService.login(email, password);
 
     if (!response.success) {
+      this.loginError.set(response.message);
       return;
     }
     this.router.navigate(['/']);
   }
 
   get email() {
-    return this.loginForm.controls.email
+    return this.loginForm.controls.email;
   }
 
   get password() {
-    return this.loginForm.controls.password
+    return this.loginForm.controls.password;
   }
 }
