@@ -9,7 +9,7 @@
   </div>
 
   @if (isModalOpen) {
-    <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
       <div class="bg-white p-6 rounded-xl w-full max-w-lg space-y-3">
         <h2 class="text-lg font-semibold">
           {{ editingEducationId ? 'Edit Education' : 'Add Education' }}
@@ -17,8 +17,8 @@
 
         <input
           [(ngModel)]="institution"
-          placeholder="Institution"
-          class="w-full border rounded px-3 py-2"
+          placeholder="Institution "
+          class="w-full border rounded px-3 py-2 text-left"
         />
 
         <input [(ngModel)]="degree" placeholder="Degree" class="w-full border rounded px-3 py-2" />

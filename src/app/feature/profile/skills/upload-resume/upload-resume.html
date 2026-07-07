@@ -1,42 +1,10 @@
-<!-- <div class="bg-white p-6 border-t-2">
-  <h2 class="text-xl font-semibold mb-4">Resume</h2>
-
-  <input type="file" 
-  accept="application/pdf" 
-  (change)="onFileSelected($event)" class="mb-4" />
-
-  @if (selectedFile) {
-    <p class="text-sm text-gray-600 mb-4">
-      {{ selectedFile.name }}
-    </p>
-  }
-
-  <div class="flex gap-3">
-    @if (resume) {
-      <button (click)="viewResume()" class="border px-4 py-2 rounded cursor-pointer">View Resume</button>
-
-      <button (click)="removeResume()" class="bg-red-500 text-white px-4 py-2 rounded cursor-pointer">
-        Remove
-      </button>
-    } @else {
-      <button
-        [disabled]="!selectedFile"
-        (click)="saveResume()"
-        class="bg-black text-white px-4 py-2 rounded disabled:bg-gray-300"
-      >
-        Save Resume
-      </button>
-    }
-  </div>
-</div> -->
-
-<div class="bg-white border-t-2 p-6">
+<div class="bg-white border-t-2 p-6 max-sm:p-0">
   <h2 class="mb-4 text-xl font-semibold">Resume</h2>
 
-  <div class="flex items-center gap-4">
+  <div class=" grid grid-cols-2 gap-4 w-full items-center">
     <label
       for="resume-upload"
-      class="cursor-pointer rounded border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100"
+      class="cursor-pointer rounded bg-gray-50 px-4 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-100 max-sm:text-sm max-sm:w-full  w-1/2 text-center shadow shadow-black"
     >
       Choose PDF
     </label>
@@ -46,7 +14,7 @@
       type="file"
       accept="application/pdf"
       (change)="onFileSelected($event)"
-      class="hidden"
+      class="hidden "
     />
 
     @if (selectedFile) {
@@ -58,7 +26,7 @@
     }
   </div>
 
-  <div class="flex mt-4 w-full gap-6">
+  <div class="flex mt-4 w-full gap-6 max-md:justify-between">
     @if (resume) {
       <button
         (click)="viewResume()"
@@ -77,7 +45,7 @@
       <button
         [disabled]="!selectedFile"
         (click)="saveResume()"
-        class="rounded bg-black px-4 py-2 font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-300 mt-4"
+        class="rounded bg-black px-4 py-2 font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-300 mt-4 ml-auto"
       >
         Save Resume
       </button>
