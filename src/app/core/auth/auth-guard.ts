@@ -10,3 +10,12 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   return isAuthenticated ? true : router.createUrlTree(['/login']);
 };
+
+export const guestGuard: CanActivateFn = () => {
+  const authStore = inject(AuthStore);
+  const router = inject(Router);
+
+  return authStore.isAuthenticated()
+    ? router.createUrlTree(['/'])
+    : true;
+};
