@@ -45,12 +45,22 @@ export class Education {
     this.isModalOpen = false;
   }
 
-  saveEducation() {
+  saveEducation(): void {
+    if (
+      !this.institution.trim() ||
+      !this.degree.trim() ||
+      !this.fieldOfStudy.trim() ||
+      !this.startYear ||
+      !this.endYear
+    ) {
+      return;
+    }
+
     const education: EducationType = {
       id: this.editingEducationId ?? crypto.randomUUID(),
-      institution: this.institution,
-      degree: this.degree,
-      fieldOfStudy: this.fieldOfStudy,
+      institution: this.institution.trim(),
+      degree: this.degree.trim(),
+      fieldOfStudy: this.fieldOfStudy.trim(),
       startYear: this.startYear,
       endYear: this.endYear,
     };

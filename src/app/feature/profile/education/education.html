@@ -1,64 +1,130 @@
-<div class="bg-white p-6 rounded-xl ">
+<div class="bg-white p-6 rounded-xl">
   <!-- HEADER -->
   <div class="flex justify-between items-center">
     <h2 class="text-xl font-semibold">Education</h2>
 
-    <button (click)="openModal()" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
+    <button
+      (click)="openModal()"
+      class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 cursor-pointer"
+    >
       Add Education
     </button>
   </div>
 
   @if (isModalOpen) {
-    <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
-      <div class="bg-white p-6 rounded-xl w-full max-w-lg space-y-3">
-        <h2 class="text-lg font-semibold">
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+      <div class="w-full max-w-lg rounded-xl bg-white p-6">
+        <h2 class="mb-4 text-lg font-semibold">
           {{ editingEducationId ? 'Edit Education' : 'Add Education' }}
         </h2>
 
-        <input
-          [(ngModel)]="institution"
-          placeholder="Institution "
-          class="w-full border rounded px-3 py-2 text-left"
-        />
+        <form #educationForm="ngForm" (ngSubmit)="saveEducation()" class="space-y-3">
+          <!-- Institution -->
+          <div>
+            <input
+              name="institution"
+              [(ngModel)]="institution"
+              #institutionModel="ngModel"
+              required
+              placeholder="Institution"
+              class="w-full rounded border px-3 py-2"
+            />
 
-        <input [(ngModel)]="degree" placeholder="Degree" class="w-full border rounded px-3 py-2" />
+            @if (institutionModel.invalid && institutionModel.touched) {
+              <p class="mt-1 text-sm text-red-600">Institution is required.</p>
+            }
+          </div>
 
-        <input
-          [(ngModel)]="fieldOfStudy"
-          placeholder="Field Of Study"
-          class="w-full border rounded px-3 py-2"
-        />
+          <!-- Degree -->
+          <div>
+            <input
+              name="degree"
+              [(ngModel)]="degree"
+              #degreeModel="ngModel"
+              required
+              placeholder="Degree"
+              class="w-full rounded border px-3 py-2"
+            />
 
-        <div class="grid grid-cols-2 gap-3">
-          <input [(ngModel)]="startYear" type="date" class="border rounded px-3 py-2" />
+            @if (degreeModel.invalid && degreeModel.touched) {
+              <p class="mt-1 text-sm text-red-600">Degree is required.</p>
+            }
+          </div>
 
-          <input [(ngModel)]="endYear" type="date" class="border rounded px-3 py-2" />
-        </div>
+          <!-- Field Of Study -->
+          <div>
+            <input
+              name="fieldOfStudy"
+              [(ngModel)]="fieldOfStudy"
+              #fieldOfStudyModel="ngModel"
+              required
+              placeholder="Field Of Study"
+              class="w-full rounded border px-3 py-2"
+            />
 
-        <!-- ACTIONS -->
-        <div class="flex gap-3 mt-4">
-          <button
-            type="button"
-            (click)="closeModal()"
-            class="flex-1 border border-gray-300 py-2 rounded hover:bg-gray-100"
-          >
-            Cancel
-          </button>
+            @if (fieldOfStudyModel.invalid && fieldOfStudyModel.touched) {
+              <p class="mt-1 text-sm text-red-600">Field of study is required.</p>
+            }
+          </div>
 
-          <button
-            type="button"
-            (click)="saveEducation()"
-            class="flex-1 bg-black text-white py-2 rounded hover:bg-gray-800"
-          >
-            {{ editingEducationId ? 'Update' : 'Save' }}
-          </button>
-        </div>
+          <!-- Dates -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <input
+                name="startYear"
+                [(ngModel)]="startYear"
+                #startYearModel="ngModel"
+                required
+                type="date"
+                class="w-full rounded border px-3 py-2"
+              />
+
+              @if (startYearModel.invalid && startYearModel.touched) {
+                <p class="mt-1 text-sm text-red-600">Start date is required.</p>
+              }
+            </div>
+
+            <div>
+              <input
+                name="endYear"
+                [(ngModel)]="endYear"
+                #endYearModel="ngModel"
+                required
+                type="date"
+                class="w-full rounded border px-3 py-2"
+              />
+
+              @if (endYearModel.invalid && endYearModel.touched) {
+                <p class="mt-1 text-sm text-red-600">End date is required.</p>
+              }
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="mt-4 flex gap-3">
+            <button
+              type="button"
+              (click)="closeModal()"
+              class="flex-1 rounded border border-gray-300 py-2 hover:bg-gray-100 cursor-pointer"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              [disabled]="educationForm.invalid"
+              class="flex-1 rounded bg-black py-2 text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
+            >
+              {{ editingEducationId ? 'Update' : 'Save' }}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   } @else {
     <!-- LIST -->
     @for (item of educationList(); track item.id) {
-      <div class=" p-4 rounded mt-4 shadow shadow-gray-300">
+      <div class="p-4 rounded mt-4 shadow shadow-gray-300">
         <div class="flex justify-between items-start">
           <div>
             <p class="font-semibold">{{ item.degree }}</p>

@@ -48,20 +48,31 @@ export class Experience {
     this.isModalOpen = false;
   }
 
-  saveExperience() {
+  saveExperience(): void {
+    // Defensive validation
+    if (
+      !this.company.trim() ||
+      !this.role.trim() ||
+      !this.location.trim() ||
+      !this.startDate ||
+      !this.endDate ||
+      !this.description.trim()
+    ) {
+      return;
+    }
+
     const experience: ExperienceType = {
       id: this.editingId ?? crypto.randomUUID(),
-      company: this.company,
-      role: this.role,
-      location: this.location,
+      company: this.company.trim(),
+      role: this.role.trim(),
+      location: this.location.trim(),
       startDate: this.startDate,
       endDate: this.endDate,
-      description: this.description,
+      description: this.description.trim(),
     };
 
     this.profileService.updateExperience(experience);
 
-    this.resetForm();
     this.closeModal();
   }
 

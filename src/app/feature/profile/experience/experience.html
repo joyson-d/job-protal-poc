@@ -1,12 +1,11 @@
 <div class="bg-white p-6 rounded-xl">
-
   <!-- HEADER -->
   <div class="flex justify-between items-center">
-    <h2 class="text-xl font-semibold">Experience </h2>
+    <h2 class="text-xl font-semibold">Experience</h2>
 
     <button
       (click)="openModal()"
-      class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+      class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 cursor-pointer"
     >
       Add Experience
     </button>
@@ -14,76 +13,143 @@
 
   <!-- MODAL -->
   @if (isModalOpen) {
-    <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-2">
-
-      <div class="bg-white p-6 rounded-xl w-full max-w-lg space-y-3">
-
-        <h2 class="text-lg font-semibold">
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-2">
+      <div class="w-full max-w-lg rounded-xl bg-white p-6">
+        <h2 class="mb-4 text-lg font-semibold">
           {{ editingId ? 'Edit Experience' : 'Add Experience' }}
         </h2>
 
-        <input [(ngModel)]="company" placeholder="Company"
-          class="w-full border rounded px-3 py-2" />
+        <form #experienceForm="ngForm" (ngSubmit)="saveExperience()" class="space-y-3">
+          <!-- Company -->
+          <div>
+            <input
+              name="company"
+              [(ngModel)]="company"
+              #companyModel="ngModel"
+              required
+              placeholder="Company"
+              class="w-full rounded border px-3 py-2"
+            />
 
-        <input [(ngModel)]="role" placeholder="Role"
-          class="w-full border rounded px-3 py-2" />
+            @if (companyModel.invalid && companyModel.touched) {
+              <p class="mt-1 text-sm text-red-600">Company is required.</p>
+            }
+          </div>
 
-        <input [(ngModel)]="location" placeholder="Location"
-          class="w-full border rounded px-3 py-2" />
+          <!-- Role -->
+          <div>
+            <input
+              name="role"
+              [(ngModel)]="role"
+              #roleModel="ngModel"
+              required
+              placeholder="Role"
+              class="w-full rounded border px-3 py-2"
+            />
 
-        <div class="grid grid-cols-2 gap-3">
-          <input [(ngModel)]="startDate" type="date"
-            class="border rounded px-3 py-2" />
+            @if (roleModel.invalid && roleModel.touched) {
+              <p class="mt-1 text-sm text-red-600">Role is required.</p>
+            }
+          </div>
 
-          <input [(ngModel)]="endDate" type="date"
-            class="border rounded px-3 py-2" />
-        </div>
+          <!-- Location -->
+          <div>
+            <input
+              name="location"
+              [(ngModel)]="location"
+              #locationModel="ngModel"
+              required
+              placeholder="Location"
+              class="w-full rounded border px-3 py-2"
+            />
 
-        <textarea
-          [(ngModel)]="description"
-          placeholder="Description"
-          class="w-full border rounded px-3 py-2 min-h-24"
-        ></textarea>
+            @if (locationModel.invalid && locationModel.touched) {
+              <p class="mt-1 text-sm text-red-600">Location is required.</p>
+            }
+          </div>
 
-        <!-- ACTIONS -->
-        <div class="flex gap-3 mt-4">
+          <!-- Dates -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <input
+                name="startDate"
+                [(ngModel)]="startDate"
+                #startDateModel="ngModel"
+                required
+                type="date"
+                class="w-full rounded border px-3 py-2"
+              />
 
-          <button
-            type="button"
-            (click)="closeModal()"
-            class="flex-1 border border-gray-300 py-2 rounded hover:bg-gray-100"
-          >
-            Cancel
-          </button>
+              @if (startDateModel.invalid && startDateModel.touched) {
+                <p class="mt-1 text-sm text-red-600">Start date is required.</p>
+              }
+            </div>
 
-          <button
-            type="button"
-            (click)="saveExperience()"
-            class="flex-1 bg-black text-white py-2 rounded hover:bg-gray-800"
-          >
-            {{ editingId ? 'Update' : 'Save' }}
-          </button>
+            <div>
+              <input
+                name="endDate"
+                [(ngModel)]="endDate"
+                #endDateModel="ngModel"
+                required
+                type="date"
+                class="w-full rounded border px-3 py-2"
+              />
 
-        </div>
+              @if (endDateModel.invalid && endDateModel.touched) {
+                <p class="mt-1 text-sm text-red-600">End date is required.</p>
+              }
+            </div>
+          </div>
 
+          <!-- Description -->
+          <div>
+            <textarea
+              name="description"
+              [(ngModel)]="description"
+              #descriptionModel="ngModel"
+              required
+              placeholder="Description"
+              class="min-h-24 w-full rounded border px-3 py-2"
+            ></textarea>
+
+            @if (descriptionModel.invalid && descriptionModel.touched) {
+              <p class="mt-1 text-sm text-red-600">Description is required.</p>
+            }
+          </div>
+
+          <!-- Actions -->
+          <div class="mt-4 flex gap-3">
+            <button
+              type="button"
+              (click)="closeModal()"
+              class="flex-1 rounded border border-gray-300 py-2 hover:bg-gray-100 cursor-pointer"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              [disabled]="experienceForm.invalid"
+              class="flex-1 rounded bg-black py-2 text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
+            >
+              {{ editingId ? 'Update' : 'Save' }}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   }
 
   <!-- LIST -->
   @for (item of experienceList(); track item.id) {
-    <div class=" p-4 rounded mt-4 shadow shadow-gray-300">
-
+    <div class="p-4 rounded mt-4 shadow shadow-gray-300">
       <div class="flex justify-between">
-
         <div>
           <p class="font-semibold">{{ item.role }}</p>
           <p class="text-gray-600">{{ item.company }}</p>
           <p class="text-gray-500 text-sm">{{ item.location }}</p>
 
-          <p class="text-xs text-gray-400">
-            {{ item.startDate }} — {{ item.endDate }}
-          </p>
+          <p class="text-xs text-gray-400">{{ item.startDate }} — {{ item.endDate }}</p>
         </div>
 
         <div class="flex gap-3">
@@ -101,10 +167,7 @@
             Delete 🗑️
           </button>
         </div>
-
       </div>
-
     </div>
   }
-
 </div>

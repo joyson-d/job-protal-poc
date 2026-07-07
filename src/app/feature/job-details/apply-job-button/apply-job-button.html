@@ -14,7 +14,7 @@
 <button
   (click)="openModal()"
   [disabled]="isApplied()"
-  class="px-4 py-2 rounded text-white transition "
+  class="px-4 py-2 rounded text-white transition cursor-pointer"
   [class.bg-black]="!isApplied()"
   [class.bg-gray-300]="isApplied()"
   [class.text-gray-600]="isApplied()"
@@ -24,91 +24,116 @@
 
 <!-- MODAL -->
 @if (isModalOpen()) {
-  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-2">
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-2">
+    <div class="w-full max-w-md rounded bg-white p-6">
+      <h2 class="mb-5 text-xl font-semibold">Apply for Job</h2>
 
-    <div class="bg-white rounded p-6 w-full max-w-md space-y-5">
+      <form #applicationForm="ngForm" (ngSubmit)="apply()" class="space-y-5">
+        <!-- Total Experience -->
+        <div>
+          <label class="mb-1 block text-sm"> Total Experience (Years) </label>
 
-      <!-- TITLE -->
-      <h2 class="text-xl font-semibold">
-        Apply for Job
-      </h2>
+          <input
+            type="number"
+            name="totalExperience"
+            required
+            min="0"
+            [ngModel]="totalExperience()"
+            (ngModelChange)="totalExperience.set($event)"
+            #totalExperienceModel="ngModel"
+            class="w-full rounded border px-3 py-2"
+            placeholder="e.g. 3"
+          />
 
-      <!-- TOTAL EXPERIENCE -->
-      <div>
-        <label class="block text-sm mb-1">Total Experience (Years)</label>
+          @if (totalExperienceModel.invalid && totalExperienceModel.touched) {
+            <p class="mt-1 text-sm text-red-600">Total experience is required.</p>
+          }
+        </div>
 
-        <input
-          type="number"
-          [value]="totalExperience()"
-          (input)="totalExperience.set(($any($event.target).value))"
-          class="w-full border rounded px-3 py-2"
-          placeholder="e.g. 3"
-        />
-      </div>
+        <!-- Relevant Experience -->
+        <div>
+          <label class="mb-1 block text-sm"> Relevant Experience (Years) </label>
 
-      <!-- RELEVANT EXPERIENCE -->
-      <div>
-        <label class="block text-sm mb-1">Relevant Experience (Years)</label>
+          <input
+            type="number"
+            name="relevantExperience"
+            required
+            min="0"
+            [ngModel]="relevantExperience()"
+            (ngModelChange)="relevantExperience.set($event)"
+            #relevantExperienceModel="ngModel"
+            class="w-full rounded border px-3 py-2"
+            placeholder="e.g. 2"
+          />
 
-        <input
-          type="number"
-          [value]="relevantExperience()"
-          (input)="relevantExperience.set(($any($event.target).value))"
-          class="w-full border rounded px-3 py-2"
-          placeholder="e.g. 2"
-        />
-      </div>
+          @if (relevantExperienceModel.invalid && relevantExperienceModel.touched) {
+            <p class="mt-1 text-sm text-red-600">Relevant experience is required.</p>
+          }
+        </div>
 
-      <!-- CURRENT LOCATION -->
-      <div>
-        <label class="block text-sm mb-1">Current Location</label>
+        <!-- Current Location -->
+        <div>
+          <label class="mb-1 block text-sm"> Current Location </label>
 
-        <input
-          type="text"
-          [value]="currentLocation()"
-          (input)="currentLocation.set(($any($event.target).value))"
-          class="w-full border rounded px-3 py-2"
-          placeholder="e.g. Bangalore"
-        />
-      </div>
+          <input
+            type="text"
+            name="currentLocation"
+            required
+            [ngModel]="currentLocation()"
+            (ngModelChange)="currentLocation.set($event)"
+            #currentLocationModel="ngModel"
+            class="w-full rounded border px-3 py-2"
+            placeholder="e.g. Bangalore"
+          />
 
-      <!-- NOTICE PERIOD -->
-      <div>
-        <label class="block text-sm mb-1">Notice Period</label>
+          @if (currentLocationModel.invalid && currentLocationModel.touched) {
+            <p class="mt-1 text-sm text-red-600">Current location is required.</p>
+          }
+        </div>
 
-        <select
-          [value]="noticePeriod()"
-          (change)="noticePeriod.set(($any($event.target).value))"
-          class="w-full border rounded px-3 py-2"
-        >
-          <option value="0">Immediate</option>
-          <option value="15">15 Days</option>
-          <option value="30">30 Days</option>
-          <option value="60">60 Days</option>
-          <option value="90">90 Days</option>
-        </select>
-      </div>
+        <!-- Notice Period -->
+        <div>
+          <label class="mb-1 block text-sm"> Notice Period </label>
 
-      <!-- ACTION BUTTONS -->
-      <div class="flex gap-3 pt-3">
+          <select
+            name="noticePeriod"
+            required
+            [ngModel]="noticePeriod()"
+            (ngModelChange)="noticePeriod.set($event)"
+            #noticePeriodModel="ngModel"
+            class="w-full rounded border px-3 py-2"
+          >
+            <option value="0">Immediate</option>
+            <option value="15">15 Days</option>
+            <option value="30">30 Days</option>
+            <option value="60">60 Days</option>
+            <option value="90">90 Days</option>
+          </select>
 
-        <button
-          (click)="closeModal()"
-          class="flex-1 border rounded py-2 hover:bg-gray-100"
-        >
-          Cancel
-        </button>
+          @if (noticePeriodModel.invalid && noticePeriodModel.touched) {
+            <p class="mt-1 text-sm text-red-600">Please select a notice period.</p>
+          }
+        </div>
 
-        <button
-          (click)="apply()"
-          class="flex-1 bg-black text-white rounded py-2 hover:bg-gray-800"
-        >
-          Apply
-        </button>
+        <!-- Buttons -->
+        <div class="flex gap-3 pt-3">
+          <button
+            type="button"
+            (click)="closeModal()"
+            class="flex-1 rounded border py-2 hover:bg-gray-100"
+          >
+            Cancel
+          </button>
 
-      </div>
-
+          <button
+            type="submit"
+            [disabled]="applicationForm.invalid"
+            class="flex-1 rounded bg-black py-2 text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Apply
+          </button>
+        </div>
+      </form>
     </div>
-
   </div>
 }
