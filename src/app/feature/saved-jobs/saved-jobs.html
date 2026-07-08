@@ -1,5 +1,22 @@
-<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-4 px-6">
-  @for (savedJob of savedJobs(); track savedJob.id) {
-    <app-job-card [job]="savedJob" />
-  }
-</div>
+@if (savedJobs().length > 0) {
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-4 px-6">
+    @for (savedJob of savedJobs(); track savedJob.id) {
+      <app-job-card [job]="savedJob" />
+    }
+  </div>
+} @else {
+  <div class="flex flex-col items-center justify-center py-20 text-center">
+    <h2 class="text-2xl font-semibold text-gray-800">No saved jobs</h2>
+
+    <p class="mt-2 text-gray-500">
+      You haven't saved any jobs yet.
+    </p>
+
+    <a
+      routerLink="/"
+      class="mt-6 rounded-lg bg-gray-900 px-6 py-3 text-white transition hover:bg-gray-800"
+    >
+      Browse Jobs
+    </a>
+  </div>
+}
