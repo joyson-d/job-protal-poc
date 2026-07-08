@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ProfileService } from '../../../../core/profile/profile-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-upload-resume',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './upload-resume.html',
   styleUrl: './upload-resume.css',
 })

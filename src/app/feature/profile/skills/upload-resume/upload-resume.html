@@ -1,10 +1,10 @@
 <div class="bg-white border-t-2 p-6 max-sm:p-0">
   <h2 class="mb-4 text-xl font-semibold">Resume</h2>
 
-  <div class=" grid grid-cols-2 gap-4 w-full items-center">
+  <div class="grid grid-cols-2 gap-4 w-full">
     <label
       for="resume-upload"
-      class="cursor-pointer rounded bg-gray-50 px-4 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-100 max-sm:text-sm max-sm:w-full  w-1/2 text-center shadow shadow-black"
+      class="flex items-center justify-center cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:border-gray-400 max-sm:w-full"
     >
       Choose PDF
     </label>
@@ -14,16 +14,22 @@
       type="file"
       accept="application/pdf"
       (change)="onFileSelected($event)"
-      class="hidden "
+      class="hidden"
     />
 
-    @if (selectedFile) {
-      <span class="truncate text-sm text-gray-600">
-        {{ selectedFile.name }}
-      </span>
-    } @else {
-      <span class="text-sm text-gray-400"> No file selected </span>
-    }
+    <div class="my-auto mx-auto">
+      @if (selectedFile) {
+        <span class="text-sm text-gray-600">
+          {{
+            selectedFile.name.length > 12
+              ? (selectedFile.name | slice: 0 : 12) + '...'
+              : selectedFile.name
+          }}
+        </span>
+      } @else {
+        <span class="text-sm text-gray-400"> No file selected </span>
+      }
+    </div>
   </div>
 
   <div class="flex mt-4 w-full gap-6 max-md:justify-between">
