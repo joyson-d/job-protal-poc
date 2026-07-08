@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -8,7 +8,6 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth-service';
-
 
 interface RegisterForm {
   name: FormControl<string>;
@@ -43,9 +42,17 @@ export class Register implements OnInit {
       contactNumber: ['', [Validators.required]],
       isRecruiter: [false],
     });
+
+    this.registerForm.valueChanges.subscribe(() => {
+      this.registerError.set('');
+    });
   }
 
+  readonly registerError = signal('');
+
   onSubmit() {
+    this.registerError.set('');
+
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
       return;
@@ -64,7 +71,7 @@ export class Register implements OnInit {
     });
 
     if (!response.success) {
-      console.log(response.message);
+      this.registerError.set(response.message);
       return;
     }
 

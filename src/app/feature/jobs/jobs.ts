@@ -5,10 +5,12 @@ import { JobFilter } from '../../core/Job/job-filter';
 import { JobPagination } from '../../core/Job/job-pagination';
 import { JobPaginationUI } from './job-pagination/job-pagination';
 import { formatJobType } from '../../shared/utils/formatJobType';
+import { JobService } from '../../core/Job/job-service';
+import { Loader } from './loader/loader';
 
 @Component({
   selector: 'app-jobs',
-  imports: [JobCard, JobPaginationUI],
+  imports: [JobCard, JobPaginationUI, Loader],
   templateUrl: './jobs.html',
   styleUrl: './jobs.css',
   standalone: true,
@@ -19,6 +21,7 @@ export class Jobs {
     private readonly router: Router,
     private readonly route: ActivatedRoute,
     private readonly pagination: JobPagination,
+    private readonly jobService: JobService,
   ) {
     const params = this.route.snapshot.queryParamMap;
 
@@ -70,6 +73,10 @@ export class Jobs {
 
   get jobs() {
     return this.pagination.paginatedJobs;
+  }
+
+  get isLoading() {
+    return this.jobService.isLoading();
   }
 
   onSearch(value: string): void {
