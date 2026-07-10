@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from '../auth/auth-service';
-import { AuthStorage } from '../auth/auth-storage';
 import { User } from '../auth/auth.model';
 import { AuthStore } from '../auth/auth-store';
 import { AuthUserService } from '../auth/auth-user-service';

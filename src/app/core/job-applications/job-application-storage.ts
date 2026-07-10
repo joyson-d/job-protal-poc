@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { JobApplicationType } from './job-application.model';
-
-const STORAGE_KEY = 'jobApplications';
+import { JOB_APPLICATION_STORAGE_KEY } from '../constant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobApplicationStorage {
   getItems(): JobApplicationType[] {
-    const data = localStorage.getItem(STORAGE_KEY);
+    const data = localStorage.getItem(JOB_APPLICATION_STORAGE_KEY);
 
     if (!data) return [];
 
@@ -16,6 +15,6 @@ export class JobApplicationStorage {
   }
 
   setItems(items: JobApplicationType[]): void {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    localStorage.setItem(JOB_APPLICATION_STORAGE_KEY, JSON.stringify(items));
   }
 }
