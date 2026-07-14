@@ -37,5 +37,14 @@
       "alreadyAccount": "¿Ya tienes una cuenta?",
       "login": "Iniciar sesión"
     }
+  },
+
+   "nav": {
+    "register": "Registrarse",
+    "login": "Iniciar Sesión",
+    "myAccount": "Mi Cuenta",
+    "profile": "Perfil",
+    "savedJobs": "Empleos Guardados",
+    "logout": "Cerrar Sesión"
   }
 }

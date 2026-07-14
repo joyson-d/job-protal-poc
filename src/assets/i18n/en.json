@@ -37,5 +37,14 @@
       "alreadyAccount": "Already have an account?",
       "login": "Login"
     }
+  },
+
+  "nav": {
+    "register": "Register",
+    "login": "Login",
+    "myAccount": "My Account",
+    "profile": "Profile",
+    "savedJobs": "Saved Jobs",
+    "logout": "Logout"
   }
 }

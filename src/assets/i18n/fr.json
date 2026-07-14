@@ -37,5 +37,14 @@
       "alreadyAccount": "Vous avez déjà un compte ?",
       "login": "Connexion"
     }
+  },
+
+  "nav": {
+    "register": "S'inscrire",
+    "login": "Connexion",
+    "myAccount": "Mon Compte",
+    "profile": "Profil",
+    "savedJobs": "Offres Enregistrées",
+    "logout": "Déconnexion"
   }
 }
