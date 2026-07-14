@@ -1,4 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { SettingsService } from '../../../core/settings/settings-service';
+import { SettingsStore } from '../../../core/settings/settings-store';
 
 interface Language {
   code: string;
@@ -13,9 +15,11 @@ interface Language {
   styleUrl: './language-selector.css',
 })
 export class LanguageSelector {
+  private readonly settingsService = inject(SettingsService);
+  private readonly settingStore = inject(SettingsStore);
+
   readonly isOpen = signal(false);
 
-  // Temporary hardcoded languages
   readonly languages: Language[] = [
     {
       code: 'en',
@@ -34,17 +38,22 @@ export class LanguageSelector {
     },
   ];
 
-  // Currently selected language
-  selectedLanguage = this.languages[0];
+  get selectedLanguage(): Language {
+    
+    const result =
+      this.languages.find((lang) => lang.code === this.settingsService.currentLanguage) ??
+      this.languages[0];
+
+    return result;
+  }
 
   toggle(): void {
     this.isOpen.update((open) => !open);
   }
 
   selectLanguage(language: Language): void {
-    this.selectedLanguage = language;
-    this.isOpen.set(false);
+    this.settingsService.setLanguage(language.code);
 
-    console.log('Selected Language:', language);
+    this.isOpen.set(false);
   }
 }
