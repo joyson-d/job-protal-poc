@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth-service';
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
 
 interface RegisterForm {
   name: FormControl<string>;
@@ -20,7 +21,7 @@ interface RegisterForm {
 
 @Component({
   selector: 'app-register',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule,TranslatePipe, TranslateDirective],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })

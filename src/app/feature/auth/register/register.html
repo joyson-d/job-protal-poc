@@ -4,19 +4,23 @@
     (ngSubmit)="onSubmit()"
     class="bg-white w-full max-w-md mx-auto flex flex-col gap-5 px-6 py-10 rounded shadow"
   >
-    <h2 class="text-2xl font-semibold text-center text-gray-800">Create Account</h2>
+    <h2 class="text-2xl font-semibold text-center text-gray-800">
+      {{ 'auth.register.title' | translate }}
+    </h2>
 
     <!-- NAME -->
     <div>
       <input
         type="text"
         formControlName="name"
-        placeholder="Enter your name"
         class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [placeholder]="'auth.register.namePlaceholder' | translate"
       />
 
       @if (name.touched && name.invalid) {
-        <p class="text-red-500 text-xs mt-1">Name is required</p>
+        <p class="text-red-500 text-xs mt-1">
+          {{ 'auth.register.nameRequired' | translate }}
+        </p>
       }
     </div>
 
@@ -25,12 +29,14 @@
       <input
         type="email"
         formControlName="email"
-        placeholder="Enter your email"
         class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [placeholder]="'auth.register.emailPlaceholder' | translate"
       />
 
       @if (email.touched && email.invalid) {
-        <p class="text-red-500 text-xs mt-1">Enter a valid email</p>
+        <p class="text-red-500 text-xs mt-1">
+          {{ 'auth.register.emailInvalid' | translate }}
+        </p>
       }
     </div>
 
@@ -39,12 +45,14 @@
       <input
         type="password"
         formControlName="password"
-        placeholder="Enter your password"
         class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [placeholder]="'auth.register.passwordPlaceholder' | translate"
       />
 
       @if (password.touched && password.invalid) {
-        <p class="text-red-500 text-xs mt-1">Password must be at least 6 characters</p>
+        <p class="text-red-500 text-xs mt-1">
+          {{ 'auth.register.passwordInvalid' | translate }}
+        </p>
       }
     </div>
 
@@ -53,12 +61,14 @@
       <input
         type="password"
         formControlName="confirmPassword"
-        placeholder="Confirm your password"
         class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [placeholder]="'auth.register.confirmPasswordPlaceholder' | translate"
       />
 
       @if (confirmPassword.touched && confirmPassword.invalid) {
-        <p class="text-red-500 text-xs mt-1">Confirm your password</p>
+        <p class="text-red-500 text-xs mt-1">
+          {{ 'auth.register.confirmPasswordRequired' | translate }}
+        </p>
       }
     </div>
 
@@ -67,12 +77,14 @@
       <input
         type="text"
         formControlName="contactNumber"
-        placeholder="Enter your contact number"
         class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        [placeholder]="'auth.register.contactNumberPlaceholder' | translate"
       />
 
       @if (contactNumber.touched && contactNumber.invalid) {
-        <p class="text-red-500 text-xs mt-1">Contact number is required</p>
+        <p class="text-red-500 text-xs mt-1">
+          {{ 'auth.register.contactNumberRequired' | translate }}
+        </p>
       }
     </div>
 
@@ -80,7 +92,7 @@
     <label class="items-center gap-3 text-sm cursor-pointer select-none hidden">
       <input type="checkbox" formControlName="isRecruiter" class="w-4 h-4 accent-blue-500" />
 
-      <span>I want to post jobs (Recruiter)</span>
+      <span>>{{ 'auth.register.recruiterOption' | translate }}</span>
     </label>
 
     @if (registerError()) {
@@ -94,14 +106,16 @@
       type="submit"
       class="bg-gray-900 text-white py-2.5 rounded font-medium hover:bg-gray-700 transition"
     >
-      Register
+      {{ 'auth.register.button' | translate }}
     </button>
 
     <!-- LOGIN LINK -->
     <p class="text-sm text-center text-gray-600">
-      Already have an account?
+      {{ 'auth.register.alreadyAccount' | translate }}
 
-      <a routerLink="/login" class="text-blue-600 hover:underline font-medium"> Login </a>
+      <a routerLink="/login" class="text-blue-600 hover:underline font-medium">
+        {{ 'auth.register.login' | translate }}
+      </a>
     </p>
   </form>
 </div>

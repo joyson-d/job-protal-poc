@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth-service';
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
 
 interface LoginForm {
   email: FormControl<string>;
@@ -15,7 +16,7 @@ interface LoginForm {
 }
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, TranslatePipe, TranslateDirective],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
