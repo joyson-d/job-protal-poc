@@ -52,5 +52,14 @@
     "noSavedTitle": "No saved jobs",
     "noSavedDescription": "You haven't saved any jobs yet.",
     "browseButton": "Browse Jobs"
+  },
+
+  "profile": {
+    "tabs": {
+      "overview": "Personal Info",
+      "skills": "Skills",
+      "education": "Education",
+      "experience": "Experience"
+    }
   }
 }

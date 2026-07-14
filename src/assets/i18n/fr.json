@@ -52,5 +52,14 @@
     "noSavedTitle": "Aucune offre enregistrée",
     "noSavedDescription": "Vous n'avez pas encore enregistré d'offres d'emploi.",
     "browseButton": "Parcourir les offres"
+  },
+
+  "profile": {
+    "tabs": {
+      "overview": "Información Personal",
+      "skills": "Habilidades",
+      "education": "Educación",
+      "experience": "Experiencia"
+    }
   }
 }

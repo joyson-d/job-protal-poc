@@ -11,7 +11,7 @@
             [class.bg-blue-100]="activeTab === tab.key"
             [class.font-semibold]="activeTab === tab.key"
           >
-            {{ tab.label }}
+            {{ 'profile.tabs.' + tab.key | translate }}
           </button>
         }
       </div>

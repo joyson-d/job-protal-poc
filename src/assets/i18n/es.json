@@ -52,5 +52,14 @@
     "noSavedTitle": "No hay empleos guardados",
     "noSavedDescription": "Aún no has guardado ningún empleo.",
     "browseButton": "Buscar Empleos"
+  },
+
+  "profile": {
+    "tabs": {
+      "overview": "Infos Personnelles",
+      "skills": "Compétences",
+      "education": "Éducation",
+      "experience": "Expérience"
+    }
   }
 }
