@@ -5,14 +5,20 @@
     <img src="/logo-test.jpg" alt="Logo" class="h-10 w-10" />
   </a>
 
-  <div class="relative">
+  
+  <div class="flex gap-7">
+    <app-language-selector />
     @if (!authService.isAuthenticated) {
       <div class="flex items-center gap-3">
-        <a routerLink="/login" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
-          Login
-        </a>
-
-        <a routerLink="/register" class="border px-4 py-2 rounded hover:bg-gray-100"> Register </a>
+        @if (currentRoute === '/login') {
+          <a routerLink="/register" class="border px-4 py-2 rounded hover:bg-gray-100">
+            Register
+          </a>
+        } @else {
+          <a routerLink="/login" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
+            Login
+          </a>
+        }
       </div>
     } @else {
       <!-- Dropdown Button -->
@@ -44,7 +50,7 @@
       <!-- Dropdown -->
       @if (isMenuOpen) {
         <div
-          class="absolute right-0 mt-2 w-56 bg-white border rounded shadow-lg overflow-hidden z-50"
+          class="absolute right-0 mt-10 mr-4 w-56 bg-white border rounded shadow-lg overflow-hidden z-50"
         >
           <a routerLink="/profile" (click)="closeMenu()" class="block px-4 py-3 hover:bg-gray-100">
             <div class="flex gap-4">
