@@ -121,5 +121,24 @@
       "startDateReq": "La date de début est obligatoire.",
       "endDateReq": "La date de fin est obligatoire."
     }
+  },
+
+  "searchPage": {
+    "searchPlaceholder": "Rechercher des emplois...",
+    "allLocations": "Tous les lieux",
+    "clearBtn": "Effacer",
+    "jobType": "Type d'emploi",
+    "salary": "Salaire",
+    "clearFilters": "Effacer les filtres",
+    "filtersTitle": "Filtres",
+    "clearAll": "Tout effacer",
+    "salaryRange": "Fourchette de salaire",
+    "rangeBounds": "Plage",
+    "noJobsFound": "Aucune offre trouvée"
+  },
+
+  "pagination": {
+    "previous": "Précédent",
+    "next": "Suivant"
   }
 }

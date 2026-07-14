@@ -7,10 +7,11 @@ import { JobPaginationUI } from './job-pagination/job-pagination';
 import { formatJobType } from '../../shared/utils/formatJobType';
 import { JobService } from '../../core/Job/job-service';
 import { Loader } from './loader/loader';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-jobs',
-  imports: [JobCard, JobPaginationUI, Loader],
+  imports: [JobCard, JobPaginationUI, Loader,TranslatePipe],
   templateUrl: './jobs.html',
   styleUrl: './jobs.css',
   standalone: true,

@@ -121,5 +121,24 @@
       "startDateReq": "Start date is required.",
       "endDateReq": "End date is required."
     }
+  },
+
+  "searchPage": {
+    "searchPlaceholder": "Search jobs...",
+    "allLocations": "All Locations",
+    "clearBtn": "Clear",
+    "jobType": "Job Type",
+    "salary": "Salary",
+    "clearFilters": "Clear Filters",
+    "filtersTitle": "Filters",
+    "clearAll": "Clear All",
+    "salaryRange": "Salary Range",
+    "rangeBounds": "Range",
+    "noJobsFound": "No Jobs found"
+  },
+
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next"
   }
 }

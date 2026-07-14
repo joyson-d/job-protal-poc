@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { JobPagination } from '../../../core/Job/job-pagination';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-job-pagination',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './job-pagination.html',
   styleUrl: './job-pagination.css',
 })

@@ -9,8 +9,8 @@
           #searchInput
           [value]="search()"
           (input)="onSearch(searchInput.value)"
-          placeholder="Search jobs..."
           class="flex-1 border rounded px-4 py-2 bg-white"
+          [placeholder]="'searchPage.searchPlaceholder' | translate"
         />
 
         <select
@@ -21,7 +21,7 @@
         >
           @for (loc of locations(); track loc) {
             <option [value]="loc">
-              {{ loc === 'all' ? 'All Locations' : loc }}
+              {{ loc === 'all' ? ('searchPage.allLocations' | translate) : loc }}
             </option>
           }
         </select>
@@ -30,7 +30,7 @@
           (click)="clearFilters()"
           class="bg-gray-900 text-white font-bold px-4 py-2 rounded hover:bg-gray-300 transition cursor-pointer"
         >
-          Clear
+          {{ 'searchPage.clearBtn' | translate }}
         </button>
       </div>
 
@@ -38,7 +38,9 @@
       <div class="lg:hidden bg-white rounded p-4 mb-4 space-y-4 shadow">
         <!-- Job Types -->
         <div>
-          <h3 class="font-medium mb-2 text-sm">Job Type</h3>
+          <h3 class="font-medium mb-2 text-sm">
+            {{ 'searchPage.jobType' | translate }}
+          </h3>
 
           <div class="grid grid-cols-2 gap-3 px-2">
             @for (type of jobTypeOptions(); track type) {
@@ -57,7 +59,9 @@
 
         <!-- Salary -->
         <div>
-          <h3 class="font-medium mb-2 text-sm">Salary</h3>
+          <h3 class="font-medium mb-2 text-sm">
+            {{ 'searchPage.salary' | translate }}
+          </h3>
 
           <div class="flex gap-2">
             <input
@@ -79,7 +83,7 @@
         </div>
 
         <button (click)="clearFilters()" class="text-sm text-blue-700 font-bold flex ml-auto">
-          Clear Filters
+          {{ 'searchPage.clearFilters' | translate }}
         </button>
       </div>
 
@@ -87,16 +91,20 @@
         <!-- DESKTOP -->
         <aside class="hidden lg:block w-72 bg-white p-5 rounded shadow h-fit sticky top-6">
           <div class="flex justify-between items-center mb-4">
-            <h2 class="font-semibold">Filters</h2>
+            <h2 class="font-semibold">
+              {{ 'searchPage.filtersTitle' | translate }}
+            </h2>
 
             <button (click)="clearFilters()" class="text-blue-600 text-sm cursor-pointer">
-              Clear All
+              {{ 'searchPage.clearAll' | translate }}
             </button>
           </div>
 
           <!-- Job Types -->
           <div class="mb-6">
-            <h3 class="font-medium mb-3">Job Type</h3>
+            <h3 class="font-medium mb-3">
+              {{ 'searchPage.jobType' | translate }}
+            </h3>
 
             <div class="flex flex-col gap-2">
               @for (type of jobTypeOptions(); track type) {
@@ -115,7 +123,9 @@
 
           <!-- Salary -->
           <div>
-            <h3 class="font-medium mb-3">Salary Range</h3>
+            <h3 class="font-medium mb-3">
+              {{ 'searchPage.salaryRange' | translate }}
+            </h3>
 
             <div class="flex justify-between text-sm text-gray-600 mb-2">
               <span>${{ salaryRange()[0] }}</span>
@@ -154,7 +164,9 @@
               }
             </div>
           } @else {
-            <div class="text-center py-12 text-gray-500 bg-white rounded border">No Jobs found</div>
+            <div class="text-center py-12 text-gray-500 bg-white rounded border">
+              {{ 'searchPage.noJobsFound' | translate }}
+            </div>
           }
 
           <app-job-pagination />
