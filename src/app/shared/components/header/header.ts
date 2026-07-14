@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth-service';
 import { LanguageSelector } from '../language-selector/language-selector';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink,LanguageSelector],
+  imports: [RouterLink,LanguageSelector,TranslatePipe],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
