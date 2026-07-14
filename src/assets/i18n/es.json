@@ -39,12 +39,18 @@
     }
   },
 
-   "nav": {
+  "nav": {
     "register": "Registrarse",
     "login": "Iniciar Sesión",
     "myAccount": "Mi Cuenta",
     "profile": "Perfil",
     "savedJobs": "Empleos Guardados",
     "logout": "Cerrar Sesión"
+  },
+
+  "jobs": {
+    "noSavedTitle": "No hay empleos guardados",
+    "noSavedDescription": "Aún no has guardado ningún empleo.",
+    "browseButton": "Buscar Empleos"
   }
 }

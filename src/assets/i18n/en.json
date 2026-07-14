@@ -46,5 +46,11 @@
     "profile": "Profile",
     "savedJobs": "Saved Jobs",
     "logout": "Logout"
+  },
+
+  "jobs": {
+    "noSavedTitle": "No saved jobs",
+    "noSavedDescription": "You haven't saved any jobs yet.",
+    "browseButton": "Browse Jobs"
   }
 }

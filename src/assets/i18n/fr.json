@@ -46,5 +46,11 @@
     "profile": "Profil",
     "savedJobs": "Offres Enregistrées",
     "logout": "Déconnexion"
+  },
+
+  "jobs": {
+    "noSavedTitle": "Aucune offre enregistrée",
+    "noSavedDescription": "Vous n'avez pas encore enregistré d'offres d'emploi.",
+    "browseButton": "Parcourir les offres"
   }
 }
