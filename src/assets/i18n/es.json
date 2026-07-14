@@ -79,11 +79,30 @@
       "saveBtn": "Guardar Currículum"
     },
 
-     "personalInfoSection": {
+    "personalInfoSection": {
       "title": "Información Personal",
       "fullName": "Nombre Completo",
       "email": "Correo Electrónico",
       "contact": "Contacto"
+    },
+
+    "experienceSection": {
+      "title": "Experiencia",
+      "addBtn": "Añadir Experiencia",
+      "editTitle": "Editar Experiencia",
+      "cancelBtn": "Cancelar",
+      "saveBtn": "Guardar",
+      "updateBtn": "Actualizar",
+      "company": "Empresa",
+      "role": "Cargo",
+      "location": "Ubicación",
+      "description": "Descripción",
+      "companyReq": "La empresa es obligatoria.",
+      "roleReq": "El cargo es obligatorio.",
+      "locationReq": "La ubicación es obligatoria.",
+      "startDateReq": "La fecha de inicio es obligatoria.",
+      "endDateReq": "La fecha de finalización es obligatoria.",
+      "descriptionReq": "La descripción es obligatoria."
     }
   }
 }

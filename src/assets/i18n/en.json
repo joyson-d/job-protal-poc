@@ -79,11 +79,30 @@
       "saveBtn": "Save Resume"
     },
 
-     "personalInfoSection": {
+    "personalInfoSection": {
       "title": "Personal Information",
       "fullName": "Full Name",
       "email": "Email",
       "contact": "Contact"
+    },
+
+    "experienceSection": {
+      "title": "Experience",
+      "addBtn": "Add Experience",
+      "editTitle": "Edit Experience",
+      "cancelBtn": "Cancel",
+      "saveBtn": "Save",
+      "updateBtn": "Update",
+      "company": "Company",
+      "role": "Role",
+      "location": "Location",
+      "description": "Description",
+      "companyReq": "Company is required.",
+      "roleReq": "Role is required.",
+      "locationReq": "Location is required.",
+      "startDateReq": "Start date is required.",
+      "endDateReq": "End date is required.",
+      "descriptionReq": "Description is required."
     }
   }
 }

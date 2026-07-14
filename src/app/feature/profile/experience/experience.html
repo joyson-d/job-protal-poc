@@ -1,13 +1,15 @@
 <div class="bg-white p-6 rounded-xl">
   <!-- HEADER -->
   <div class="flex justify-between items-center">
-    <h2 class="text-xl font-semibold">Experience</h2>
+    <h2 class="text-xl font-semibold">
+      {{ 'profile.experienceSection.title' | translate }}
+    </h2>
 
     <button
       (click)="openModal()"
       class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 cursor-pointer max-sm:text-[11px] font-bold"
     >
-      Add Experience
+      {{ 'profile.experienceSection.addBtn' | translate }}
     </button>
   </div>
 
@@ -27,12 +29,14 @@
               [(ngModel)]="company"
               #companyModel="ngModel"
               required
-              placeholder="Company"
               class="w-full rounded border px-3 py-2"
+              [placeholder]="'profile.experienceSection.company' | translate"
             />
 
             @if (companyModel.invalid && companyModel.touched) {
-              <p class="mt-1 text-sm text-red-600">Company is required.</p>
+              <p class="mt-1 text-sm text-red-600">
+                {{ 'profile.experienceSection.companyReq' | translate }}
+              </p>
             }
           </div>
 
@@ -43,12 +47,14 @@
               [(ngModel)]="role"
               #roleModel="ngModel"
               required
-              placeholder="Role"
               class="w-full rounded border px-3 py-2"
+              [placeholder]="'profile.experienceSection.role' | translate"
             />
 
             @if (roleModel.invalid && roleModel.touched) {
-              <p class="mt-1 text-sm text-red-600">Role is required.</p>
+              <p class="mt-1 text-sm text-red-600">
+                {{ 'profile.experienceSection.roleReq' | translate }}
+              </p>
             }
           </div>
 
@@ -59,12 +65,14 @@
               [(ngModel)]="location"
               #locationModel="ngModel"
               required
-              placeholder="Location"
               class="w-full rounded border px-3 py-2"
+              [placeholder]="'profile.experienceSection.location' | translate"
             />
 
             @if (locationModel.invalid && locationModel.touched) {
-              <p class="mt-1 text-sm text-red-600">Location is required.</p>
+              <p class="mt-1 text-sm text-red-600">
+                {{ 'profile.experienceSection.locationReq' | translate }}
+              </p>
             }
           </div>
 
@@ -81,7 +89,9 @@
               />
 
               @if (startDateModel.invalid && startDateModel.touched) {
-                <p class="mt-1 text-sm text-red-600">Start date is required.</p>
+                <p class="mt-1 text-sm text-red-600">
+                  {{ 'profile.experienceSection.startDateReq' | translate }}
+                </p>
               }
             </div>
 
@@ -96,7 +106,9 @@
               />
 
               @if (endDateModel.invalid && endDateModel.touched) {
-                <p class="mt-1 text-sm text-red-600">End date is required.</p>
+                <p class="mt-1 text-sm text-red-600">
+                  {{ 'profile.experienceSection.endDateReq' | translate }}
+                </p>
               }
             </div>
           </div>
@@ -108,12 +120,14 @@
               [(ngModel)]="description"
               #descriptionModel="ngModel"
               required
-              placeholder="Description"
               class="min-h-24 w-full rounded border px-3 py-2"
+              [placeholder]="'profile.experienceSection.description' | translate"
             ></textarea>
 
             @if (descriptionModel.invalid && descriptionModel.touched) {
-              <p class="mt-1 text-sm text-red-600">Description is required.</p>
+              <p class="mt-1 text-sm text-red-600">
+                {{ 'profile.experienceSection.descriptionReq' | translate }}
+              </p>
             }
           </div>
 
@@ -124,7 +138,7 @@
               (click)="closeModal()"
               class="flex-1 rounded border border-gray-300 py-2 hover:bg-gray-100 cursor-pointer"
             >
-              Cancel
+              {{ 'profile.experienceSection.cancelBtn' | translate }}
             </button>
 
             <button
@@ -132,7 +146,12 @@
               [disabled]="experienceForm.invalid"
               class="flex-1 rounded bg-black py-2 text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
             >
-              {{ editingId ? 'Update' : 'Save' }}
+              {{
+                (editingId
+                  ? 'profile.experienceSection.updateBtn'
+                  : 'profile.experienceSection.saveBtn'
+                ) | translate
+              }}
             </button>
           </div>
         </form>

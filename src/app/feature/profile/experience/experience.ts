@@ -2,10 +2,11 @@ import { Component, computed } from '@angular/core';
 import { Experience as ExperienceType } from '../../../core/profile/profile.model';
 import { ProfileService } from '../../../core/profile/profile-service';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-experience',
-  imports: [FormsModule],
+  imports: [FormsModule,TranslatePipe],
   templateUrl: './experience.html',
   styleUrl: './experience.css',
 })

@@ -79,11 +79,30 @@
       "saveBtn": "Enregistrer le CV"
     },
 
-     "personalInfoSection": {
+    "personalInfoSection": {
       "title": "Informations Personnelles",
       "fullName": "Nom Complet",
       "email": "E-mail",
       "contact": "Contact"
+    },
+
+    "experienceSection": {
+      "title": "Expérience",
+      "addBtn": "Ajouter une expérience",
+      "editTitle": "Modifier l'expérience",
+      "cancelBtn": "Annuler",
+      "saveBtn": "Enregistrer",
+      "updateBtn": "Mettre à jour",
+      "company": "Entreprise",
+      "role": "Poste",
+      "location": "Lieu",
+      "description": "Description",
+      "companyReq": "L'entreprise est obligatoire.",
+      "roleReq": "Le poste est obligatoire.",
+      "locationReq": "Le lieu est obligatoire.",
+      "startDateReq": "La date de début est obligatoire.",
+      "endDateReq": "La date de fin est obligatoire.",
+      "descriptionReq": "La description est obligatoire."
     }
   }
 }
