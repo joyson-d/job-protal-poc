@@ -1,0 +1,41 @@
+{
+  "app": {
+    "title": "Portail d'emploi à distance"
+  },
+
+  "auth": {
+    "login": {
+      "title": "Bon retour",
+      "emailPlaceholder": "Entrez votre e-mail",
+      "passwordPlaceholder": "Entrez votre mot de passe",
+      "emailInvalid": "L'e-mail est invalide",
+      "passwordInvalid": "Le mot de passe est invalide",
+      "button": "Connexion",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "register": "S'inscrire"
+    },
+
+    "register": {
+      "title": "Créer un compte",
+
+      "namePlaceholder": "Entrez votre nom",
+      "emailPlaceholder": "Entrez votre e-mail",
+      "passwordPlaceholder": "Entrez votre mot de passe",
+      "confirmPasswordPlaceholder": "Confirmez votre mot de passe",
+      "contactNumberPlaceholder": "Entrez votre numéro de contact",
+
+      "nameRequired": "Le nom est obligatoire",
+      "emailInvalid": "Entrez un e-mail valide",
+      "passwordInvalid": "Le mot de passe doit contenir au moins 6 caractères",
+      "confirmPasswordRequired": "Confirmez votre mot de passe",
+      "contactNumberRequired": "Le numéro de contact est obligatoire",
+
+      "recruiterOption": "Je veux publier des offres (Recruteur)",
+
+      "button": "S'inscrire",
+
+      "alreadyAccount": "Vous avez déjà un compte ?",
+      "login": "Connexion"
+    }
+  }
+}

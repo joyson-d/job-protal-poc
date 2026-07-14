@@ -1,0 +1,41 @@
+{
+  "app": {
+    "title": "Portal de Empleos Remotos"
+  },
+
+  "auth": {
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "emailPlaceholder": "Ingrese su correo electrónico",
+      "passwordPlaceholder": "Ingrese su contraseña",
+      "emailInvalid": "El correo electrónico no es válido",
+      "passwordInvalid": "La contraseña no es válida",
+      "button": "Iniciar sesión",
+      "noAccount": "¿No tienes una cuenta?",
+      "register": "Registrarse"
+    },
+
+    "register": {
+      "title": "Crear cuenta",
+
+      "namePlaceholder": "Ingrese su nombre",
+      "emailPlaceholder": "Ingrese su correo electrónico",
+      "passwordPlaceholder": "Ingrese su contraseña",
+      "confirmPasswordPlaceholder": "Confirme su contraseña",
+      "contactNumberPlaceholder": "Ingrese su número de contacto",
+
+      "nameRequired": "El nombre es obligatorio",
+      "emailInvalid": "Ingrese un correo electrónico válido",
+      "passwordInvalid": "La contraseña debe tener al menos 6 caracteres",
+      "confirmPasswordRequired": "Confirme su contraseña",
+      "contactNumberRequired": "El número de contacto es obligatorio",
+
+      "recruiterOption": "Quiero publicar trabajos (Reclutador)",
+
+      "button": "Registrarse",
+
+      "alreadyAccount": "¿Ya tienes una cuenta?",
+      "login": "Iniciar sesión"
+    }
+  }
+}

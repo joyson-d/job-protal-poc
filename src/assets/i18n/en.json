@@ -1,0 +1,41 @@
+{
+  "app": {
+    "title": "Remote Job Portal"
+  },
+
+  "auth": {
+    "login": {
+      "title": "Welcome Back ",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password",
+      "emailInvalid": "Email is invalid",
+      "passwordInvalid": "Password is invalid",
+      "button": "Login",
+      "noAccount": "Don't have an account?",
+      "register": "Register"
+    },
+
+    "register": {
+      "title": "Create Account just",
+
+      "namePlaceholder": "Enter your name",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "contactNumberPlaceholder": "Enter your contact number",
+
+      "nameRequired": "Name is required",
+      "emailInvalid": "Enter a valid email",
+      "passwordInvalid": "Password must be at least 6 characters",
+      "confirmPasswordRequired": "Confirm your password",
+      "contactNumberRequired": "Contact number is required",
+
+      "recruiterOption": "I want to post jobs (Recruiter)",
+
+      "button": "Register",
+
+      "alreadyAccount": "Already have an account?",
+      "login": "Login"
+    }
+  }
+}
