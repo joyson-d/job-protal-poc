@@ -20,14 +20,6 @@ type tabsArrType = {
   styleUrl: './profile.css',
 })
 export class Profile {
-  // tabs: tabsArrType[] = [
-  //   { key: 'overview', label: 'Personal Info' },
-  //   { key: 'skills', label: 'Skills' },
-  //   { key: 'education', label: 'Education' },
-  //   { key: 'experience', label: 'Experience' },
-  // ];
-
-  // activeTab: profileOptionTypes = 'overview';
 
   tabs: tabsArrType[] = [
     { key: 'overview' },

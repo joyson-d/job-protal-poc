@@ -60,6 +60,23 @@
       "skills": "Habilidades",
       "education": "Educación",
       "experience": "Experiencia"
+    },
+
+    "skillsSection": {
+      "title": "Compétences",
+      "addButton": "Ajouter une compétence",
+      "placeholder": "Entrez la compétence",
+      "cancelButton": "Annuler",
+      "saveButton": "Enregistrer"
+    },
+
+    "resumeSection": {
+      "title": "CV",
+      "chooseBtn": "Choisir un PDF",
+      "noFile": "Aucun fichier sélectionné",
+      "viewBtn": "Voir",
+      "removeBtn": "Supprimer",
+      "saveBtn": "Enregistrer le CV"
     }
   }
 }

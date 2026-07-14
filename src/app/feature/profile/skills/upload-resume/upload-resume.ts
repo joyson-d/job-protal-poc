@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ProfileService } from '../../../../core/profile/profile-service';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-upload-resume',
-  imports: [CommonModule],
+  imports: [CommonModule,TranslatePipe],
   templateUrl: './upload-resume.html',
   styleUrl: './upload-resume.css',
 })

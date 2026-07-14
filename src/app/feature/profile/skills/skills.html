@@ -1,13 +1,18 @@
 <div class="bg-white p-6 rounded-xl">
-
-  <div class="bg-white p-6 rounded ">
+  <div class="bg-white p-6 rounded">
     <!-- Header -->
 
     <div class="flex justify-between items-center mb-5">
-      <h2 class="text-xl font-semibold">Skills</h2>
+      <h2 class="text-xl font-semibold">
+        {{ 'profile.skillsSection.title' | translate }}
+      </h2>
 
-      <button (click)="openModal()" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 max-sm:text-[11px] font-bold">
-        Add Skill
+      <button
+        (click)="openModal()"
+        class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 max-sm:text-[11px] font-bold"
+      >
+        <!-- Add Skill -->
+        {{ 'profile.skillsSection.title' | translate }}
       </button>
     </div>
 
@@ -23,7 +28,6 @@
       }
     </div>
 
-
     <app-upload-resume />
   </div>
 
@@ -31,24 +35,26 @@
   @if (isModalOpen) {
     <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div class="bg-white rounded-xl p-6 w-full max-w-md">
-        <h2 class="text-lg font-semibold mb-4">Add Skill</h2>
+        <h2 class="text-lg font-semibold mb-4">
+          {{ 'profile.skillsSection.addButton' | translate }}
+        </h2>
 
         <input
           [(ngModel)]="skillInput"
-          placeholder="Enter skill"
           class="w-full border rounded px-3 py-2"
+          [placeholder]="'profile.skillsSection.placeholder' | translate"
         />
 
         <div class="flex justify-end gap-3 mt-6">
           <button (click)="closeModal()" class="border px-4 py-2 rounded hover:bg-gray-100">
-            Cancel
+            {{ 'profile.skillsSection.cancelButton' | translate }}
           </button>
 
           <button
             (click)="addSkill()"
             class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
           >
-            Save
+            {{ 'profile.skillsSection.saveButton' | translate }}
           </button>
         </div>
       </div>

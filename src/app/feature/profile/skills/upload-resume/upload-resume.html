@@ -1,12 +1,14 @@
 <div class="bg-white border-t-2 p-6 max-sm:p-0">
-  <h2 class="mb-4 text-xl font-semibold">Resume</h2>
+  <h2 class="mb-4 text-xl font-semibold">
+     {{ 'profile.resumeSection.title' | translate }}
+  </h2>
 
   <div class="grid grid-cols-2 gap-4 w-full">
     <label
       for="resume-upload"
       class="flex items-center justify-center cursor-pointer rounded border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:border-gray-400 sm:px-4 sm:py-3"
     >
-      Choose PDF
+       {{ 'profile.resumeSection.chooseBtn' | translate }}
     </label>
 
     <input
@@ -27,7 +29,7 @@
           }}
         </span>
       } @else {
-        <span class="text-sm text-gray-400"> No file selected </span>
+        <span class="text-sm text-gray-400"> {{ 'profile.resumeSection.noFile' | translate }} </span>
       }
     </div>
   </div>
@@ -39,7 +41,7 @@
           (click)="viewResume()"
           class="rounded border border-gray-300 px-4 py-2 font-medium transition hover:bg-gray-100 cursor-pointer flex"
         >
-          View
+           {{ 'profile.resumeSection.viewBtn' | translate }}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -58,7 +60,7 @@
           (click)="removeResume()"
           class="rounded bg-red-500 px-4 py-2 font-medium text-white transition hover:bg-red-600 cursor-pointer flex"
         >
-          Remove
+           {{ 'profile.resumeSection.removeBtn' | translate }}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -79,7 +81,7 @@
         (click)="saveResume()"
         class="rounded bg-black px-4 py-2 font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-300 mt-4 ml-auto"
       >
-        Save Resume
+          {{ 'profile.resumeSection.saveBtn' | translate }}
       </button>
     }
   </div>

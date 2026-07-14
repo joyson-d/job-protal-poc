@@ -60,6 +60,23 @@
       "skills": "Compétences",
       "education": "Éducation",
       "experience": "Expérience"
+    },
+
+    "skillsSection": {
+      "title": "Habilidades",
+      "addButton": "Añadir Habilidad",
+      "placeholder": "Ingrese la habilidad",
+      "cancelButton": "Cancelar",
+      "saveButton": "Guardar"
+    },
+
+    "resumeSection": {
+      "title": "Currículum",
+      "chooseBtn": "Elegir PDF",
+      "noFile": "Ningún archivo seleccionado",
+      "viewBtn": "Ver",
+      "removeBtn": "Eliminar",
+      "saveBtn": "Guardar Currículum"
     }
   }
 }

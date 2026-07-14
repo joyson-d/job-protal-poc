@@ -2,10 +2,11 @@ import { Component, computed } from '@angular/core';
 import { ProfileService } from '../../../core/profile/profile-service';
 import { FormsModule } from '@angular/forms';
 import { UploadResume } from './upload-resume/upload-resume';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-skills',
-  imports: [FormsModule, UploadResume],
+  imports: [FormsModule, UploadResume,TranslatePipe],
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })

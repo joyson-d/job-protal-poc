@@ -60,6 +60,23 @@
       "skills": "Skills",
       "education": "Education",
       "experience": "Experience"
+    },
+
+    "skillsSection": {
+      "title": "Skills",
+      "addButton": "Add Skill",
+      "placeholder": "Enter skill",
+      "cancelButton": "Cancel",
+      "saveButton": "Save"
+    },
+
+    "resumeSection": {
+      "title": "Resume",
+      "chooseBtn": "Choose PDF",
+      "noFile": "No file selected",
+      "viewBtn": "View",
+      "removeBtn": "Remove",
+      "saveBtn": "Save Resume"
     }
   }
 }
