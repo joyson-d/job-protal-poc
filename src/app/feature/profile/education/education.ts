@@ -2,10 +2,11 @@ import { Component, computed } from '@angular/core';
 import { ProfileService } from '../../../core/profile/profile-service';
 import { Education as EducationType } from '../../../core/profile/profile.model';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-education',
-  imports: [FormsModule],
+  imports: [FormsModule,TranslatePipe],
   templateUrl: './education.html',
   styleUrl: './education.css',
 })

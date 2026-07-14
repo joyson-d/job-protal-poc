@@ -103,6 +103,23 @@
       "startDateReq": "La fecha de inicio es obligatoria.",
       "endDateReq": "La fecha de finalización es obligatoria.",
       "descriptionReq": "La descripción es obligatoria."
+    },
+
+    "educationSection": {
+      "title": "Educación",
+      "addBtn": "Añadir Educación",
+      "editTitle": "Editar Educación",
+      "cancelBtn": "Cancelar",
+      "saveBtn": "Guardar",
+      "updateBtn": "Actualizar",
+      "institution": "Institución",
+      "degree": "Título",
+      "fieldOfStudy": "Campo de Estudio",
+      "institutionReq": "La institución es obligatoria.",
+      "degreeReq": "El título es obligatorio.",
+      "fieldOfStudyReq": "El campo de estudio es obligatorio.",
+      "startDateReq": "La fecha de inicio es obligatoria.",
+      "endDateReq": "La fecha de finalización es obligatoria."
     }
   }
 }

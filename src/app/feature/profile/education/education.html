@@ -1,13 +1,15 @@
 <div class="bg-white p-6 rounded-xl">
   <!-- HEADER -->
   <div class="flex justify-between items-center">
-    <h2 class="text-xl font-semibold">Education</h2>
+    <h2 class="text-xl font-semibold">
+      {{ 'profile.educationSection.title' | translate }}
+    </h2>
 
     <button
       (click)="openModal()"
       class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 cursor-pointer max-sm:text-[11px] font-bold"
     >
-      Add Education
+      {{ 'profile.educationSection.addBtn' | translate }}
     </button>
   </div>
 
@@ -15,7 +17,12 @@
     <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
       <div class="w-full max-w-lg rounded-xl bg-white p-6">
         <h2 class="mb-4 text-lg font-semibold">
-          {{ editingEducationId ? 'Edit Education' : 'Add Education' }}
+          {{
+            (editingEducationId
+              ? 'profile.educationSection.editTitle'
+              : 'profile.educationSection.addBtn'
+            ) | translate
+          }}
         </h2>
 
         <form #educationForm="ngForm" (ngSubmit)="saveEducation()" class="space-y-3">
@@ -26,12 +33,14 @@
               [(ngModel)]="institution"
               #institutionModel="ngModel"
               required
-              placeholder="Institution"
               class="w-full rounded border px-3 py-2"
+              [placeholder]="'profile.educationSection.institution' | translate"
             />
 
             @if (institutionModel.invalid && institutionModel.touched) {
-              <p class="mt-1 text-sm text-red-600">Institution is required.</p>
+              <p class="mt-1 text-sm text-red-600">
+                {{ 'profile.educationSection.institutionReq' | translate }}
+              </p>
             }
           </div>
 
@@ -42,12 +51,14 @@
               [(ngModel)]="degree"
               #degreeModel="ngModel"
               required
-              placeholder="Degree"
               class="w-full rounded border px-3 py-2"
+              [placeholder]="'profile.educationSection.degree' | translate"
             />
 
             @if (degreeModel.invalid && degreeModel.touched) {
-              <p class="mt-1 text-sm text-red-600">Degree is required.</p>
+              <p class="mt-1 text-sm text-red-600">
+                {{ 'profile.educationSection.degreeReq' | translate }}
+              </p>
             }
           </div>
 
@@ -58,12 +69,14 @@
               [(ngModel)]="fieldOfStudy"
               #fieldOfStudyModel="ngModel"
               required
-              placeholder="Field Of Study"
               class="w-full rounded border px-3 py-2"
+              [placeholder]="'profile.educationSection.fieldOfStudy' | translate"
             />
 
             @if (fieldOfStudyModel.invalid && fieldOfStudyModel.touched) {
-              <p class="mt-1 text-sm text-red-600">Field of study is required.</p>
+              <p class="mt-1 text-sm text-red-600">
+                {{ 'profile.educationSection.fieldOfStudyReq' | translate }}
+              </p>
             }
           </div>
 
@@ -80,7 +93,9 @@
               />
 
               @if (startYearModel.invalid && startYearModel.touched) {
-                <p class="mt-1 text-sm text-red-600">Start date is required.</p>
+                <p class="mt-1 text-sm text-red-600">
+                  {{ 'profile.educationSection.startDateReq' | translate }}
+                </p>
               }
             </div>
 
@@ -95,7 +110,9 @@
               />
 
               @if (endYearModel.invalid && endYearModel.touched) {
-                <p class="mt-1 text-sm text-red-600">End date is required.</p>
+                <p class="mt-1 text-sm text-red-600">
+                  {{ 'profile.educationSection.endDateReq' | translate }}
+                </p>
               }
             </div>
           </div>
@@ -107,7 +124,7 @@
               (click)="closeModal()"
               class="flex-1 rounded border border-gray-300 py-2 hover:bg-gray-100 cursor-pointer"
             >
-              Cancel
+              {{ 'profile.educationSection.cancelBtn' | translate }}
             </button>
 
             <button
@@ -115,7 +132,12 @@
               [disabled]="educationForm.invalid"
               class="flex-1 rounded bg-black py-2 text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
             >
-              {{ editingEducationId ? 'Update' : 'Save' }}
+              {{
+                (editingEducationId
+                  ? 'profile.educationSection.updateBtn'
+                  : 'profile.educationSection.saveBtn'
+                ) | translate
+              }}
             </button>
           </div>
         </form>

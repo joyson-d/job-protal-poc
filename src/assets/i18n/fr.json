@@ -103,6 +103,23 @@
       "startDateReq": "La date de début est obligatoire.",
       "endDateReq": "La date de fin est obligatoire.",
       "descriptionReq": "La description est obligatoire."
+    },
+
+    "educationSection": {
+      "title": "Éducation",
+      "addBtn": "Ajouter une formation",
+      "editTitle": "Modifier la formation",
+      "cancelBtn": "Annuler",
+      "saveBtn": "Enregistrer",
+      "updateBtn": "Mettre à jour",
+      "institution": "Établissement",
+      "degree": "Diplôme",
+      "fieldOfStudy": "Domaine d'études",
+      "institutionReq": "L'établissement est obligatoire.",
+      "degreeReq": "Le diplôme est obligatoire.",
+      "fieldOfStudyReq": "Le domaine d'études est obligatoire.",
+      "startDateReq": "La date de début est obligatoire.",
+      "endDateReq": "La date de fin est obligatoire."
     }
   }
 }

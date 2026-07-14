@@ -103,6 +103,23 @@
       "startDateReq": "Start date is required.",
       "endDateReq": "End date is required.",
       "descriptionReq": "Description is required."
+    },
+
+    "educationSection": {
+      "title": "Education",
+      "addBtn": "Add Education",
+      "editTitle": "Edit Education",
+      "cancelBtn": "Cancel",
+      "saveBtn": "Save",
+      "updateBtn": "Update",
+      "institution": "Institution",
+      "degree": "Degree",
+      "fieldOfStudy": "Field Of Study",
+      "institutionReq": "Institution is required.",
+      "degreeReq": "Degree is required.",
+      "fieldOfStudyReq": "Field of study is required.",
+      "startDateReq": "Start date is required.",
+      "endDateReq": "End date is required."
     }
   }
 }
