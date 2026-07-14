@@ -1,10 +1,11 @@
 import { Component, computed } from '@angular/core';
 import { AuthStore } from '../../../core/auth/auth-store';
 import { AuthService } from '../../../core/auth/auth-service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-overview',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './overview.html',
   styleUrl: './overview.css',
 })

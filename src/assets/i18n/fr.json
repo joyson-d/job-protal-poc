@@ -77,6 +77,13 @@
       "viewBtn": "Voir",
       "removeBtn": "Supprimer",
       "saveBtn": "Enregistrer le CV"
+    },
+
+     "personalInfoSection": {
+      "title": "Informations Personnelles",
+      "fullName": "Nom Complet",
+      "email": "E-mail",
+      "contact": "Contact"
     }
   }
 }

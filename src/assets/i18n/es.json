@@ -77,6 +77,13 @@
       "viewBtn": "Ver",
       "removeBtn": "Eliminar",
       "saveBtn": "Guardar Currículum"
+    },
+
+     "personalInfoSection": {
+      "title": "Información Personal",
+      "fullName": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "contact": "Contacto"
     }
   }
 }

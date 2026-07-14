@@ -77,6 +77,13 @@
       "viewBtn": "View",
       "removeBtn": "Remove",
       "saveBtn": "Save Resume"
+    },
+
+     "personalInfoSection": {
+      "title": "Personal Information",
+      "fullName": "Full Name",
+      "email": "Email",
+      "contact": "Contact"
     }
   }
 }

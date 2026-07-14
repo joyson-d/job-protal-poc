@@ -1,21 +1,17 @@
-<!-- <div class="bg-white p-6 rounded-xl shadow">
-  <h2 class="text-xl font-semibold">Personal Info</h2>
-  <p class="text-gray-500 mt-2">Profile information will go here</p>
-</div> -->
 
 @if(userProfileInfo() ; as user) {
 
 <div class="bg-white rounded shadow-sm p-6">
 
   <h2 class="text-lg font-semibold mb-6">
-    Personal Information
+    {{ 'profile.personalInfoSection.title' | translate }}
   </h2>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
 
     <div class="bg-gray-50 p-4 rounded">
       <p class="text-gray-500 text-xs mb-1">
-        Full Name
+         {{ 'profile.personalInfoSection.fullName' | translate }}
       </p>
 
       <p class="font-medium text-gray-800">
@@ -25,7 +21,7 @@
 
     <div class="bg-gray-50 p-4 rounded">
       <p class="text-gray-500 text-xs mb-1">
-        Email
+        {{ 'profile.personalInfoSection.email' | translate }}
       </p>
 
       <p class="font-medium text-gray-800 ">
@@ -35,7 +31,7 @@
 
     <div class="bg-gray-50 p-4 rounded">
       <p class="text-gray-500 text-xs mb-1">
-        Contact
+         {{ 'profile.personalInfoSection.contact' | translate }}
       </p>
 
       <p class="font-medium text-gray-800">
