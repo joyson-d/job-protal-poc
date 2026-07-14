@@ -4,6 +4,7 @@ import { Header } from './shared/components/header/header';
 import { AuthService } from './core/auth/auth-service';
 import { JobActivityService } from './core/job-activity/job-activity-service';
 import { JobService } from './core/Job/job-service';
+import { SettingsService } from './core/settings/settings-service';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,14 @@ export class App implements OnInit {
     private authService: AuthService,
     private jobActivityService: JobActivityService,
     private jobService: JobService,
+    private settingsService:SettingsService
+
   ) {}
 
   ngOnInit(): void {
     this.authService.initializeCurrentUser();
     this.jobActivityService.initializeCurrentJobActivity();
     this.jobService.fetchJobs();
+    this.settingsService.initialize()
   }
 }

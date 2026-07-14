@@ -2,19 +2,19 @@ import { Injectable, signal } from '@angular/core';
 import { SettingsStorage } from './settings-storage';
 import { AppSettings } from './settings.model';
 import { SettingsStore } from './settings-store';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SettingsService {
   constructor(
+    private readonly translateService: TranslateService,
     private readonly settingsStorage: SettingsStorage,
     private readonly settingsStore: SettingsStore,
-  ) {
-    this.initialize();
-  }
+  ) {}
 
-  private initialize(): void {
+  initialize(): void {
     const storedSettings = this.settingsStorage.getSettings();
 
     if (storedSettings) {
@@ -22,6 +22,8 @@ export class SettingsService {
     } else {
       this.setLanguage('en');
     }
+
+    this.setTranslateLanguage(storedSettings?.language ?? 'en')
   }
 
   setLanguage(language: string): void {
@@ -32,9 +34,15 @@ export class SettingsService {
     this.settingsStore.setSettings(updatedSettings);
 
     this.settingsStorage.setSettings(updatedSettings);
+
+    this.setTranslateLanguage(language);
   }
 
   get currentLanguage() {
     return this.settingsStore.language;
+  }
+
+  setTranslateLanguage(language: string) {
+    this.translateService.use(language);
   }
 }
