@@ -22,8 +22,7 @@ export class JobActivityService {
     if (!userID) return;
 
     const activity = this.getJobActivityById(userID);
-    console.log('activity', activity);
-
+    
     this.store.setActivity(activity ?? null);
   }
 
