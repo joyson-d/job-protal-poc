@@ -63,7 +63,9 @@ export function filteredJobs(
 export function getValidJobType(jobs: Job[], jobType: string) {
   const jobTypes = extractJobTypesFromJobs(jobs);
 
-  return jobTypes.has(jobType) ? jobType : undefined;
+  const result =jobTypes.has(jobType) ? jobType : undefined;
+
+  return result
 }
 
 export function getValidJobLocation(jobs: Job[], location: string) {

@@ -11,7 +11,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-jobs',
-  imports: [JobCard, JobPaginationUI, Loader,TranslatePipe],
+  imports: [JobCard, JobPaginationUI, Loader, TranslatePipe],
   templateUrl: './jobs.html',
   styleUrl: './jobs.css',
   standalone: true,
@@ -23,24 +23,7 @@ export class Jobs {
     private readonly route: ActivatedRoute,
     private readonly pagination: JobPagination,
     private readonly jobService: JobService,
-  ) {
-    const params = this.route.snapshot.queryParamMap;
-
-    const searchParams = params.get('search') ?? '';
-    const locationParams = params.get('location') ?? 'all';
-    const jobTypesParams = params.getAll('type');
-
-    const minSalaryParams = Number(params.get('minSalary'));
-    const maxSalaryParams = Number(params.get('maxSalary'));
-
-    this.filter.initializeFilter(
-      searchParams,
-      locationParams,
-      jobTypesParams,
-      minSalaryParams,
-      maxSalaryParams,
-    );
-  }
+  ) {}
 
   formatJobType = formatJobType;
 
