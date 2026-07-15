@@ -25,6 +25,8 @@ export class AuthService {
     const currentUser = this.getCurrentUserById(userSession.userId);
 
     this.authStore.initialize(userSession, currentUser);
+
+    return true
   }
 
   register(user: Omit<User, 'id' | 'status' | 'profile'>) {

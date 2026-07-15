@@ -22,7 +22,7 @@ export class JobActivityService {
     if (!userID) return;
 
     const activity = this.getJobActivityById(userID);
-    
+
     this.store.setActivity(activity ?? null);
   }
 
@@ -37,7 +37,12 @@ export class JobActivityService {
       savedJobs: [],
     };
 
-    this.update(activity);
+    const allActivity = this.store.currentActivity();
+
+    const newActivitiesList = allActivity ? [allActivity, activity] : [activity];
+
+    this.storage.saveAll(newActivitiesList);
+    this.store.setActivity(activity);
   }
 
   toggleSaveJob(jobId: number) {
@@ -53,6 +58,7 @@ export class JobActivityService {
         ? current.savedJobs.filter((id) => id !== jobId)
         : [...current.savedJobs, jobId],
     };
+
 
     this.update(updated);
   }
@@ -80,10 +86,8 @@ export class JobActivityService {
   private update(activity: JobActivity) {
     const all = this.storage.getAll();
 
-    const updated = all
-      ? all.map((a) => (a.userId === activity.userId ? activity : a))
-      : [activity];
-
+    const updated = all?.map((a) => (a.userId === activity.userId ? activity : a)) ?? [] 
+   
     this.storage.saveAll(updated);
     this.store.setActivity(activity);
   }

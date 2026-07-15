@@ -20,16 +20,20 @@ export class App implements OnInit {
     private authService: AuthService,
     private jobActivityService: JobActivityService,
     private jobService: JobService,
-    private settingsService:SettingsService,
+    private settingsService: SettingsService,
     private filter: JobFilter,
-
   ) {}
 
   ngOnInit(): void {
-    this.authService.initializeCurrentUser();
-    this.jobActivityService.initializeCurrentJobActivity();
     this.jobService.fetchJobs();
-    this.settingsService.initialize()
-    this.filter.initializeFilter()
+    this.filter.initializeFilter();
+    const isAuthenticated = this.authService.initializeCurrentUser();
+
+    if (isAuthenticated) {
+      console.log('auth work');
+      
+      this.jobActivityService.initializeCurrentJobActivity();
+      this.settingsService.initialize();
+    }
   }
 }
