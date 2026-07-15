@@ -145,5 +145,38 @@
   "jobCard": {
     "viewDetails": "View Details",
     "logoFallbackText": "Logo"
+  },
+
+  "jobDetails": {
+    "back": "Back",
+    "location": "Location",
+    "salary": "Salary",
+    "notSpecified": "Not specified",
+    "type": "Type",
+    "aboutRole": "About this role",
+    "logoText": "Logo"
+  },
+
+  "applyJob": {
+    "applyNow": "Apply Now",
+    "applied": "Applied ✓",
+    "modalTitle": "Apply for Job",
+    "totalExp": "Total Experience (Years)",
+    "totalExpPlaceholder": "e.g. 3",
+    "totalExpReq": "Total experience is required.",
+    "relevantExp": "Relevant Experience (Years)",
+    "relevantExpPlaceholder": "e.g. 2",
+    "relevantExpReq": "Relevant experience is required.",
+    "currentLocation": "Current Location",
+    "locationPlaceholder": "e.g. Bangalore",
+    "locationReq": "Current location is required.",
+    "noticePeriod": "Notice Period",
+    "noticePeriodReq": "Please select a notice period.",
+    "cancelBtn": "Cancel",
+    "applyBtn": "Apply",
+    "noticeOptions": {
+      "immediate": "Immediate",
+      "days": "Days"
+    }
   }
 }

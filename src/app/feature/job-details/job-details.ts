@@ -8,10 +8,11 @@ import { SavedJobButton } from '../../shared/components/saved-job-button/saved-j
 import { JobService } from '../../core/Job/job-service';
 import { ApplyJobButton } from './apply-job-button/apply-job-button';
 import { formatJobType } from '../../shared/utils/formatJobType';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-job-details',
-  imports: [RouterLink, SavedJobButton, ApplyJobButton],
+  imports: [RouterLink, SavedJobButton, ApplyJobButton, TranslatePipe],
   templateUrl: './job-details.html',
   styleUrl: './job-details.css',
 })

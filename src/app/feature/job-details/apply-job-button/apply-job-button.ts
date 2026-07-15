@@ -7,10 +7,11 @@ import {
   NoticePeriodType,
 } from '../../../core/job-applications/job-application.model';
 import { AuthStore } from '../../../core/auth/auth-store';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-apply-job-button',
-  imports: [FormsModule],
+  imports: [FormsModule,TranslatePipe],
   templateUrl: './apply-job-button.html',
   styleUrl: './apply-job-button.css',
 })

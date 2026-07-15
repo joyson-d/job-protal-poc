@@ -145,5 +145,38 @@
   "jobCard": {
     "viewDetails": "Voir les détails",
     "logoFallbackText": "Logo"
+  },
+
+  "jobDetails": {
+    "back": "Retour",
+    "location": "Lieu",
+    "salary": "Salaire",
+    "notSpecified": "Non spécifié",
+    "type": "Type",
+    "aboutRole": "À propos de ce poste",
+    "logoText": "Logo"
+  },
+
+  "applyJob": {
+    "applyNow": "Postuler maintenant",
+    "applied": "Postulé ✓",
+    "modalTitle": "Postuler à l'offre",
+    "totalExp": "Expérience totale (années)",
+    "totalExpPlaceholder": "ex. 3",
+    "totalExpReq": "L'expérience totale est obligatoire.",
+    "relevantExp": "Expérience pertinente (années)",
+    "relevantExpPlaceholder": "ex. 2",
+    "relevantExpReq": "L'expérience pertinente est obligatoire.",
+    "currentLocation": "Localisation actuelle",
+    "locationPlaceholder": "ex. Paris",
+    "locationReq": "La localisation actuelle est obligatoire.",
+    "noticePeriod": "Préavis",
+    "noticePeriodReq": "Veuillez sélectionner un préavis.",
+    "cancelBtn": "Annuler",
+    "applyBtn": "Postuler",
+    "noticeOptions": {
+      "immediate": "Immédiat",
+      "days": "Jours"
+    }
   }
 }

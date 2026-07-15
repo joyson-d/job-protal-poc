@@ -145,5 +145,38 @@
   "jobCard": {
     "viewDetails": "Ver Detalles",
     "logoFallbackText": "Logo"
+  },
+
+  "jobDetails": {
+    "back": "Volver",
+    "location": "Ubicación",
+    "salary": "Salario",
+    "notSpecified": "No especificado",
+    "type": "Tipo",
+    "aboutRole": "Sobre este puesto",
+    "logoText": "Logo"
+  },
+
+  "applyJob": {
+    "applyNow": "Postular Ahora",
+    "applied": "Postulado ✓",
+    "modalTitle": "Postular al Empleo",
+    "totalExp": "Experiencia Total (Años)",
+    "totalExpPlaceholder": "ej. 3",
+    "totalExpReq": "La experiencia total es obligatoria.",
+    "relevantExp": "Experiencia Relevante (Años)",
+    "relevantExpPlaceholder": "ej. 2",
+    "relevantExpReq": "La experiencia relevante es obligatoria.",
+    "currentLocation": "Ubicación Actual",
+    "locationPlaceholder": "ej. Madrid",
+    "locationReq": "La ubicación actual es obligatoria.",
+    "noticePeriod": "Periodo de Preaviso",
+    "noticePeriodReq": "Por favor seleccione un periodo de preaviso.",
+    "cancelBtn": "Cancelar",
+    "applyBtn": "Postular",
+    "noticeOptions": {
+      "immediate": "Inmediato",
+      "days": "Días"
+    }
   }
 }

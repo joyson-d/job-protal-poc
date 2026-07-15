@@ -1,8 +1,8 @@
 @if (job(); as currentJob) {
   <div class="bg-gray-50 min-h-screen py-10 px-4">
-    <div class="max-w-4xl mx-auto bg-white rounded shadow  p-6">
+    <div class="max-w-4xl mx-auto bg-white rounded shadow p-6">
       <a routerLink="/" class="inline-flex items-center mb-6 text-gray-600 hover:text-black">
-        ← Back
+        ← {{ 'jobDetails.back' | translate }}
       </a>
 
       @if (isUserAuthenticated) {
@@ -28,10 +28,12 @@
             </p>
 
             <p class="text-sm text-gray-500 max-sm:text-sm">
-             • {{ currentJob.candidate_required_location }}
+              • {{ currentJob.candidate_required_location }}
             </p>
 
-            <span class="inline-block mt-2 bg-gray-100 px-3 py-1 rounded text-sm capitalize max-sm:text-sm">
+            <span
+              class="inline-block mt-2 bg-gray-100 px-3 py-1 rounded text-sm capitalize max-sm:text-sm"
+            >
               {{ formatJobType(currentJob.job_type) }}
             </span>
           </div>
@@ -48,17 +50,17 @@
 
       <div class="border-t pt-6 mt-6 space-y-3">
         <p>
-          <strong>Location:</strong>
+          <strong>{{ 'jobDetails.location' | translate }}:</strong>
           {{ currentJob.candidate_required_location }}
         </p>
 
         <p>
-          <strong>Salary:</strong>
-          {{ currentJob.salary || 'Not specified' }}
+          <strong>{{ 'jobDetails.salary' | translate }}:</strong>
+          {{ currentJob.salary || ('jobDetails.notSpecified' | translate) }}
         </p>
 
         <p>
-          <strong>Type:</strong>
+          <strong>{{ 'jobDetails.type' | translate }}:</strong>
           {{ currentJob.job_type }}
         </p>
       </div>
@@ -76,7 +78,9 @@
       <!-- Description -->
 
       <div class="border-t mt-6 pt-6">
-        <h2 class="text-lg font-semibold mb-4">About this role</h2>
+        <h2 class="text-lg font-semibold mb-4">
+          {{ 'jobDetails.aboutRole' | translate }}
+        </h2>
 
         <div class="text-justify" [innerHTML]="currentJob.description"></div>
       </div>

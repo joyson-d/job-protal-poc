@@ -1,16 +1,3 @@
-<!-- <button
-  (click)="apply()"
-  [disabled]="isApplied()"
-  class="px-4 py-2 rounded text-white"
-  [class.text-white]="!isApplied()"
-  [class.bg-black]="!isApplied()"
-  [class.bg-gray-300]="isApplied()"
-  [class.text-gray-600]="isApplied()"
->
-  {{ isApplied() ? 'Applied ✓' : 'Apply Now' }}
-</button> -->
-
-<!-- APPLY BUTTON -->
 <button
   (click)="openModal()"
   [disabled]="isApplied()"
@@ -19,19 +6,23 @@
   [class.bg-gray-300]="isApplied()"
   [class.text-gray-600]="isApplied()"
 >
-  {{ isApplied() ? 'Applied ✓' : 'Apply Now' }}
+  {{ (isApplied() ? 'applyJob.applied' : 'applyJob.applyNow') | translate }}
 </button>
 
 <!-- MODAL -->
 @if (isModalOpen()) {
   <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-2">
     <div class="w-full max-w-md rounded bg-white p-6">
-      <h2 class="mb-5 text-xl font-semibold">Apply for Job</h2>
+      <h2 class="mb-5 text-xl font-semibold">
+        {{ 'applyJob.modalTitle' | translate }}
+      </h2>
 
       <form #applicationForm="ngForm" (ngSubmit)="apply()" class="space-y-5">
         <!-- Total Experience -->
         <div>
-          <label class="mb-1 block text-sm"> Total Experience (Years) </label>
+          <label class="mb-1 block text-sm">
+            {{ 'applyJob.totalExp' | translate }}
+          </label>
 
           <input
             type="number"
@@ -42,17 +33,21 @@
             (ngModelChange)="totalExperience.set($event)"
             #totalExperienceModel="ngModel"
             class="w-full rounded border px-3 py-2"
-            placeholder="e.g. 3"
+            [placeholder]="'applyJob.totalExpPlaceholder' | translate"
           />
 
           @if (totalExperienceModel.invalid && totalExperienceModel.touched) {
-            <p class="mt-1 text-sm text-red-600">Total experience is required.</p>
+            <p class="mt-1 text-sm text-red-600">
+              {{ 'applyJob.totalExpReq' | translate }}
+            </p>
           }
         </div>
 
         <!-- Relevant Experience -->
         <div>
-          <label class="mb-1 block text-sm"> Relevant Experience (Years) </label>
+          <label class="mb-1 block text-sm">
+            {{ 'applyJob.relevantExp' | translate }}
+          </label>
 
           <input
             type="number"
@@ -63,17 +58,21 @@
             (ngModelChange)="relevantExperience.set($event)"
             #relevantExperienceModel="ngModel"
             class="w-full rounded border px-3 py-2"
-            placeholder="e.g. 2"
+            [placeholder]="'applyJob.relevantExpPlaceholder' | translate"
           />
 
           @if (relevantExperienceModel.invalid && relevantExperienceModel.touched) {
-            <p class="mt-1 text-sm text-red-600">Relevant experience is required.</p>
+            <p class="mt-1 text-sm text-red-600">
+              {{ 'applyJob.relevantExpReq' | translate }}
+            </p>
           }
         </div>
 
         <!-- Current Location -->
         <div>
-          <label class="mb-1 block text-sm"> Current Location </label>
+          <label class="mb-1 block text-sm">
+            {{ 'applyJob.currentLocation' | translate }}
+          </label>
 
           <input
             type="text"
@@ -83,17 +82,21 @@
             (ngModelChange)="currentLocation.set($event)"
             #currentLocationModel="ngModel"
             class="w-full rounded border px-3 py-2"
-            placeholder="e.g. Bangalore"
+            [placeholder]="'applyJob.locationPlaceholder' | translate"
           />
 
           @if (currentLocationModel.invalid && currentLocationModel.touched) {
-            <p class="mt-1 text-sm text-red-600">Current location is required.</p>
+            <p class="mt-1 text-sm text-red-600">
+              {{ 'applyJob.locationReq' | translate }}
+            </p>
           }
         </div>
 
         <!-- Notice Period -->
         <div>
-          <label class="mb-1 block text-sm"> Notice Period </label>
+          <label class="mb-1 block text-sm">
+            {{ 'applyJob.noticePeriod' | translate }}
+          </label>
 
           <select
             name="noticePeriod"
@@ -103,15 +106,19 @@
             #noticePeriodModel="ngModel"
             class="w-full rounded border px-3 py-2"
           >
-            <option value="0">Immediate</option>
-            <option value="15">15 Days</option>
-            <option value="30">30 Days</option>
-            <option value="60">60 Days</option>
-            <option value="90">90 Days</option>
+            <option value="0">
+              {{ 'applyJob.noticeOptions.immediate' | translate }}
+            </option>
+            <option value="15">15 {{ 'applyJob.noticeOptions.days' | translate }}</option>
+            <option value="30">30 {{ 'applyJob.noticeOptions.days' | translate }}</option>
+            <option value="60">60 {{ 'applyJob.noticeOptions.days' | translate }}</option>
+            <option value="90">90 {{ 'applyJob.noticeOptions.days' | translate }}</option>
           </select>
 
           @if (noticePeriodModel.invalid && noticePeriodModel.touched) {
-            <p class="mt-1 text-sm text-red-600">Please select a notice period.</p>
+            <p class="mt-1 text-sm text-red-600">
+              {{ 'applyJob.noticePeriodReq' | translate }}
+            </p>
           }
         </div>
 
@@ -122,7 +129,7 @@
             (click)="closeModal()"
             class="flex-1 rounded border py-2 hover:bg-gray-100"
           >
-            Cancel
+            {{ 'applyJob.cancelBtn' | translate }}
           </button>
 
           <button
@@ -130,7 +137,7 @@
             [disabled]="applicationForm.invalid"
             class="flex-1 rounded bg-black py-2 text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Apply
+            {{ 'applyJob.applyBtn' | translate }}
           </button>
         </div>
       </form>

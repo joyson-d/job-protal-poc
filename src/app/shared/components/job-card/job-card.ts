@@ -10,7 +10,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-job-card',
-  imports: [RouterLink,SavedJobButton,TranslatePipe],
+  imports: [RouterLink,SavedJobButton,TranslatePipe,],
   templateUrl: './job-card.html',
   styleUrl: './job-card.css',
     standalone:true
