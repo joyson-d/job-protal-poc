@@ -6,10 +6,11 @@ import { RouterLink } from '@angular/router';
 import { SavedJobButton } from '../../../shared/components/saved-job-button/saved-job-button';
 import { AuthService } from '../../../core/auth/auth-service';
 import { formatJobType } from '../../utils/formatJobType';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-job-card',
-  imports: [RouterLink,SavedJobButton],
+  imports: [RouterLink,SavedJobButton,TranslatePipe],
   templateUrl: './job-card.html',
   styleUrl: './job-card.css',
     standalone:true

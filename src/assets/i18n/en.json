@@ -140,5 +140,10 @@
   "pagination": {
     "previous": "Previous",
     "next": "Next"
+  },
+
+  "jobCard": {
+    "viewDetails": "View Details",
+    "logoFallbackText": "Logo"
   }
 }
