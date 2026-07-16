@@ -9,17 +9,14 @@ import {
   getValidJobLocation,
   getValidJobType,
 } from '../../shared/utils/job.utils';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ParamMap } from '@angular/router';
 import { DEFAULT_MAX_SALARY_FILTER, DEFAULT_MIN_SALARY_FILTER } from '../constant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobFilter {
-  constructor(
-    private readonly jobService: JobService,
-    private readonly route: ActivatedRoute,
-  ) {}
+  constructor(private readonly jobService: JobService) {}
 
   readonly jobs = computed(() => this.jobService.jobList());
 
@@ -31,9 +28,7 @@ export class JobFilter {
     DEFAULT_MAX_SALARY_FILTER,
   ]);
 
-  initializeFilter() {
-    const params = this.route.snapshot.queryParamMap;
-
+  initializeFilter(params: ParamMap) {
     const searchParams = params.get('search') ?? '';
     const locationParams = params.get('location') ?? 'all';
     const jobTypesParams = params.getAll('type');
@@ -45,7 +40,7 @@ export class JobFilter {
 
     const validJobTypes = jobTypesParams.map((jobType) => getValidJobType(jobList, jobType));
 
-    // console.log({ validJobTypes, jobTypesParams });
+    console.log({ validJobTypes, jobTypesParams, locationParams });
 
     const validatedJobTypeParams = validJobTypes.filter(
       (jobType): jobType is string => jobType !== undefined,

@@ -24,7 +24,10 @@ export class Jobs {
     private readonly route: ActivatedRoute,
     private readonly pagination: JobPagination,
     private readonly jobService: JobService,
-  ) {}
+  ) {
+    const params = this.route.snapshot.queryParamMap;
+    this.filter.initializeFilter(params);
+  }
 
   formatJobType = formatJobType;
 
@@ -115,12 +118,12 @@ export class Jobs {
   private updateQueryParams(): void {
     const [minSalary, maxSalary] = this.salaryRange();
 
-    const {max,min} = this.salaryBounds()
-    
-    console.log({
-      minSalary, maxSalary
-    });
+    const { max, min } = this.salaryBounds();
 
+    console.log({
+      minSalary,
+      maxSalary,
+    });
 
     const minSalaryValue =
       minSalary === DEFAULT_MIN_SALARY_FILTER || minSalary === min ? null : minSalary;

@@ -21,13 +21,11 @@ export class App implements OnInit {
     private jobActivityService: JobActivityService,
     private jobService: JobService,
     private settingsService: SettingsService,
-    private filter: JobFilter,
   ) {}
 
   ngOnInit(): void {
     this.jobService.fetchJobs();
     const isAuthenticated = this.authService.initializeCurrentUser();
-    this.filter.initializeFilter();
 
     if (isAuthenticated) {
       
