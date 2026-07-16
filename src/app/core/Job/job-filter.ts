@@ -39,7 +39,7 @@ export class JobFilter {
 
     const validJobTypes = jobTypesParams.map((jobType) => getValidJobType(jobList, jobType));
 
-    console.log({ validJobTypes, jobTypesParams, locationParams });
+    // console.log({ validJobTypes, jobTypesParams, locationParams });
 
     const validatedJobTypeParams = validJobTypes.filter(
       (jobType): jobType is string => jobType !== undefined,

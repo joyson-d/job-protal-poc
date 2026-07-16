@@ -120,10 +120,10 @@ export class Jobs {
 
     const { max, min } = this.salaryBounds();
 
-    console.log({
-      minSalary,
-      maxSalary,
-    });
+    // console.log({
+    //   minSalary,
+    //   maxSalary,
+    // });
 
     const minSalaryValue =
       minSalary === DEFAULT_MIN_SALARY_FILTER || minSalary === min ? null : minSalary;
