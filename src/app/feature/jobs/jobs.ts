@@ -8,6 +8,7 @@ import { formatJobType } from '../../shared/utils/formatJobType';
 import { JobService } from '../../core/Job/job-service';
 import { Loader } from './loader/loader';
 import { TranslatePipe } from '@ngx-translate/core';
+import { DEFAULT_MAX_SALARY_FILTER, DEFAULT_MIN_SALARY_FILTER } from '../../core/constant';
 
 @Component({
   selector: 'app-jobs',
@@ -114,8 +115,18 @@ export class Jobs {
   private updateQueryParams(): void {
     const [minSalary, maxSalary] = this.salaryRange();
 
-    const minSalaryVal = minSalary === this.salaryBounds().min ? null : minSalary;
-    const maxSalaryVal = maxSalary === this.salaryBounds().max ? null : maxSalary;
+    const {max,min} = this.salaryBounds()
+    
+    console.log({
+      minSalary, maxSalary
+    });
+
+
+    const minSalaryValue =
+      minSalary === DEFAULT_MIN_SALARY_FILTER || minSalary === min ? null : minSalary;
+
+    const maxSalaryValue =
+      maxSalary === DEFAULT_MAX_SALARY_FILTER || maxSalary === max ? null : maxSalary;
 
     this.router.navigate([], {
       relativeTo: this.route,
@@ -123,8 +134,8 @@ export class Jobs {
         search: this.search() || null,
         location: this.location() === 'all' ? null : this.location(),
         type: this.jobTypes().length ? this.jobTypes() : null,
-        minSalary: minSalaryVal,
-        maxSalary: maxSalaryVal,
+        minSalary: minSalaryValue,
+        maxSalary: maxSalaryValue,
       },
       queryParamsHandling: 'merge',
     });
