@@ -3,7 +3,6 @@ import { JobService } from './job-service';
 import {
   extractJobTypesFromJobs,
   extractLocationFromJob,
-  extractSalary,
   extractSalaryFromJobs,
   filteredJobs,
   getValidJobLocation,
