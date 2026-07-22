@@ -5,6 +5,7 @@ import { SavedJobs } from './feature/saved-jobs/saved-jobs';
 import { authGuard, guestGuard } from './core/auth/auth-guard';
 import { Login } from './feature/auth/login/login';
 import { Register } from './feature/auth/register/register';
+import { AppliedJob } from './feature/applied-job/applied-job';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,11 @@ export const routes: Routes = [
   {
     path: 'saved-jobs',
     component: SavedJobs,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'applied-jobs',
+    component: AppliedJob,
     canActivate: [authGuard],
   },
 ];

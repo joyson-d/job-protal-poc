@@ -82,6 +82,10 @@ export class JobActivityService {
     return this.getSavedJobs();
   }
 
+  get getAppliedJobsList(){
+    return this.getAppliedJobs()
+  }
+
   // PRIVATE sync helper
   private update(activity: JobActivity) {
     const all = this.storage.getAll();
@@ -106,5 +110,15 @@ export class JobActivityService {
     const savedSet = new Set(this.store.savedJobs());
 
     return jobs.filter((job) => savedSet.has(job.id));
+  }
+
+  private getAppliedJobs(){
+    const jobs = this.jobStore.jobs();
+
+    const appliedJobSet = new Set(this.store.appliedJobs());
+
+    return jobs.filter(
+      (job) => appliedJobSet.has(job.id)
+    )
   }
 }

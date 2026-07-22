@@ -1,7 +1,5 @@
 import { Component, computed, OnInit } from '@angular/core';
-import { Job } from '../../core/Job/jobs.model';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { JobsStoreService } from '../../core/Job/jobs-store';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { getImageUrl } from '../../shared/utils/getImageUrl';
 import { AuthService } from '../../core/auth/auth-service';
 import { SavedJobButton } from '../../shared/components/saved-job-button/saved-job-button';
@@ -9,6 +7,8 @@ import { JobService } from '../../core/Job/job-service';
 import { ApplyJobButton } from './apply-job-button/apply-job-button';
 import { formatJobType } from '../../shared/utils/formatJobType';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Location } from '@angular/common';
+import { NavigationService } from '../../core/shared/navigation';
 
 @Component({
   selector: 'app-job-details',
@@ -23,6 +23,8 @@ export class JobDetails {
     private route: ActivatedRoute,
     private authService: AuthService,
     private jobService: JobService,
+    private navigationService: NavigationService,
+    private router: Router,
   ) {}
 
   formatJobType = formatJobType;
@@ -41,5 +43,15 @@ export class JobDetails {
 
   get isUserAuthenticated() {
     return this.authService.isAuthenticated;
+  }
+
+  goBack() {
+    const previousUrl = this.navigationService.getPreviousUrl();
+    
+    if (previousUrl) {
+      this.router.navigateByUrl(previousUrl);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }
