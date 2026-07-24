@@ -1,0 +1,24 @@
+<section class="mx-auto max-w-5xl px-4 py-8">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">
+      {{ 'interview-question.interview-preparation' | translate }}
+    </h1>
+
+    <p class="mt-2 text-gray-600">
+      {{ 'interview-question.practice-questions-desc' | translate }}
+    </p>
+
+    <div
+      class="mt-4 inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700"
+    >
+      {{ questions().length + ' ' + ('interview-question.questions' | translate) }}
+    </div>
+  </div>
+
+  <!-- Questions -->
+  <div class="space-y-4 gap-4">
+    @for (question of questions(); track question.id) {
+      <app-qna-card [question]="question" />
+    }
+  </div>
+</section>

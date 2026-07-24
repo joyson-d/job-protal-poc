@@ -46,6 +46,7 @@
     "profile": "Perfil",
     "savedJobs": "Empleos Guardados",
     "appliedJobs": "Empleos solicitados",
+    "interview-question": "Pregunta de entrevista",
     "logout": "Cerrar Sesión"
   },
 
@@ -179,5 +180,11 @@
       "immediate": "Inmediato",
       "days": "Días"
     }
+  },
+
+  "interview-question": {
+    "interview-preparation": "Preparación para la entrevista",
+    "practice-questions-desc": "Practica preguntas comunes de entrevista y revela las respuestas cuando estés listo.",
+    "questions": "Preguntas"
   }
 }

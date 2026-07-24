@@ -46,6 +46,7 @@
     "profile": "Profile",
     "savedJobs": "Saved Jobs",
     "appliedJobs":"Applied Jobs",
+    "interview-question":"Interview Question",
     "logout": "Logout"
   },
 
@@ -179,5 +180,11 @@
       "immediate": "Immediate",
       "days": "Days"
     }
+  },
+
+  "interview-question":{
+    "interview-preparation": "Interview Preparation",
+    "practice-questions-desc": "Practice common interview questions and reveal answers when you're ready.",
+    "questions": "Questions"
   }
 }

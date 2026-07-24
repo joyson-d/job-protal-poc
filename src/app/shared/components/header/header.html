@@ -101,7 +101,6 @@
             class="block px-4 py-3 hover:bg-gray-100"
           >
             <div class="flex gap-4">
-
               <svg
                 width="24"
                 height="24"
@@ -137,6 +136,45 @@
               </svg>
 
               {{ 'nav.appliedJobs' | translate }}
+            </div>
+          </a>
+
+          <a
+            routerLink="/interview-question"
+            (click)="closeMenu()"
+            class="block px-4 py-3 hover:bg-gray-100"
+          >
+            <div class="flex gap-4">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://w3.org"
+                aria-hidden="true"
+              >
+                <!-- Speech Bubble / Discussion Container -->
+                <path
+                  d="M21 11.5C21 15.6421 17.1941 19 12.5 19C10.9855 19 9.56381 18.514 8.34964 17.6698L3 19L4.65487 14.8628C3.60676 13.9167 3 12.7667 3 11.5C3 7.35786 6.80589 4 11.5 4C16.1941 4 21 7.35786 21 11.5Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+
+                <!-- Question Mark Symbol -->
+                <path
+                  d="M10.5 9C10.5 7.89543 11.3954 7 12.5 7C13.6046 7 14.5 7.89543 14.5 9C14.5 10.1046 13.5 10.5 12.5 11.5V13"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+
+                <!-- Question Mark Dot -->
+                <circle cx="12.5" cy="15.5" r="1" fill="currentColor" />
+              </svg>
+
+              {{ 'nav.interview-question' | translate }}
             </div>
           </a>
 

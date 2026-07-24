@@ -1,0 +1,244 @@
+[
+  {
+    "id": 1,
+    "category": "JavaScript",
+    "difficulty": "Easy",
+    "question": "What is the difference between 'let' and 'var'?",
+    "answer": "'let' is block-scoped and does not hoist with an initialized value, while 'var' is function-scoped and hoisted to the top of its scope."
+  },
+  {
+    "id": 2,
+    "category": "JavaScript",
+    "difficulty": "Easy",
+    "question": "What are the different data types present in JavaScript?",
+    "answer": "Primitive types (String, Number, BigInt, Boolean, Undefined, Null, Symbol) and Non-primitive types (Object)."
+  },
+  {
+    "id": 3,
+    "category": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What is a closure in JavaScript?",
+    "answer": "A closure is the combination of a function bundled together with references to its surrounding state (the lexical environment)."
+  },
+  {
+    "id": 4,
+    "category": "JavaScript",
+    "difficulty": "Medium",
+    "question": "Explain the concept of hoisting.",
+    "answer": "Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope before code execution."
+  },
+  {
+    "id": 5,
+    "category": "JavaScript",
+    "difficulty": "Easy",
+    "question": "What is the difference between '==' and '==='?",
+    "answer": "'==' compares values for equality after performing type coercion, whereas '===' compares both the value and the type strictly."
+  },
+  {
+    "id": 6,
+    "category": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What is the purpose of 'this' keyword in JavaScript?",
+    "answer": "The 'this' keyword refers to the object that the function is currently executing or belonging to."
+  },
+  {
+    "id": 7,
+    "category": "JavaScript",
+    "difficulty": "Hard",
+    "question": "What is the Event Loop and how does it work?",
+    "answer": "The Event Loop monitors the Call Stack and the Callback Queue. If the Call Stack is empty, it pushes the first task from the queue onto the stack."
+  },
+  {
+    "id": 8,
+    "category": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What is a Promise and what are its states?",
+    "answer": "A Promise is an object representing the eventual completion or failure of an asynchronous operation. Its states are pending, fulfilled, or rejected."
+  },
+  {
+    "id": 9,
+    "category": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What is the difference between call(), apply(), and bind()?",
+    "answer": "call() invokes a function with arguments listed individually. apply() invokes it with arguments as an array. bind() returns a new function with 'this' bound permanently."
+  },
+  {
+    "id": 10,
+    "category": "JavaScript",
+    "difficulty": "Hard",
+    "question": "What is prototypal inheritance?",
+    "answer": "It is a feature where objects inherit properties and methods from other objects via a prototype chain, rather than using traditional blueprint classes."
+  },
+
+  {
+    "id": 11,
+    "category": "React",
+    "difficulty": "Easy",
+    "question": "What is the Virtual DOM?",
+    "answer": "The Virtual DOM is a lightweight, in-memory representation of the real DOM. React updates it first to calculate changes efficiently before updating the real browser UI."
+  },
+  {
+    "id": 12,
+    "category": "React",
+    "difficulty": "Easy",
+    "question": "What is the difference between state and props?",
+    "answer": "State holds data that can change inside a component and is managed locally. Props are read-only properties passed down from a parent component."
+  },
+  {
+    "id": 13,
+    "category": "React",
+    "difficulty": "Medium",
+    "question": "What is the purpose of useEffect hook?",
+    "answer": "The useEffect hook allows you to perform side effects in functional components, such as data fetching, subscriptions, or manually changing the DOM."
+  },
+  {
+    "id": 14,
+    "category": "React",
+    "difficulty": "Medium",
+    "question": "Why do we need 'keys' in React lists?",
+    "answer": "Keys help React identify which items have changed, been added, or been removed, optimizing the rendering performance of dynamic lists."
+  },
+  {
+    "id": 15,
+    "category": "React",
+    "difficulty": "Easy",
+    "question": "What are React Hooks?",
+    "answer": "Hooks are functions that let you 'hook into' React state and lifecycle features from functional components without writing a class."
+  },
+  {
+    "id": 16,
+    "category": "React",
+    "difficulty": "Medium",
+    "question": "What is Redux?",
+    "answer": "Redux is an open-source JavaScript library for managing and centralizing application state, commonly used with libraries like React or Angular."
+  },
+  {
+    "id": 17,
+    "category": "React",
+    "difficulty": "Hard",
+    "question": "What is React Context API?",
+    "answer": "Context provides a way to pass data through the component tree without having to pass props down manually at every level (solving prop drilling)."
+  },
+  {
+    "id": 18,
+    "category": "React",
+    "difficulty": "Medium",
+    "question": "What is the difference between Functional and Class components?",
+    "answer": "Class components use ES6 classes and manage state via 'this.state'. Functional components are plain JS functions that manage state using Hooks."
+  },
+  {
+    "id": 19,
+    "category": "React",
+    "difficulty": "Medium",
+    "question": "What does React.memo do?",
+    "answer": "React.memo is a higher-order component that performance-optimizes functional components by memoizing the result to skip unnecessary re-renders if props don't change."
+  },
+  {
+    "id": 20,
+    "category": "React",
+    "difficulty": "Hard",
+    "question": "What are custom hooks?",
+    "answer": "Custom hooks are JavaScript functions whose names start with 'use' and that can call other hooks, allowing you to extract and reuse component stateful logic."
+  },
+
+
+  {
+    "id": 21,
+    "category": "Web Development",
+    "difficulty": "Easy",
+    "question": "What does HTTP stand for and what is its purpose?",
+    "answer": "Hypertext Transfer Protocol. It is the fundamental protocol used to transfer data across the web between a client browser and a web server."
+  },
+  {
+    "id": 22,
+    "category": "Web Development",
+    "difficulty": "Medium",
+    "question": "What is the difference between GET and POST methods?",
+    "answer": "GET requests data from a specified resource and appends data to the URL. POST submits data to be processed to a specified resource inside the request body."
+  },
+  {
+    "id": 23,
+    "category": "Web Development",
+    "difficulty": "Easy",
+    "question": "What is CORS?",
+    "answer": "Cross-Origin Resource Sharing is a browser security mechanism that restricts HTTP requests initiated from scripts to a different domain than the one that served it."
+  },
+  {
+    "id": 24,
+    "category": "Web Development",
+    "difficulty": "Medium",
+    "question": "What is the purpose of status code 404?",
+    "answer": "The HTTP 404 Not Found client error response code indicates that the server cannot find the requested resource URL."
+  },
+  {
+    "id": 25,
+    "category": "Web Development",
+    "difficulty": "Easy",
+    "question": "What is localStorage vs sessionStorage?",
+    "answer": "localStorage data persists indefinitely even after the browser window is closed. sessionStorage data is wiped out as soon as the specific browser tab is closed."
+  },
+  {
+    "id": 26,
+    "category": "Web Development",
+    "difficulty": "Medium",
+    "question": "What is semantic HTML?",
+    "answer": "Semantic HTML uses elements that clearly describe their meaning to both the browser and the developer (e.g., <header>, <article>, <footer> instead of <div>)."
+  },
+  {
+    "id": 27,
+    "category": "Web Development",
+    "difficulty": "Hard",
+    "question": "What is a RESTful API?",
+    "answer": "An architectural style for an API that uses HTTP requests to access and manipulate data using standard CRUD methods (GET, POST, PUT, DELETE)."
+  },
+  {
+    "id": 28,
+    "category": "Web Development",
+    "difficulty": "Medium",
+    "question": "What is JWT (JSON Web Token)?",
+    "answer": "JWT is a compact, URL-safe means of representing claims to be transferred between two parties, heavily used for secure user authentication."
+  },
+  {
+    "id": 29,
+    "category": "Web Development",
+    "difficulty": "Easy",
+    "question": "What is the purpose of the Alt attribute in images?",
+    "answer": "It provides alternative text descriptions for images to assist screen-readers for visually impaired users and displays if the image fails to load."
+  },
+  {
+    "id": 30,
+    "category": "Web Development",
+    "difficulty": "Hard",
+    "question": "What is the difference between SSR and CSR?",
+    "answer": "Server-Side Rendering (SSR) builds the HTML page on the server for each request. Client-Side Rendering (CSR) renders pages directly in the browser using JavaScript."
+  },
+
+  {
+    "id": 31,
+    "category": "Databases",
+    "difficulty": "Medium",
+    "question": "What is the difference between SQL and NoSQL?",
+    "answer": "SQL databases are relational, structured using tables, and have fixed schemas. NoSQL databases are non-relational, document/key-value based, and have dynamic schemas."
+  },
+  {
+    "id": 32,
+    "category": "Databases",
+    "difficulty": "Easy",
+    "question": "What does CRUD stand for?",
+    "answer": "CRUD stands for the four basic operations of persistent storage management: Create, Read, Update, and Delete."
+  },
+  {
+    "id": 33,
+    "category": "Databases",
+    "difficulty": "Medium",
+    "question": "What is a primary key?",
+    "answer": "A primary key is a specific column or set of columns in a database table that uniquely identifies each row record in that table."
+  },
+  {
+    "id": 34,
+    "category": "Databases",
+    "difficulty": "Hard",
+    "question": "What is an index in a database?",
+    "answer": "An index is a performance-tuning structure created to speed up data retrieval operations on a database table at the cost of additional storage space."
+  }
+]

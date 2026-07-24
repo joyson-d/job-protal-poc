@@ -46,6 +46,7 @@
     "profile": "Profil",
     "savedJobs": "Offres Enregistrées",
     "appliedJobs": "Offres d'emploi postulées",
+    "interview-question": "Question d'entretien",
     "logout": "Déconnexion"
   },
 
@@ -179,5 +180,11 @@
       "immediate": "Immédiat",
       "days": "Jours"
     }
+  },
+
+  "interview-question": {
+    "interview-preparation": "Préparation à l'entretien",
+    "practice-questions-desc": "Entraînez-vous sur des questions d'entretien courantes et affichez les réponses lorsque vous êtes prêt.",
+    "questions": "Questions"
   }
 }

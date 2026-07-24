@@ -6,6 +6,7 @@ import { authGuard, guestGuard } from './core/auth/auth-guard';
 import { Login } from './feature/auth/login/login';
 import { Register } from './feature/auth/register/register';
 import { AppliedJob } from './feature/applied-job/applied-job';
+import { InterviewQuestion } from './feature/interview-question/interview-question';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,11 @@ export const routes: Routes = [
   {
     path: 'applied-jobs',
     component: AppliedJob,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'interview-question',
+    component: InterviewQuestion,
     canActivate: [authGuard],
   },
 ];
