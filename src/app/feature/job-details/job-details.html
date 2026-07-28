@@ -2,18 +2,46 @@
   <div class="bg-gray-50 min-h-screen py-10 px-4">
     <div class="max-w-4xl mx-auto bg-white rounded shadow p-6">
       <button
-        class="inline-flex items-center mb-6 text-gray-600 hover:text-black"
+        class="inline-flex items-center mb-6 text-gray-600 hover:text-black cursor-pointer"
         (click)="goBack()"
       >
-        ← {{ 'jobDetails.back' | translate }}
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://w3.org"
+          aria-hidden="true"
+          class="mr-3"
+        >
+          <!-- Arrow Shaft -->
+          <path
+            d="M19 12H5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <!-- Arrow Head -->
+          <path
+            d="M12 19L5 12L12 5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        {{ 'jobDetails.back' | translate }}
       </button>
 
       @if (isUserAuthenticated) {
         <app-saved-job-button [jobId]="currentJob.id" />
       }
 
-      <div class="flex gap-4 items-start max-sm:flex-col">
-        <div class="flex gap-4 justify-between">
+      <div class="flex gap-4 items-start max-sm:flex-col  p-2">
+        <div class="flex gap-4 justify-between ">
           <img
             [src]="getImageUrl(currentJob.company_logo_url)"
             [alt]="currentJob.company_name"

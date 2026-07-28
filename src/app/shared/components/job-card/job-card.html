@@ -20,18 +20,19 @@
         </h3>
       </div>
     </div>
-    @if(isUserAuthenticated){
-      <app-saved-job-button [jobId]="job.id"/>
+    @if (isUserAuthenticated) {
+      <app-saved-job-button [jobId]="job.id" />
     }
   </div>
 
-
   <div class="flex flex-wrap gap-2 mt-4 capitalize">
-    <span class="px-2 py-1 bg-gray-100 rounded text-sm shadow">
-      {{ formatJobType(job.job_type) }}
+    <span class="px-2 py-1 bg-gray-100 rounded text-sm shadow "
+    [class.hidden]="!(job.job_type.length > 0)"
+    >
+      {{ formatJobType(job.job_type)  }}
     </span>
 
-    <span class="px-2 py-1 border rounded text-sm">
+    <span class="px-2 py-1 border rounded text-sm truncate">
       {{ job.candidate_required_location }}
     </span>
   </div>
@@ -44,13 +45,16 @@
         {{ formatSalary(job.salary) }}
       </p>
 
-      <p class="text-xs text-gray-500">
+      <p class="text-xs text-gray-500 truncate">
         {{ job.candidate_required_location }}
       </p>
     </div>
 
-    <a [routerLink]="['/jobs',job.id]" class="bg-black text-white px-4 py-2 rounded text-sm hover:bg-gray-700 transition">
-       {{ 'jobCard.viewDetails' | translate }}
+    <a
+      [routerLink]="['/jobs', job.id]"
+      class="bg-black text-white px-4 py-2 rounded text-sm hover:bg-gray-700 transition"
+    >
+      {{ 'jobCard.viewDetails' | translate }}
     </a>
   </div>
 </div>

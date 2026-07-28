@@ -2,7 +2,7 @@
   (click)="openModal()"
   [disabled]="isApplied()"
   class="px-4 py-2 rounded text-white transition cursor-pointer"
-  [class.bg-black]="!isApplied()"
+  [class.bg-green-700]="!isApplied()"
   [class.bg-gray-300]="isApplied()"
   [class.text-gray-600]="isApplied()"
 >
@@ -135,7 +135,7 @@
           <button
             type="submit"
             [disabled]="applicationForm.invalid"
-            class="flex-1 rounded bg-black py-2 text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+            class="flex-1 rounded bg-green-700 py-2 text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {{ 'applyJob.applyBtn' | translate }}
           </button>
