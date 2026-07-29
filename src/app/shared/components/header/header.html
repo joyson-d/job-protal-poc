@@ -23,9 +23,9 @@
       <!-- Dropdown Button -->
       <button
         (click)="toggleMenu()"
-        class="flex items-center gap-2 border rounded-lg px-4 py-2 hover:bg-gray-100 transition cursor-pointer"
+        class="flex items-center gap-2 shadow shadow-black rounded px-4 py-2 hover:bg-gray-100 transition cursor-pointer"
       >
-        <span>
+        <span class="max-sm:text-[10px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -39,7 +39,7 @@
             />
           </svg>
         </span>
-        <span>
+        <span class="block max-sm:hidden">
           {{ 'nav.myAccount' | translate }}
         </span>
 
